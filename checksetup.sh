@@ -53,3 +53,7 @@ fi
 echo ""
 echo "Using models at: ${SPICE_LIB}"
 echo "Using device abstractions from: ${devices_file}"
+#copy the devices.cir file to the top directory
+cp ${devices_file} .
+
+
