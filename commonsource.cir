@@ -1,5 +1,5 @@
-* Common source amplifier from Degnan dissertation
-* Bottom nFET as bias, top nFET as input device
+* Common source amplifier - NMOS and PMOS versions
+
 
 * Include the PDK models
 .lib $SPICE_LIB/sky130.lib.spice tt
@@ -10,18 +10,27 @@
 * Supply
 Vdd vdd 0 DC 1.8
 
-* Bottom nFET (bias device): source at GND, gate at 100mV, drain is vout
-Xn_bias vout1 nbias1 0 0 abnmos
-Vbias1 nbias1 0 DC 0.1
+* NMOS: Bottom nFET as bias, top nFET as input
+* 100mV bias
+Xn_bias1 voutn1 nbias1 0 0 abnmos
+Vbias_n1 nbias1 0 DC 0.1
+Xn_in1 vdd in voutn1 0 abnmos
 
-* Top nFET (input device): source at vout, drain at VDD, gate is input
-Xn_in1 vdd in vout1 0 abnmos
+* 200mV bias
+Xn_bias2 voutn2 nbias2 0 0 abnmos
+Vbias_n2 nbias2 0 DC 0.2
+Xn_in2 vdd in voutn2 0 abnmos
 
-* Second instance with 200mV bias
-Xn_bias2 vout2 nbias2 0 0 abnmos
-Vbias2 nbias2 0 DC 0.2
+* PMOS: Top pFET as bias, bottom pFET as input
+* 100mV bias (1.7V = VDD - 100mV)
+Xp_bias1 voutp1 pbias1 vdd vdd abpmos
+Vbias_p1 pbias1 0 DC 1.7
+Xp_in1 0 in voutp1 vdd abpmos
 
-Xn_in2 vdd in vout2 0 abnmos
+* 200mV bias (1.6V = VDD - 200mV)
+Xp_bias2 voutp2 pbias2 vdd vdd abpmos
+Vbias_p2 pbias2 0 DC 1.6
+Xp_in2 0 in voutp2 vdd abpmos
 
 * Input sweep
 Vin in 0 DC 0
@@ -30,7 +39,7 @@ Vin in 0 DC 0
     dc Vin 0 1.8 0.001
     set wr_vecnames
     set wr_singlescale
-    wrdata commonsource.csv v(in) v(vout1) v(vout2)
+    wrdata commonsource.csv v(in) v(voutn1) v(voutn2) v(voutp1) v(voutp2)
     echo "Done"
 .endc
 

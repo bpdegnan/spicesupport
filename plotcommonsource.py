@@ -5,15 +5,19 @@ import matplotlib.pyplot as plt
 data = np.loadtxt('commonsource.csv', skiprows=1)
 
 vin = data[:, 1]
-vout1 = data[:, 2]
-vout2 = data[:, 3]
+voutn1 = data[:, 2]
+voutn2 = data[:, 3]
+voutp1 = data[:, 4]
+voutp2 = data[:, 5]
 
 plt.figure(figsize=(10, 6))
-plt.plot(vin, vout1, label='Bias = 100mV')
-plt.plot(vin, vout2, label='Bias = 200mV')
+plt.plot(vin, voutn1, 'b-', label='NMOS Bias=100mV')
+plt.plot(vin, voutn2, 'b--', label='NMOS Bias=200mV')
+plt.plot(vin, voutp1, 'r-', label='PMOS |Bias|=100mV')
+plt.plot(vin, voutp2, 'r--', label='PMOS |Bias|=200mV')
 plt.xlabel('Vin (V)')
 plt.ylabel('Vout (V)')
-plt.title('Common Source Amplifier')
+plt.title('Common Source Amplifier ')
 plt.legend()
 plt.grid(True)
 plt.savefig('commonsource.png', dpi=150)
