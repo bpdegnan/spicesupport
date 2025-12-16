@@ -1,0 +1,37 @@
+* Common source amplifier from Degnan dissertation
+* Bottom nFET as bias, top nFET as input device
+
+* Include the PDK models
+.lib $SPICE_LIB/sky130.lib.spice tt
+
+* Include abstract device definitions
+.include devices.cir
+
+* Supply
+Vdd vdd 0 DC 1.8
+
+* Bottom nFET (bias device): source at GND, gate at 100mV, drain is vout
+Xn_bias vout1 nbias1 0 0 abnmos
+Vbias1 nbias1 0 DC 0.1
+
+* Top nFET (input device): source at vout, drain at VDD, gate is input
+Xn_in1 vdd in vout1 0 abnmos
+
+* Second instance with 200mV bias
+Xn_bias2 vout2 nbias2 0 0 abnmos
+Vbias2 nbias2 0 DC 0.2
+
+Xn_in2 vdd in vout2 0 abnmos
+
+* Input sweep
+Vin in 0 DC 0
+
+.control
+    dc Vin 0 1.8 0.001
+    set wr_vecnames
+    set wr_singlescale
+    wrdata commonsource.csv v(in) v(vout1) v(vout2)
+    echo "Done"
+.endc
+
+.end
