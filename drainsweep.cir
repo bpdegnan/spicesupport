@@ -1,0 +1,65 @@
+* NMOS and PMOS drain sweep at multiple gate voltages
+
+* Include the PDK models
+.lib $SPICE_LIB/sky130.lib.spice tt
+
+* Include abstract device definitions
+.include devices.cir
+
+* Supply
+Vdd vdd 0 DC 1.8
+
+* Shared drain sweep voltage
+Vd nd 0 DC 0
+
+* NMOS instances at different Vgs
+Xn1 nd1 ng1 0 0 abnmos
+Vdn1 nd1 nd DC 0
+Vgn1 ng1 0 DC 0.2
+
+Xn2 nd2 ng2 0 0 abnmos
+Vdn2 nd2 nd DC 0
+Vgn2 ng2 0 DC 0.6
+
+Xn3 nd3 ng3 0 0 abnmos
+Vdn3 nd3 nd DC 0
+Vgn3 ng3 0 DC 1.0
+
+Xn4 nd4 ng4 0 0 abnmos
+Vdn4 nd4 nd DC 0
+Vgn4 ng4 0 DC 1.4
+
+Xn5 nd5 ng5 0 0 abnmos
+Vdn5 nd5 nd DC 0
+Vgn5 ng5 0 DC 1.8
+
+* PMOS instances at different |Vsg| (drain tied to sweep node, source to vdd)
+Xp1 pd1 pg1 vdd vdd abpmos
+Vdp1 pd1 nd DC 0
+Vgp1 pg1 0 DC 1.6
+
+Xp2 pd2 pg2 vdd vdd abpmos
+Vdp2 pd2 nd DC 0
+Vgp2 pg2 0 DC 1.2
+
+Xp3 pd3 pg3 vdd vdd abpmos
+Vdp3 pd3 nd DC 0
+Vgp3 pg3 0 DC 0.8
+
+Xp4 pd4 pg4 vdd vdd abpmos
+Vdp4 pd4 nd DC 0
+Vgp4 pg4 0 DC 0.4
+
+Xp5 pd5 pg5 vdd vdd abpmos
+Vdp5 pd5 nd DC 0
+Vgp5 pg5 0 DC 0.0
+
+.control
+    dc Vd 0 1.8 0.001
+    set wr_vecnames
+    set wr_singlescale
+    wrdata drainsweep.csv v(nd) i(Vdn1) i(Vdn2) i(Vdn3) i(Vdn4) i(Vdn5) i(Vdp1) i(Vdp2) i(Vdp3) i(Vdp4) i(Vdp5)
+    echo "Done"
+.endc
+
+.end
