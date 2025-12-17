@@ -1,30 +1,28 @@
-#!/usr/bin/env zsh
-# installskywater.sh — interactive installer for SkyWater Sky130 open PDK
 #!/bin/zsh
-# install_skywater_pdks_nosudo.zsh
 # Interactive, BSD-clean, NO-SUDO installer for SkyWater Sky130 PDK
 
 set -eu
 
 # ---------------- helpers ----------------
-say() { print -- "$*"; }
-err() { print -- "ERROR: $*" >&2; }
+say() { print -r -- "$*"; }
+err() { print -r -- "ERROR: $*" >&2; }
 die() { err "$@"; exit 1; }
 
 have() { command -v "$1" >/dev/null 2>&1; }
 
+# Read explicitly from the controlling terminal to avoid buffering issues
 ask() {
   local prompt="$1"
   local def="${2:-}"
   local ans=""
   if [[ -n "$def" ]]; then
-    print -n -- "${prompt} [${def}]: "
+    printf "%s [%s]: " "$prompt" "$def" > /dev/tty
   else
-    print -n -- "${prompt}: "
+    printf "%s: " "$prompt" > /dev/tty
   fi
-  IFS= read -r ans || true
+  IFS= read -r ans < /dev/tty || true
   [[ -z "$ans" ]] && ans="$def"
-  print -- "$ans"
+  print -r -- "$ans"
 }
 
 ask_yn() {
@@ -33,11 +31,11 @@ ask_yn() {
   local ans=""
   while true; do
     if [[ "$def" == "y" ]]; then
-      print -n -- "${prompt} [Y/n]: "
+      printf "%s [Y/n]: " "$prompt" > /dev/tty
     else
-      print -n -- "${prompt} [y/N]: "
+      printf "%s [y/N]: " "$prompt" > /dev/tty
     fi
-    IFS= read -r ans || true
+    IFS= read -r ans < /dev/tty || true
     ans="${ans:l}"
     [[ -z "$ans" ]] && ans="$def"
     case "$ans" in
@@ -72,44 +70,6 @@ detect_pkg_mgr() {
   fi
 }
 
-print_dep_instructions() {
-  local pm="$1"
-
-  say ""
-  say "== Missing dependencies =="
-  say "Required: git, make, python3, tcsh"
-  say ""
-  say "You do NOT have root. Install these in user space."
-  say ""
-
-  case "$pm" in
-    macports)
-      say "MacPorts (user prefix):"
-      say "  port install git python311 tcsh"
-      say "  # ensure your MacPorts bin dir is in PATH"
-      ;;
-    homebrew)
-      say "Homebrew (no sudo):"
-      say "  brew install git python tcsh"
-      ;;
-    apt)
-      say "apt detected, but requires root."
-      say "Use a user-local environment (conda, nix, or preinstalled tools)."
-      ;;
-    dnf|yum)
-      say "dnf/yum detected, but requires root."
-      say "Use a user-local environment."
-      ;;
-    *)
-      say "No package manager detected."
-      say "Ensure git, make, python3, and tcsh are available in PATH."
-      ;;
-  esac
-
-  say ""
-  say "After installing, re-run this script."
-}
-
 check_deps() {
   local missing=()
   for t in git make python3 tcsh; do
@@ -125,16 +85,36 @@ check_deps() {
   return 0
 }
 
+print_dep_instructions() {
+  local pm="$1"
+  say ""
+  say "Required tools (user-level): git make python3 tcsh"
+  say ""
+  case "$pm" in
+    macports)
+      say "MacPorts (user prefix):"
+      say "  port install git python311 tcsh"
+      ;;
+    homebrew)
+      say "Homebrew:"
+      say "  brew install git python tcsh"
+      ;;
+    *)
+      say "Ensure the tools are available in PATH."
+      ;;
+  esac
+  say ""
+}
+
 # ---------------- main ----------------
 say "SkyWater Open PDK installer (Sky130)"
-say "Root-free / sudo-free interactive mode"
 say ""
 
 OS="$(detect_os)"
 PM="$(detect_pkg_mgr)"
 
-say "Detected OS:  ${OS}"
-say "Detected PM:  ${PM}"
+say "Detected OS : $OS"
+say "Detected PM : $PM"
 say ""
 
 if ! check_deps; then
@@ -145,30 +125,36 @@ fi
 say "All required tools found."
 say ""
 
+# ---- Print current directory explicitly ----
+say "Current working directory:"
+say "  $(pwd)"
+say ""
+
 PDK_ROOT_DEFAULT="${HOME}/pdks"
-PDK_ROOT="$(ask "Where should PDK_ROOT be?" "$PDK_ROOT_DEFAULT")"
+PDK_ROOT="$(ask "Where should PDK_ROOT be installed?" "$PDK_ROOT_DEFAULT")"
 PDK_ROOT="${PDK_ROOT/#\~/${HOME}}"
 [[ -z "$PDK_ROOT" ]] && die "PDK_ROOT cannot be empty."
 
 if [[ ! -d "$PDK_ROOT" ]]; then
-  ask_yn "Create $PDK_ROOT?" "y" || die "Cannot proceed."
+  ask_yn "Create directory $PDK_ROOT?" "y" || die "Cannot proceed."
   mkdir -p "$PDK_ROOT"
 fi
 
 REPO_URL="$(ask "SkyWater PDK git URL" "https://github.com/google/skywater-pdk.git")"
 
 WORKDIR_DEFAULT="${PDK_ROOT}/src/skywater-pdk"
-WORKDIR="$(ask "Where to clone/build the repo?" "$WORKDIR_DEFAULT")"
+WORKDIR="$(ask "Where should the repo be cloned/built?" "$WORKDIR_DEFAULT")"
 WORKDIR="${WORKDIR/#\~/${HOME}}"
 
 TARGET="$(ask "Build target" "sky130")"
 
 say ""
 if [[ -d "$WORKDIR/.git" ]]; then
-  say "Repo exists at $WORKDIR"
-  ask_yn "Update repo (git pull)?" "y" && ( cd "$WORKDIR" && git pull --rebase )
+  say "Repository already exists:"
+  say "  $WORKDIR"
+  ask_yn "Update it (git pull)?" "y" && ( cd "$WORKDIR" && git pull --rebase )
 else
-  say "Cloning repo..."
+  say "Cloning repository..."
   mkdir -p "$(dirname "$WORKDIR")"
   git clone "$REPO_URL" "$WORKDIR"
 fi
@@ -177,7 +163,7 @@ say "Updating submodules..."
 ( cd "$WORKDIR" && git submodule update --init --recursive )
 
 say ""
-say "Configuration summary:"
+say "Build summary:"
 say "  PDK_ROOT = $PDK_ROOT"
 say "  WORKDIR  = $WORKDIR"
 say "  TARGET   = $TARGET"
@@ -186,7 +172,7 @@ say ""
 ask_yn "Proceed with build?" "y" || die "Aborted."
 
 say ""
-say "Building (this may take a while)..."
+say "Building SkyWater PDK (this can take a while)..."
 ( cd "$WORKDIR" && make "$TARGET" PDK_ROOT="$PDK_ROOT" )
 
 say ""
@@ -195,6 +181,5 @@ say ""
 say "ngspice models:"
 say "  $PDK_ROOT/sky130A/libs.tech/ngspice/"
 say ""
-say "Add to ~/.zshrc if desired:"
-say "  export PDK_ROOT=\"$PDK_ROOT\""
-
+say "Optional:"
+say "  echo 'export PDK_ROOT=\"$PDK_ROOT\"' >> ~/.zshrc"
