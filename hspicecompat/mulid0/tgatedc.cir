@@ -1,0 +1,39 @@
+* Transmission gate characterization
+* Standard t-gate vs m=2 vs mulid0=2
+
+* Include the PDK models
+.lib $SPICE_LIB/sky130.lib.spice tt
+
+* Include abstract device definitions
+.include devices.cir
+
+* Supply
+Vdd vdd 0 DC 1.8
+
+* Standard transmission gate (m=1)
+Xn1 in1 vdd out1 0 abnmos
+Xp1 in1 0 out1 vdd abpmos
+Vds1 in1 out1 DC 0.025
+Vcm1 out1 0 DC 0
+
+* Transmission gate with m=2
+Xn2 in2 vdd out2 0 abnmos m=2
+Xp2 in2 0 out2 vdd abpmos m=2
+Vds2 in2 out2 DC 0.025
+Vcm2 out2 0 DC 0
+
+* Transmission gate with mulid0=2
+Xn3 in3 vdd out3 0 abnmos mulid0=2
+Xp3 in3 0 out3 vdd abpmos mulid0=2
+Vds3 in3 out3 DC 0.025
+Vcm3 out3 0 DC 0
+
+.control
+    dc Vcm1 0 1.8 0.001 Vcm2 0 1.8 0.001 Vcm3 0 1.8 0.001
+    set wr_vecnames
+    set wr_singlescale
+    wrdata tgate.csv v(out1) i(Vds1) i(Vds2) i(Vds3)
+    echo "Done"
+.endc
+
+.end
