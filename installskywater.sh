@@ -1,9 +1,7 @@
 #!/usr/bin/env zsh
-# Interactive, BSD-clean, NO-SUDO installer for SkyWater Sky130 PDK
 #
-# Firewall HTTPS-only fix:
-# - Patches any .gitmodules under the repo to replace git+ssh/ssh/git@/git:// with HTTPS
-# - Runs submodule sync/update twice (to catch nested submodules)
+# Interactive, NO-SUDO SkyWater Sky130 installer with HTTPS-only firewall support.
+# OS-aware sed in-place edits (macOS BSD sed vs Linux GNU sed). 
 
 set -eu
 
@@ -47,19 +45,9 @@ detect_os() {
   esac
 }
 
-detect_pkg_mgr() {
-  if have port; then print "macports"
-  elif have brew; then print "homebrew"
-  elif have apt-get; then print "apt"
-  elif have dnf; then print "dnf"
-  elif have yum; then print "yum"
-  else print "none"
-  fi
-}
-
 check_deps() {
   local missing=()
-  for t in git make python3 tcsh find sed; do
+  for t in git make python3 tcsh find grep sed; do
     have "$t" || missing+=("$t")
   done
   if (( ${#missing[@]} > 0 )); then
@@ -70,64 +58,68 @@ check_deps() {
   return 0
 }
 
-print_dep_instructions() {
-  local pm="$1"
-  say ""
-  say "Required tools (user-level): git make python3 tcsh"
-  say "No sudo will be used."
-  say ""
-  case "$pm" in
-    macports) say "MacPorts:  port install git python311 tcsh" ;;
-    homebrew) say "Homebrew:  brew install git python tcsh" ;;
-    *)        say "Ensure tools are available in PATH." ;;
-  esac
-  say ""
+# --- OS-aware sed -i wrapper ---
+# usage: sedi <script> <file>
+sedi() {
+  local script="$1"
+  local file="$2"
+  local os="${OS:-$(detect_os)}"
+
+  if [[ "$os" == "macos" ]]; then
+    # BSD sed requires a backup extension argument (empty means in-place with no backup)
+    sed -i '' -e "$script" "$file"
+  else
+    # GNU sed
+    sed -i -e "$script" "$file"
+  fi
 }
 
-# Patch ONE .gitmodules file, robust to whitespace around '='
+# Patch ONE .gitmodules file, tolerant of whitespace around '='
 patch_gitmodules_file() {
   local f="$1"
   [[ -f "$f" ]] || return 0
 
-  # Only do work if it contains any blocked schemes
-  if ! /usr/bin/grep -qE 'git\+ssh://|ssh://git@github\.com/|git@github\.com:|git://' "$f"; then
+  # only patch if blocked schemes appear
+  if ! grep -qE 'git\+ssh://|ssh://git@github\.com/|git@github\.com:|git://' "$f"; then
     return 0
   fi
 
   say "Patching $f (forcing HTTPS URLs)..."
 
-  # BSD sed: -i ''
-  # We replace *only the URL value* portion in common forms, tolerant of whitespace.
-  /usr/bin/sed -i '' \
-    -e 's#[Uu][Rr][Ll][[:space:]]*=[[:space:]]*git\+ssh://github\.com/#[Uu][Rr][Ll] = https://github.com/#g' \
-    -e 's#[Uu][Rr][Ll][[:space:]]*=[[:space:]]*git\+ssh://git@github\.com/#[Uu][Rr][Ll] = https://github.com/#g' \
-    -e 's#[Uu][Rr][Ll][[:space:]]*=[[:space:]]*ssh://git@github\.com/#[Uu][Rr][Ll] = https://github.com/#g' \
-    -e 's#[Uu][Rr][Ll][[:space:]]*=[[:space:]]*git@github\.com:#[Uu][Rr][Ll] = https://github.com/#g' \
-    -e 's#[Uu][Rr][Ll][[:space:]]*=[[:space:]]*git://#[Uu][Rr][Ll] = https://#g' \
-    "$f"
+  # We preserve indentation and "url" token, only rewrite the URL prefix.
+  # Match: (url <spaces>=<spaces>) + scheme/prefix
+  sedi 's#\([[:space:]]*url[[:space:]]*=[[:space:]]*\)git+ssh://github\.com/#\1https://github.com/#g' "$f"
+  sedi 's#\([[:space:]]*url[[:space:]]*=[[:space:]]*\)git+ssh://git@github\.com/#\1https://github.com/#g' "$f"
+  sedi 's#\([[:space:]]*url[[:space:]]*=[[:space:]]*\)ssh://git@github\.com/#\1https://github.com/#g' "$f"
+  sedi 's#\([[:space:]]*url[[:space:]]*=[[:space:]]*\)git@github\.com:#\1https://github.com/#g' "$f"
+  sedi 's#\([[:space:]]*url[[:space:]]*=[[:space:]]*\)git://#\1https://#g' "$f"
+
+  # verify blocked schemes are gone
+  if grep -qE 'git\+ssh://|ssh://git@github\.com/|git@github\.com:|git://' "$f"; then
+    die "Patch incomplete: blocked URL scheme still present in $f"
+  fi
 }
 
-# Patch all .gitmodules under repo
 patch_all_gitmodules() {
   local repo="$1"
-  local f
   say "Scanning for .gitmodules under $repo ..."
-  # Use find (BSD) and patch each file found
-  while IFS= read -r f; do
+  find "$repo" -name .gitmodules -type f -print0 2>/dev/null | \
+  while IFS= read -r -d '' f; do
     patch_gitmodules_file "$f"
-  done < <(/usr/bin/find "$repo" -name .gitmodules -type f 2>/dev/null)
+  done
 }
 
 prepare_https_submodules() {
   local repo="$1"
 
-  # Global rewrites help for clones, but we also patch .gitmodules explicitly.
+  # Global rewrites (user-level) help with nested clones
   git config --global url."https://github.com/".insteadOf "git+ssh://github.com/"
   git config --global url."https://github.com/".insteadOf "git+ssh://git@github.com/"
   git config --global url."https://github.com/".insteadOf "git@github.com:"
   git config --global url."https://github.com/".insteadOf "ssh://git@github.com/"
   git config --global url."https://".insteadOf "git://"
 
+  # Local rewrites in the top repo (belt-and-suspenders)
   (
     cd "$repo"
     git config --local url."https://github.com/".insteadOf "git+ssh://github.com/"
@@ -137,31 +129,25 @@ prepare_https_submodules() {
     git config --local url."https://".insteadOf "git://"
   )
 
+  # Explicitly patch any .gitmodules (including nested ones)
   patch_all_gitmodules "$repo"
 
+  # Sync to propagate .gitmodules URLs into .git/config
   ( cd "$repo" && git submodule sync --recursive || true )
 }
 
 # ---------------- main ----------------
-say "SkyWater Open PDK installer (Sky130)"
-say "Root-free / sudo-free interactive mode"
-say ""
-
 OS="$(detect_os)"
-PM="$(detect_pkg_mgr)"
-say "Detected OS : $OS"
-say "Detected PM : $PM"
+say "SkyWater Open PDK installer (Sky130)"
+say "OS detected: $OS"
 say ""
 
 if ! check_deps; then
-  print_dep_instructions "$PM"
-  die "Dependencies missing."
+  die "Missing dependencies. Ensure git, make, python3, tcsh, find, grep, sed are installed and in PATH."
 fi
 
-say "All required tools found."
-say ""
 say "Current working directory:"
-say "  $(/bin/pwd)"
+say "  $(pwd)"
 say ""
 
 PDK_ROOT_DEFAULT="${HOME}/pdks"
@@ -176,11 +162,9 @@ if [[ ! -d "$PDK_ROOT" ]]; then
 fi
 
 REPO_URL="$(ask "SkyWater PDK git URL" "https://github.com/google/skywater-pdk.git")"
-
 WORKDIR_DEFAULT="${PDK_ROOT}/src/skywater-pdk"
 WORKDIR="$(ask "Where should the repo be cloned/built?" "$WORKDIR_DEFAULT")"
 WORKDIR="${WORKDIR/#\~/${HOME}}"
-
 TARGET="$(ask "Build target" "sky130")"
 
 say ""
@@ -196,13 +180,13 @@ fi
 
 export SKYWATER_PDK_REPO="$WORKDIR"
 
-# Pass 0: patch any existing .gitmodules before touching submodules
+# Patch URLs BEFORE submodule init/update
 prepare_https_submodules "$WORKDIR"
 
 say "Updating submodules (pass 1)..."
 ( cd "$WORKDIR" && git submodule update --init --recursive )
 
-# Pass 2: now nested .gitmodules exist—patch again and update again
+# Patch again after nested submodules appear
 prepare_https_submodules "$WORKDIR"
 
 say "Updating submodules (pass 2)..."
