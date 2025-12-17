@@ -1,12 +1,12 @@
 #!/usr/bin/env zsh
 # Interactive, BSD-clean, NO-SUDO installer for SkyWater Sky130 PDK
 #
-# Key features:
-# - Prompts read from /dev/tty (robust; avoids “funny” prompting)
-# - Prints current directory before asking for PDK_ROOT
-# - Exports PDK_ROOT and SKYWATER_PDK_REPO for this run
-# - Forces HTTPS for git URLs (including git+ssh://) BEFORE submodules and BEFORE make
-# - Prints a zshrc snippet to persist PDK_ROOT (and optionally SKYWATER_PDK_REPO)
+# Fixes HTTPS-only firewall environments by:
+# - Rewriting git+ssh:// / ssh:// / git@github.com: / git:// URLs to https://
+# - Patching BOTH known .gitmodules locations:
+#     1) top-level .gitmodules
+#     2) libraries/sky130_fd_io/latest/.gitmodules
+# - Syncing and updating submodules before make
 
 set -eu
 
@@ -78,7 +78,7 @@ detect_pkg_mgr() {
 
 check_deps() {
   local missing=()
-  for t in git make python3 tcsh; do
+  for t in git make python3 tcsh sed; do
     have "$t" || missing+=("$t")
   done
   if (( ${#missing[@]} > 0 )); then
@@ -94,14 +94,13 @@ check_deps() {
 print_dep_instructions() {
   local pm="$1"
   say ""
-  say "Required tools (user-level): git make python3 tcsh"
+  say "Required tools (user-level): git make python3 tcsh sed"
   say "No sudo will be used."
   say ""
   case "$pm" in
     macports)
       say "MacPorts (user prefix):"
       say "  port install git python311 tcsh"
-      say "  # ensure MacPorts bin dir is in PATH"
       ;;
     homebrew)
       say "Homebrew:"
@@ -114,28 +113,55 @@ print_dep_instructions() {
   say ""
 }
 
-force_https_git() {
-  # Enforce HTTPS for SSH-ish and git:// URLs, including git+ssh:// used by some submodules.
-  local repo="$1"
-  say "Forcing HTTPS for git URLs (including git+ssh://) ..."
+# Rewrite schemes in a .gitmodules file (BSD sed: -i '')
+patch_gitmodules_file() {
+  local f="$1"
+  [[ -f "$f" ]] || return 0
 
-  # GLOBAL rewrite rules (user-level, no sudo). Most reliable for deeply nested submodules.
+  # Only patch if it actually contains a blocked scheme (avoid needless file churn)
+  if ! /usr/bin/grep -qE 'git\+ssh://|ssh://git@github\.com/|git@github\.com:|git://' "$f"; then
+    return 0
+  fi
+
+  say "Patching $f (forcing HTTPS URLs)..."
+  /usr/bin/sed -i '' \
+    -e 's#url = git\+ssh://github.com/#url = https://github.com/#g' \
+    -e 's#url = git\+ssh://git@github.com/#url = https://github.com/#g' \
+    -e 's#url = ssh://git@github.com/#url = https://github.com/#g' \
+    -e 's#url = git@github.com:#url = https://github.com/#g' \
+    -e 's#url = git://#url = https://#g' \
+    "$f"
+}
+
+# Apply rewrite rules + patch known .gitmodules locations, then sync
+prepare_https_submodules() {
+  local repo="$1"
+
+  say "Configuring git URL rewrites (global + local) ..."
+  # global (user-level): helps for nested submodules
   git config --global url."https://github.com/".insteadOf "git+ssh://github.com/"
   git config --global url."https://github.com/".insteadOf "git+ssh://git@github.com/"
   git config --global url."https://github.com/".insteadOf "git@github.com:"
   git config --global url."https://github.com/".insteadOf "ssh://git@github.com/"
   git config --global url."https://".insteadOf "git://"
 
-  # LOCAL rewrite rules too (belt and suspenders).
   (
     cd "$repo"
+
+    # local (repo-level): belt-and-suspenders
     git config --local url."https://github.com/".insteadOf "git+ssh://github.com/"
     git config --local url."https://github.com/".insteadOf "git+ssh://git@github.com/"
     git config --local url."https://github.com/".insteadOf "git@github.com:"
     git config --local url."https://github.com/".insteadOf "ssh://git@github.com/"
     git config --local url."https://".insteadOf "git://"
 
-    # Sync submodule URLs into .git/config so the rewrites take effect for submodule operations
+    # Patch top-level .gitmodules if present
+    patch_gitmodules_file ".gitmodules"
+
+    # Patch the specific nested .gitmodules you observed (if/when it exists)
+    patch_gitmodules_file "libraries/sky130_fd_io/latest/.gitmodules"
+
+    # Sync .gitmodules → .git/config (critical after patch)
     git submodule sync --recursive || true
   )
 }
@@ -194,14 +220,17 @@ fi
 
 export SKYWATER_PDK_REPO="$WORKDIR"
 
-# Critical: apply HTTPS rewrite BEFORE any submodule operations
-force_https_git "$WORKDIR"
+# 1) Pre-flight HTTPS conversion BEFORE submodules init
+prepare_https_submodules "$WORKDIR"
 
-say "Updating submodules (over HTTPS)..."
+say "Updating submodules (pass 1)..."
 ( cd "$WORKDIR" && git submodule update --init --recursive )
 
-# Helpful: re-apply after submodules initialize (nested submodules inherit the rewrites globally anyway)
-force_https_git "$WORKDIR"
+# 2) Now that submodules exist, patch nested .gitmodules (if it appeared) and resync
+prepare_https_submodules "$WORKDIR"
+
+say "Updating submodules (pass 2, to catch nested git+ssh)..."
+( cd "$WORKDIR" && git submodule update --init --recursive )
 
 say ""
 say "Build summary:"
