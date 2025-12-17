@@ -162,7 +162,7 @@ if [[ ! -d "$PDK_ROOT" ]]; then
 fi
 
 REPO_URL="$(ask "SkyWater PDK git URL" "https://github.com/google/skywater-pdk.git")"
-WORKDIR_DEFAULT="${PDK_ROOT}/src/skywater-pdk"
+WORKDIR_DEFAULT="${PDK_ROOT}/skywater-pdk"
 WORKDIR="$(ask "Where should the repo be cloned/built?" "$WORKDIR_DEFAULT")"
 WORKDIR="${WORKDIR/#\~/${HOME}}"
 TARGET="$(ask "Build target" "sky130")"
@@ -180,48 +180,48 @@ fi
 
 export SKYWATER_PDK_REPO="$WORKDIR"
 
-# Patch URLs BEFORE submodule init/update
-prepare_https_submodules "$WORKDIR"
+# # Patch URLs BEFORE submodule init/update
+# prepare_https_submodules "$WORKDIR"
 
-say "Updating submodules (pass 1)..."
-( cd "$WORKDIR" && git submodule update --init --recursive )
+# say "Updating submodules (pass 1)..."
+# ( cd "$WORKDIR" && git submodule update --init --recursive )
 
-# Patch again after nested submodules appear
-prepare_https_submodules "$WORKDIR"
+# # Patch again after nested submodules appear
+# prepare_https_submodules "$WORKDIR"
 
-say "Updating submodules (pass 2)..."
-( cd "$WORKDIR" && git submodule update --init --recursive )
+# say "Updating submodules (pass 2)..."
+# ( cd "$WORKDIR" && git submodule update --init --recursive )
 
-say ""
-say "Build summary:"
-say "  PDK_ROOT          = $PDK_ROOT"
-say "  SKYWATER_PDK_REPO = $SKYWATER_PDK_REPO"
-say "  TARGET            = $TARGET"
-say ""
+# say ""
+# say "Build summary:"
+# say "  PDK_ROOT          = $PDK_ROOT"
+# say "  SKYWATER_PDK_REPO = $SKYWATER_PDK_REPO"
+# say "  TARGET            = $TARGET"
+# say ""
 
-ask_yn "Proceed with build?" "y" || die "Aborted."
+# ask_yn "Proceed with build?" "y" || die "Aborted."
 
-say ""
-say "Building SkyWater PDK ..."
-( cd "$WORKDIR" && make "$TARGET" PDK_ROOT="$PDK_ROOT" )
+# say ""
+# say "Building SkyWater PDK ..."
+# ( cd "$WORKDIR" && make "$TARGET" PDK_ROOT="$PDK_ROOT" )
 
-say ""
-say "Installation complete."
-say ""
-say "PDK installed at:"
-say "  $PDK_ROOT"
-say ""
-say "ngspice models:"
-say "  $PDK_ROOT/sky130A/libs.tech/ngspice/"
-say ""
-say "This session exports:"
-say "  PDK_ROOT=\"$PDK_ROOT\""
-say "  SKYWATER_PDK_REPO=\"$SKYWATER_PDK_REPO\""
-say ""
-say "To make PDK_ROOT permanent, add to ~/.zshrc:"
-say "  export PDK_ROOT=\"$PDK_ROOT\""
-say "Optional:"
-say "  export SKYWATER_PDK_REPO=\"$SKYWATER_PDK_REPO\""
-say ""
-say "Then:"
-say "  source ~/.zshrc"
+# say ""
+# say "Installation complete."
+# say ""
+# say "PDK installed at:"
+# say "  $PDK_ROOT"
+# say ""
+# say "ngspice models:"
+# say "  $PDK_ROOT/sky130A/libs.tech/ngspice/"
+# say ""
+# say "This session exports:"
+# say "  PDK_ROOT=\"$PDK_ROOT\""
+# say "  SKYWATER_PDK_REPO=\"$SKYWATER_PDK_REPO\""
+# say ""
+# say "To make PDK_ROOT permanent, add to ~/.zshrc:"
+# say "  export PDK_ROOT=\"$PDK_ROOT\""
+# say "Optional:"
+# say "  export SKYWATER_PDK_REPO=\"$SKYWATER_PDK_REPO\""
+# say ""
+# say "Then:"
+# say "  source ~/.zshrc"
