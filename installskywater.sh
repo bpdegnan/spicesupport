@@ -1,10 +1,9 @@
 #!/usr/bin/env zsh
-# installskywater.zsh
 # Interactive, BSD-clean, NO-SUDO installer for SkyWater Sky130 PDK
-# - Prompts read from /dev/tty (robust in terminals)
-# - Exports PDK_ROOT for this run
+# - Prompts read from /dev/tty (robust)
+# - Exports PDK_ROOT and SKYWATER_PDK_REPO for this run
+# - Forces HTTPS for git/submodules BEFORE make (firewall-friendly)
 # - Prints zshrc snippet for persistence
-# - Optionally sets SKYWATER_PDK_REPO to the repo checkout path
 
 set -eu
 
@@ -99,7 +98,6 @@ print_dep_instructions() {
     macports)
       say "MacPorts (user prefix):"
       say "  port install git python311 tcsh"
-      say "  # Ensure your MacPorts bin dir is in PATH"
       ;;
     homebrew)
       say "Homebrew:"
@@ -110,6 +108,26 @@ print_dep_instructions() {
       ;;
   esac
   say ""
+}
+
+force_https_git() {
+  # Applies local rewrite rules so submodules won’t try SSH or git://
+  # Must be run inside a git repo.
+  local repo="$1"
+  say "Forcing HTTPS for git URLs (SSH/git:// -> HTTPS)..."
+  (
+    cd "$repo"
+
+    # GitHub SSH -> HTTPS
+    git config --local url."https://github.com/".insteadOf "git@github.com:"
+    git config --local url."https://github.com/".insteadOf "ssh://git@github.com/"
+
+    # git:// -> https:// (often blocked by firewalls)
+    git config --local url."https://".insteadOf "git://"
+
+    # Ensure submodule URLs in .git/config are synced from .gitmodules
+    git submodule sync --recursive || true
+  )
 }
 
 # ---------------- main ----------------
@@ -139,8 +157,6 @@ PDK_ROOT_DEFAULT="${HOME}/pdks"
 PDK_ROOT="$(ask "Where should PDK_ROOT be installed?" "$PDK_ROOT_DEFAULT")"
 PDK_ROOT="${PDK_ROOT/#\~/${HOME}}"
 [[ -z "$PDK_ROOT" ]] && die "PDK_ROOT cannot be empty."
-
-# Export for this script and any child processes (make, etc.)
 export PDK_ROOT
 
 if [[ ! -d "$PDK_ROOT" ]]; then
@@ -167,11 +183,16 @@ else
   git clone "$REPO_URL" "$WORKDIR"
 fi
 
-# Export repo path too (useful for other helper scripts)
 export SKYWATER_PDK_REPO="$WORKDIR"
 
-say "Updating submodules..."
+# Apply HTTPS rewrite BEFORE any submodule operations and BEFORE make.
+force_https_git "$WORKDIR"
+
+say "Updating submodules (over HTTPS)..."
 ( cd "$WORKDIR" && git submodule update --init --recursive )
+
+# Re-apply after submodules initialize (helps nested submodules inherit correct config)
+force_https_git "$WORKDIR"
 
 say ""
 say "Build summary:"
