@@ -1,26 +1,19 @@
 #!/usr/bin/env zsh
 # Interactive, BSD-clean, NO-SUDO installer for SkyWater Sky130 PDK
 #
-# Fixes HTTPS-only firewall environments by:
-# - Rewriting git+ssh:// / ssh:// / git@github.com: / git:// URLs to https://
-# - Patching BOTH known .gitmodules locations:
-#     1) top-level .gitmodules
-#     2) libraries/sky130_fd_io/latest/.gitmodules
-# - Syncing and updating submodules before make
+# Firewall HTTPS-only fix:
+# - Patches any .gitmodules under the repo to replace git+ssh/ssh/git@/git:// with HTTPS
+# - Runs submodule sync/update twice (to catch nested submodules)
 
 set -eu
 
-# ---------------- helpers ----------------
 say() { print -r -- "$*"; }
 err() { print -r -- "ERROR: $*" >&2; }
 die() { err "$@"; exit 1; }
-
 have() { command -v "$1" >/dev/null 2>&1; }
 
 ask() {
-  local prompt="$1"
-  local def="${2:-}"
-  local ans=""
+  local prompt="$1" def="${2:-}" ans=""
   if [[ -n "$def" ]]; then
     printf "%s [%s]: " "$prompt" "$def" > /dev/tty
   else
@@ -32,15 +25,9 @@ ask() {
 }
 
 ask_yn() {
-  local prompt="$1"
-  local def="${2:-y}"
-  local ans=""
+  local prompt="$1" def="${2:-y}" ans=""
   while true; do
-    if [[ "$def" == "y" ]]; then
-      printf "%s [Y/n]: " "$prompt" > /dev/tty
-    else
-      printf "%s [y/N]: " "$prompt" > /dev/tty
-    fi
+    [[ "$def" == "y" ]] && printf "%s [Y/n]: " "$prompt" > /dev/tty || printf "%s [y/N]: " "$prompt" > /dev/tty
     IFS= read -r ans < /dev/tty || true
     ans="${ans:l}"
     [[ -z "$ans" ]] && ans="$def"
@@ -61,31 +48,23 @@ detect_os() {
 }
 
 detect_pkg_mgr() {
-  if have port; then
-    print "macports"
-  elif have brew; then
-    print "homebrew"
-  elif have apt-get; then
-    print "apt"
-  elif have dnf; then
-    print "dnf"
-  elif have yum; then
-    print "yum"
-  else
-    print "none"
+  if have port; then print "macports"
+  elif have brew; then print "homebrew"
+  elif have apt-get; then print "apt"
+  elif have dnf; then print "dnf"
+  elif have yum; then print "yum"
+  else print "none"
   fi
 }
 
 check_deps() {
   local missing=()
-  for t in git make python3 tcsh sed; do
+  for t in git make python3 tcsh find sed; do
     have "$t" || missing+=("$t")
   done
   if (( ${#missing[@]} > 0 )); then
     say "Missing tools:"
-    for m in "${missing[@]}"; do
-      say "  - $m"
-    done
+    for m in "${missing[@]}"; do say "  - $m"; done
     return 1
   fi
   return 0
@@ -94,51 +73,55 @@ check_deps() {
 print_dep_instructions() {
   local pm="$1"
   say ""
-  say "Required tools (user-level): git make python3 tcsh sed"
+  say "Required tools (user-level): git make python3 tcsh"
   say "No sudo will be used."
   say ""
   case "$pm" in
-    macports)
-      say "MacPorts (user prefix):"
-      say "  port install git python311 tcsh"
-      ;;
-    homebrew)
-      say "Homebrew:"
-      say "  brew install git python tcsh"
-      ;;
-    *)
-      say "Ensure the tools are available in PATH."
-      ;;
+    macports) say "MacPorts:  port install git python311 tcsh" ;;
+    homebrew) say "Homebrew:  brew install git python tcsh" ;;
+    *)        say "Ensure tools are available in PATH." ;;
   esac
   say ""
 }
 
-# Rewrite schemes in a .gitmodules file (BSD sed: -i '')
+# Patch ONE .gitmodules file, robust to whitespace around '='
 patch_gitmodules_file() {
   local f="$1"
   [[ -f "$f" ]] || return 0
 
-  # Only patch if it actually contains a blocked scheme (avoid needless file churn)
+  # Only do work if it contains any blocked schemes
   if ! /usr/bin/grep -qE 'git\+ssh://|ssh://git@github\.com/|git@github\.com:|git://' "$f"; then
     return 0
   fi
 
   say "Patching $f (forcing HTTPS URLs)..."
+
+  # BSD sed: -i ''
+  # We replace *only the URL value* portion in common forms, tolerant of whitespace.
   /usr/bin/sed -i '' \
-    -e 's#url = git\+ssh://github.com/#url = https://github.com/#g' \
-    -e 's#url = git\+ssh://git@github.com/#url = https://github.com/#g' \
-    -e 's#url = ssh://git@github.com/#url = https://github.com/#g' \
-    -e 's#url = git@github.com:#url = https://github.com/#g' \
-    -e 's#url = git://#url = https://#g' \
+    -e 's#[Uu][Rr][Ll][[:space:]]*=[[:space:]]*git\+ssh://github\.com/#[Uu][Rr][Ll] = https://github.com/#g' \
+    -e 's#[Uu][Rr][Ll][[:space:]]*=[[:space:]]*git\+ssh://git@github\.com/#[Uu][Rr][Ll] = https://github.com/#g' \
+    -e 's#[Uu][Rr][Ll][[:space:]]*=[[:space:]]*ssh://git@github\.com/#[Uu][Rr][Ll] = https://github.com/#g' \
+    -e 's#[Uu][Rr][Ll][[:space:]]*=[[:space:]]*git@github\.com:#[Uu][Rr][Ll] = https://github.com/#g' \
+    -e 's#[Uu][Rr][Ll][[:space:]]*=[[:space:]]*git://#[Uu][Rr][Ll] = https://#g' \
     "$f"
 }
 
-# Apply rewrite rules + patch known .gitmodules locations, then sync
+# Patch all .gitmodules under repo
+patch_all_gitmodules() {
+  local repo="$1"
+  local f
+  say "Scanning for .gitmodules under $repo ..."
+  # Use find (BSD) and patch each file found
+  while IFS= read -r f; do
+    patch_gitmodules_file "$f"
+  done < <(/usr/bin/find "$repo" -name .gitmodules -type f 2>/dev/null)
+}
+
 prepare_https_submodules() {
   local repo="$1"
 
-  say "Configuring git URL rewrites (global + local) ..."
-  # global (user-level): helps for nested submodules
+  # Global rewrites help for clones, but we also patch .gitmodules explicitly.
   git config --global url."https://github.com/".insteadOf "git+ssh://github.com/"
   git config --global url."https://github.com/".insteadOf "git+ssh://git@github.com/"
   git config --global url."https://github.com/".insteadOf "git@github.com:"
@@ -147,23 +130,16 @@ prepare_https_submodules() {
 
   (
     cd "$repo"
-
-    # local (repo-level): belt-and-suspenders
     git config --local url."https://github.com/".insteadOf "git+ssh://github.com/"
     git config --local url."https://github.com/".insteadOf "git+ssh://git@github.com/"
     git config --local url."https://github.com/".insteadOf "git@github.com:"
     git config --local url."https://github.com/".insteadOf "ssh://git@github.com/"
     git config --local url."https://".insteadOf "git://"
-
-    # Patch top-level .gitmodules if present
-    patch_gitmodules_file ".gitmodules"
-
-    # Patch the specific nested .gitmodules you observed (if/when it exists)
-    patch_gitmodules_file "libraries/sky130_fd_io/latest/.gitmodules"
-
-    # Sync .gitmodules → .git/config (critical after patch)
-    git submodule sync --recursive || true
   )
+
+  patch_all_gitmodules "$repo"
+
+  ( cd "$repo" && git submodule sync --recursive || true )
 }
 
 # ---------------- main ----------------
@@ -220,16 +196,16 @@ fi
 
 export SKYWATER_PDK_REPO="$WORKDIR"
 
-# 1) Pre-flight HTTPS conversion BEFORE submodules init
+# Pass 0: patch any existing .gitmodules before touching submodules
 prepare_https_submodules "$WORKDIR"
 
 say "Updating submodules (pass 1)..."
 ( cd "$WORKDIR" && git submodule update --init --recursive )
 
-# 2) Now that submodules exist, patch nested .gitmodules (if it appeared) and resync
+# Pass 2: now nested .gitmodules exist—patch again and update again
 prepare_https_submodules "$WORKDIR"
 
-say "Updating submodules (pass 2, to catch nested git+ssh)..."
+say "Updating submodules (pass 2)..."
 ( cd "$WORKDIR" && git submodule update --init --recursive )
 
 say ""
@@ -242,7 +218,7 @@ say ""
 ask_yn "Proceed with build?" "y" || die "Aborted."
 
 say ""
-say "Building SkyWater PDK (this can take a while)..."
+say "Building SkyWater PDK ..."
 ( cd "$WORKDIR" && make "$TARGET" PDK_ROOT="$PDK_ROOT" )
 
 say ""
@@ -258,18 +234,10 @@ say "This session exports:"
 say "  PDK_ROOT=\"$PDK_ROOT\""
 say "  SKYWATER_PDK_REPO=\"$SKYWATER_PDK_REPO\""
 say ""
-say "To make PDK_ROOT permanent, add ONE of the following to ~/.zshrc:"
-say ""
-say "Simple export (recommended):"
+say "To make PDK_ROOT permanent, add to ~/.zshrc:"
 say "  export PDK_ROOT=\"$PDK_ROOT\""
-say ""
-say "Guarded export (won't override an existing value):"
-say "  if [[ -z \"\${PDK_ROOT:-}\" ]]; then"
-say "    export PDK_ROOT=\"$PDK_ROOT\""
-say "  fi"
-say ""
-say "Optional (also persist the repo checkout path):"
+say "Optional:"
 say "  export SKYWATER_PDK_REPO=\"$SKYWATER_PDK_REPO\""
 say ""
-say "After editing ~/.zshrc:"
+say "Then:"
 say "  source ~/.zshrc"
