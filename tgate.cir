@@ -1,0 +1,34 @@
+* Transmission gate characterization
+* pFET gate at GND, nFET gate at VDD
+
+* Include the PDK models
+.lib $SPICE_LIB/sky130.lib.spice tt
+
+* Include abstract device definitions
+.include devices.cir
+
+* Supply
+Vdd vdd 0 DC 1.8
+
+* Transmission gate
+* nFET: gate at VDD
+Xn in vdd out 0 abnmos
+
+* pFET: gate at GND
+Xp in 0 out vdd abpmos
+
+* Small voltage across t-gate (25mV)
+Vds in out DC 0.025
+
+* Sweep common-mode voltage
+Vcm out 0 DC 0
+
+.control
+    dc Vcm 0 1.8 0.001
+    set wr_vecnames
+    set wr_singlescale
+    wrdata tgate.csv v(out) i(Vds)
+    echo "Done"
+.endc
+
+.end
