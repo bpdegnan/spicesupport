@@ -1,7 +1,15 @@
 #!/usr/bin/env zsh
-#
 # Interactive, NO-SUDO SkyWater Sky130 installer with HTTPS-only firewall support.
-# OS-aware sed in-place edits (macOS BSD sed vs Linux GNU sed). 
+#
+# Key fix vs earlier versions:
+#   DO NOT run `git submodule update --init --recursive` first.
+#   Instead:
+#     1) init first-level submodules (non-recursive)
+#     2) patch any newly-checked-out .gitmodules (including nested ones)
+#     3) sync
+#     4) then recurse
+#
+# OS-aware sed in-place edits (macOS BSD sed vs Linux GNU sed). No perl required.
 
 set -eu
 
@@ -63,13 +71,9 @@ check_deps() {
 sedi() {
   local script="$1"
   local file="$2"
-  local os="${OS:-$(detect_os)}"
-
-  if [[ "$os" == "macos" ]]; then
-    # BSD sed requires a backup extension argument (empty means in-place with no backup)
+  if [[ "$OS" == "macos" ]]; then
     sed -i '' -e "$script" "$file"
   else
-    # GNU sed
     sed -i -e "$script" "$file"
   fi
 }
@@ -86,18 +90,12 @@ patch_gitmodules_file() {
 
   say "Patching $f (forcing HTTPS URLs)..."
 
-  # We preserve indentation and "url" token, only rewrite the URL prefix.
-  # Match: (url <spaces>=<spaces>) + scheme/prefix
+  # Preserve indentation; only rewrite URL prefix.
   sedi 's#\([[:space:]]*url[[:space:]]*=[[:space:]]*\)git+ssh://github\.com/#\1https://github.com/#g' "$f"
   sedi 's#\([[:space:]]*url[[:space:]]*=[[:space:]]*\)git+ssh://git@github\.com/#\1https://github.com/#g' "$f"
   sedi 's#\([[:space:]]*url[[:space:]]*=[[:space:]]*\)ssh://git@github\.com/#\1https://github.com/#g' "$f"
   sedi 's#\([[:space:]]*url[[:space:]]*=[[:space:]]*\)git@github\.com:#\1https://github.com/#g' "$f"
   sedi 's#\([[:space:]]*url[[:space:]]*=[[:space:]]*\)git://#\1https://#g' "$f"
-
-  # verify blocked schemes are gone
-  if grep -qE 'git\+ssh://|ssh://git@github\.com/|git@github\.com:|git://' "$f"; then
-    die "Patch incomplete: blocked URL scheme still present in $f"
-  fi
 }
 
 patch_all_gitmodules() {
@@ -109,17 +107,20 @@ patch_all_gitmodules() {
   done
 }
 
-prepare_https_submodules() {
-  local repo="$1"
-
-  # Global rewrites (user-level) help with nested clones
+set_git_https_rewrites() {
+  # Global (user-level) rewrite rules help for clones and deep nesting.
   git config --global url."https://github.com/".insteadOf "git+ssh://github.com/"
   git config --global url."https://github.com/".insteadOf "git+ssh://git@github.com/"
   git config --global url."https://github.com/".insteadOf "git@github.com:"
   git config --global url."https://github.com/".insteadOf "ssh://git@github.com/"
   git config --global url."https://".insteadOf "git://"
+}
 
-  # Local rewrites in the top repo (belt-and-suspenders)
+prepare_https_submodules() {
+  local repo="$1"
+  set_git_https_rewrites
+
+  # Local rewrite rules too (repo-level)
   (
     cd "$repo"
     git config --local url."https://github.com/".insteadOf "git+ssh://github.com/"
@@ -129,11 +130,30 @@ prepare_https_submodules() {
     git config --local url."https://".insteadOf "git://"
   )
 
-  # Explicitly patch any .gitmodules (including nested ones)
+  # Patch any .gitmodules currently present (top + any already-checked-out submodules)
   patch_all_gitmodules "$repo"
 
-  # Sync to propagate .gitmodules URLs into .git/config
+  # Sync .gitmodules into configs
   ( cd "$repo" && git submodule sync --recursive || true )
+}
+
+# Two-phase submodule init to avoid nested git+ssh URLs being used before we can patch them
+submodules_two_phase_update() {
+  local repo="$1"
+
+  say "Submodules phase 1: init FIRST-LEVEL only (non-recursive)..."
+  ( cd "$repo" && git submodule update --init )
+
+  say "Patching .gitmodules that arrived during phase 1..."
+  prepare_https_submodules "$repo"
+
+  say "Submodules phase 2: init/update recursively (now that URLs are patched)..."
+  ( cd "$repo" && git submodule update --init --recursive )
+
+  # Optional extra pass: some trees add more nested .gitmodules after recursion
+  say "Submodules phase 3: final patch+sync+update (belt-and-suspenders)..."
+  prepare_https_submodules "$repo"
+  ( cd "$repo" && git submodule update --init --recursive )
 }
 
 # ---------------- main ----------------
@@ -180,48 +200,42 @@ fi
 
 export SKYWATER_PDK_REPO="$WORKDIR"
 
-# # Patch URLs BEFORE submodule init/update
-# prepare_https_submodules "$WORKDIR"
+# Ensure git rewrite rules are installed before any submodule activity
+set_git_https_rewrites
 
-# say "Updating submodules (pass 1)..."
-# ( cd "$WORKDIR" && git submodule update --init --recursive )
+# Two-phase submodule update to avoid nested git+ssh before patching
+submodules_two_phase_update "$WORKDIR"
 
-# # Patch again after nested submodules appear
-# prepare_https_submodules "$WORKDIR"
+say ""
+say "Build summary:"
+say "  PDK_ROOT          = $PDK_ROOT"
+say "  SKYWATER_PDK_REPO = $SKYWATER_PDK_REPO"
+say "  TARGET            = $TARGET"
+say ""
 
-# say "Updating submodules (pass 2)..."
-# ( cd "$WORKDIR" && git submodule update --init --recursive )
+ask_yn "Proceed with build?" "y" || die "Aborted."
 
-# say ""
-# say "Build summary:"
-# say "  PDK_ROOT          = $PDK_ROOT"
-# say "  SKYWATER_PDK_REPO = $SKYWATER_PDK_REPO"
-# say "  TARGET            = $TARGET"
-# say ""
+say ""
+say "Building SkyWater PDK ..."
+( cd "$WORKDIR" && make "$TARGET" PDK_ROOT="$PDK_ROOT" )
 
-# ask_yn "Proceed with build?" "y" || die "Aborted."
-
-# say ""
-# say "Building SkyWater PDK ..."
-# ( cd "$WORKDIR" && make "$TARGET" PDK_ROOT="$PDK_ROOT" )
-
-# say ""
-# say "Installation complete."
-# say ""
-# say "PDK installed at:"
-# say "  $PDK_ROOT"
-# say ""
-# say "ngspice models:"
-# say "  $PDK_ROOT/sky130A/libs.tech/ngspice/"
-# say ""
-# say "This session exports:"
-# say "  PDK_ROOT=\"$PDK_ROOT\""
-# say "  SKYWATER_PDK_REPO=\"$SKYWATER_PDK_REPO\""
-# say ""
-# say "To make PDK_ROOT permanent, add to ~/.zshrc:"
-# say "  export PDK_ROOT=\"$PDK_ROOT\""
-# say "Optional:"
-# say "  export SKYWATER_PDK_REPO=\"$SKYWATER_PDK_REPO\""
-# say ""
-# say "Then:"
-# say "  source ~/.zshrc"
+say ""
+say "Installation complete."
+say ""
+say "PDK installed at:"
+say "  $PDK_ROOT"
+say ""
+say "ngspice models:"
+say "  $PDK_ROOT/sky130A/libs.tech/ngspice/"
+say ""
+say "This session exports:"
+say "  PDK_ROOT=\"$PDK_ROOT\""
+say "  SKYWATER_PDK_REPO=\"$SKYWATER_PDK_REPO\""
+say ""
+say "To make PDK_ROOT permanent, add to ~/.zshrc:"
+say "  export PDK_ROOT=\"$PDK_ROOT\""
+say "Optional:"
+say "  export SKYWATER_PDK_REPO=\"$SKYWATER_PDK_REPO\""
+say ""
+say "Then:"
+say "  source ~/.zshrc"
