@@ -1,0 +1,34 @@
+* Source follower - NMOS input, PMOS bias
+* Bottom nFET as input, top pFET as bias
+
+* Include the PDK models
+.lib $SPICE_LIB/sky130.lib.spice tt
+
+* Include abstract device definitions
+.include devices.cir
+
+* Supply
+Vdd vdd 0 DC 1.8
+
+* PMOS bias at 100mV below VDD (1.7V)
+Xp_bias1 vout1 pbias1 vdd vdd abpmos
+Vbias1 pbias1 0 DC 1.7
+Xn_in1 vout1 in 0 0 abnmos
+
+* PMOS bias at VDD/2 
+Xp_bias2 vout2 pbias2 vdd vdd abpmos
+Vbias2 pbias2 0 DC 0.9
+Xn_in2 vout2 in 0 0 abnmos
+
+* Input sweep
+Vin in 0 DC 0
+
+.control
+    dc Vin 0 1.8 0.001
+    set wr_vecnames
+    set wr_singlescale
+    wrdata sourcefollower.csv v(in) v(vout1) v(vout2)
+    echo "Done"
+.endc
+
+.end
