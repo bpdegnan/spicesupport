@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Load data, skip header row
-data = np.loadtxt('tgate.csv', skiprows=1)
+data = np.loadtxt('tgatedc.csv', skiprows=1)
 
 vout = data[:, 1]
 ids1 = np.abs(data[:, 2])
