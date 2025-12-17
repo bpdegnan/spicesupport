@@ -1,9 +1,12 @@
 #!/usr/bin/env zsh
 # Interactive, BSD-clean, NO-SUDO installer for SkyWater Sky130 PDK
-# - Prompts read from /dev/tty (robust)
+#
+# Key features:
+# - Prompts read from /dev/tty (robust; avoids “funny” prompting)
+# - Prints current directory before asking for PDK_ROOT
 # - Exports PDK_ROOT and SKYWATER_PDK_REPO for this run
-# - Forces HTTPS for git/submodules BEFORE make (firewall-friendly)
-# - Prints zshrc snippet for persistence
+# - Forces HTTPS for git URLs (including git+ssh://) BEFORE submodules and BEFORE make
+# - Prints a zshrc snippet to persist PDK_ROOT (and optionally SKYWATER_PDK_REPO)
 
 set -eu
 
@@ -98,6 +101,7 @@ print_dep_instructions() {
     macports)
       say "MacPorts (user prefix):"
       say "  port install git python311 tcsh"
+      say "  # ensure MacPorts bin dir is in PATH"
       ;;
     homebrew)
       say "Homebrew:"
@@ -111,21 +115,27 @@ print_dep_instructions() {
 }
 
 force_https_git() {
-  # Applies local rewrite rules so submodules won’t try SSH or git://
-  # Must be run inside a git repo.
+  # Enforce HTTPS for SSH-ish and git:// URLs, including git+ssh:// used by some submodules.
   local repo="$1"
-  say "Forcing HTTPS for git URLs (SSH/git:// -> HTTPS)..."
+  say "Forcing HTTPS for git URLs (including git+ssh://) ..."
+
+  # GLOBAL rewrite rules (user-level, no sudo). Most reliable for deeply nested submodules.
+  git config --global url."https://github.com/".insteadOf "git+ssh://github.com/"
+  git config --global url."https://github.com/".insteadOf "git+ssh://git@github.com/"
+  git config --global url."https://github.com/".insteadOf "git@github.com:"
+  git config --global url."https://github.com/".insteadOf "ssh://git@github.com/"
+  git config --global url."https://".insteadOf "git://"
+
+  # LOCAL rewrite rules too (belt and suspenders).
   (
     cd "$repo"
-
-    # GitHub SSH -> HTTPS
+    git config --local url."https://github.com/".insteadOf "git+ssh://github.com/"
+    git config --local url."https://github.com/".insteadOf "git+ssh://git@github.com/"
     git config --local url."https://github.com/".insteadOf "git@github.com:"
     git config --local url."https://github.com/".insteadOf "ssh://git@github.com/"
-
-    # git:// -> https:// (often blocked by firewalls)
     git config --local url."https://".insteadOf "git://"
 
-    # Ensure submodule URLs in .git/config are synced from .gitmodules
+    # Sync submodule URLs into .git/config so the rewrites take effect for submodule operations
     git submodule sync --recursive || true
   )
 }
@@ -137,7 +147,6 @@ say ""
 
 OS="$(detect_os)"
 PM="$(detect_pkg_mgr)"
-
 say "Detected OS : $OS"
 say "Detected PM : $PM"
 say ""
@@ -185,13 +194,13 @@ fi
 
 export SKYWATER_PDK_REPO="$WORKDIR"
 
-# Apply HTTPS rewrite BEFORE any submodule operations and BEFORE make.
+# Critical: apply HTTPS rewrite BEFORE any submodule operations
 force_https_git "$WORKDIR"
 
 say "Updating submodules (over HTTPS)..."
 ( cd "$WORKDIR" && git submodule update --init --recursive )
 
-# Re-apply after submodules initialize (helps nested submodules inherit correct config)
+# Helpful: re-apply after submodules initialize (nested submodules inherit the rewrites globally anyway)
 force_https_git "$WORKDIR"
 
 say ""
