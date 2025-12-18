@@ -10,7 +10,7 @@ This repository contains device abstraction layers and characterization scripts 
 
 - [ngspice](http://ngspice.sourceforge.net/)
 - Python 3 with numpy and matplotlib
-- SkyWater 130nm PDK models
+- SkyWater 130nm PDK models (can be installed with the installskywater.sh script)
 
 ## Setup
 
