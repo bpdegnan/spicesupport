@@ -1,24 +1,31 @@
 #!/usr/bin/env zsh
-# Interactive, NO-SUDO SkyWater Sky130 installer with HTTPS-only firewall support.
+# Root-free / sudo-free installer + builder for SkyWater PDK repo (Sky130 ecosystem)
 #
-# Key fix vs earlier versions:
-#   DO NOT run `git submodule update --init --recursive` first.
-#   Instead:
-#     1) init first-level submodules (non-recursive)
-#     2) patch any newly-checked-out .gitmodules (including nested ones)
-#     3) sync
-#     4) then recurse
-#
-# OS-aware sed in-place edits (macOS BSD sed vs Linux GNU sed). No perl required.
+# Features:
+# - Robust prompting via /dev/tty
+# - OS-aware sed in-place edits (macOS BSD sed vs Linux GNU sed)
+# - HTTPS-only firewall support:
+#     * global+local git URL rewrites
+#     * patches ANY .gitmodules under repo (handles url = git+ssh://...)
+#     * two-phase submodule update (non-recursive -> patch -> recursive)
+# - Rerun-friendly:
+#     * if repo exists, offers "make-only" mode (skip git/submodules)
+# - Interactive make target selection:
+#     * one / multiple / all / just submodules
+# - Optional persistence to ~/.zshrc:
+#     * export PDK_ROOT=...
+#     * export SKYWATERPDK=...  (repo path)
+#     * export SKYWATER_PDK_REPO=... (alias)
 
 set -eu
 
-say() { print -r -- "$*"; }
-err() { print -r -- "ERROR: $*" >&2; }
-die() { err "$@"; exit 1; }
-have() { command -v "$1" >/dev/null 2>&1; }
+# ---------------- helpers ----------------
+function say() { print -r -- "$*"; }
+function err() { print -r -- "ERROR: $*" >&2; }
+function die() { err "$@"; exit 1; }
+function have() { command -v "$1" >/dev/null 2>&1; }
 
-ask() {
+function ask() {
   local prompt="$1" def="${2:-}" ans=""
   if [[ -n "$def" ]]; then
     printf "%s [%s]: " "$prompt" "$def" > /dev/tty
@@ -30,10 +37,14 @@ ask() {
   print -r -- "$ans"
 }
 
-ask_yn() {
+function ask_yn() {
   local prompt="$1" def="${2:-y}" ans=""
   while true; do
-    [[ "$def" == "y" ]] && printf "%s [Y/n]: " "$prompt" > /dev/tty || printf "%s [y/N]: " "$prompt" > /dev/tty
+    if [[ "$def" == "y" ]]; then
+      printf "%s [Y/n]: " "$prompt" > /dev/tty
+    else
+      printf "%s [y/N]: " "$prompt" > /dev/tty
+    fi
     IFS= read -r ans < /dev/tty || true
     ans="${ans:l}"
     [[ -z "$ans" ]] && ans="$def"
@@ -45,7 +56,7 @@ ask_yn() {
   done
 }
 
-detect_os() {
+function detect_os() {
   case "$(uname -s 2>/dev/null || true)" in
     Darwin) print "macos" ;;
     Linux)  print "linux" ;;
@@ -53,9 +64,9 @@ detect_os() {
   esac
 }
 
-check_deps() {
+function check_deps() {
   local missing=()
-  for t in git make python3 tcsh find grep sed; do
+  for t in git make python3 tcsh find grep sed awk; do
     have "$t" || missing+=("$t")
   done
   if (( ${#missing[@]} > 0 )); then
@@ -68,7 +79,7 @@ check_deps() {
 
 # --- OS-aware sed -i wrapper ---
 # usage: sedi <script> <file>
-sedi() {
+function sedi() {
   local script="$1"
   local file="$2"
   if [[ "$OS" == "macos" ]]; then
@@ -78,19 +89,25 @@ sedi() {
   fi
 }
 
-# Patch ONE .gitmodules file, tolerant of whitespace around '='
-patch_gitmodules_file() {
+# ---------------- HTTPS-only git fixes ----------------
+function set_git_https_rewrites() {
+  git config --global url."https://github.com/".insteadOf "git+ssh://github.com/"
+  git config --global url."https://github.com/".insteadOf "git+ssh://git@github.com/"
+  git config --global url."https://github.com/".insteadOf "git@github.com:"
+  git config --global url."https://github.com/".insteadOf "ssh://git@github.com/"
+  git config --global url."https://".insteadOf "git://"
+}
+
+function patch_gitmodules_file() {
   local f="$1"
   [[ -f "$f" ]] || return 0
 
-  # only patch if blocked schemes appear
   if ! grep -qE 'git\+ssh://|ssh://git@github\.com/|git@github\.com:|git://' "$f"; then
     return 0
   fi
 
   say "Patching $f (forcing HTTPS URLs)..."
 
-  # Preserve indentation; only rewrite URL prefix.
   sedi 's#\([[:space:]]*url[[:space:]]*=[[:space:]]*\)git+ssh://github\.com/#\1https://github.com/#g' "$f"
   sedi 's#\([[:space:]]*url[[:space:]]*=[[:space:]]*\)git+ssh://git@github\.com/#\1https://github.com/#g' "$f"
   sedi 's#\([[:space:]]*url[[:space:]]*=[[:space:]]*\)ssh://git@github\.com/#\1https://github.com/#g' "$f"
@@ -98,7 +115,7 @@ patch_gitmodules_file() {
   sedi 's#\([[:space:]]*url[[:space:]]*=[[:space:]]*\)git://#\1https://#g' "$f"
 }
 
-patch_all_gitmodules() {
+function patch_all_gitmodules() {
   local repo="$1"
   say "Scanning for .gitmodules under $repo ..."
   find "$repo" -name .gitmodules -type f -print0 2>/dev/null | \
@@ -107,20 +124,10 @@ patch_all_gitmodules() {
   done
 }
 
-set_git_https_rewrites() {
-  # Global (user-level) rewrite rules help for clones and deep nesting.
-  git config --global url."https://github.com/".insteadOf "git+ssh://github.com/"
-  git config --global url."https://github.com/".insteadOf "git+ssh://git@github.com/"
-  git config --global url."https://github.com/".insteadOf "git@github.com:"
-  git config --global url."https://github.com/".insteadOf "ssh://git@github.com/"
-  git config --global url."https://".insteadOf "git://"
-}
-
-prepare_https_submodules() {
+function prepare_https_submodules() {
   local repo="$1"
   set_git_https_rewrites
 
-  # Local rewrite rules too (repo-level)
   (
     cd "$repo"
     git config --local url."https://github.com/".insteadOf "git+ssh://github.com/"
@@ -130,35 +137,28 @@ prepare_https_submodules() {
     git config --local url."https://".insteadOf "git://"
   )
 
-  # Patch any .gitmodules currently present (top + any already-checked-out submodules)
   patch_all_gitmodules "$repo"
-
-  # Sync .gitmodules into configs
   ( cd "$repo" && git submodule sync --recursive || true )
 }
 
-# Two-phase submodule init to avoid nested git+ssh URLs being used before we can patch them
-submodules_two_phase_update() {
+function submodules_two_phase_update() {
   local repo="$1"
-
   say "Submodules phase 1: init FIRST-LEVEL only (non-recursive)..."
   ( cd "$repo" && git submodule update --init )
 
-  say "Patching .gitmodules that arrived during phase 1..."
+  say "Patch .gitmodules that arrived during phase 1, then sync..."
   prepare_https_submodules "$repo"
 
-  say "Submodules phase 2: init/update recursively (now that URLs are patched)..."
+  say "Submodules phase 2: init/update recursively..."
   ( cd "$repo" && git submodule update --init --recursive )
 
-  # Optional extra pass: some trees add more nested .gitmodules after recursion
-  say "Submodules phase 3: final patch+sync+update (belt-and-suspenders)..."
+  say "Final patch+sync+update pass (belt-and-suspenders)..."
   prepare_https_submodules "$repo"
   ( cd "$repo" && git submodule update --init --recursive )
 }
 
-
-# ---- interactive target selection ----
-# Curated list based on the Makefile you have (make -qp output)
+# ---------------- interactive make target selection ----------------
+typeset -a TARGETS
 TARGETS=(
   submodules
   libraries-info
@@ -177,22 +177,24 @@ TARGETS=(
   sky130_fd_sc_ms-leakage
 )
 
-needs_env() {
-  # return 0 if the target likely needs the conda/python tooling
+function needs_env() {
   case "$1" in
     timing|check|sky130_fd_sc_*) return 0 ;;
     *) return 1 ;;
   esac
 }
 
-select_targets_menu() {
+typeset -a SELECTED_TARGETS
+SELECTED_TARGETS=()
+
+function select_targets_menu() {
   local choice=""
   say ""
-  say "Select what to build:"
+  say "Select what to run with make:"
   say "  1) One target"
   say "  2) Multiple targets"
   say "  3) All targets"
-  say "  4) Just submodules (fastest)"
+  say "  4) Just submodules (fastest / recommended first)"
   say ""
   choice="$(ask "Choice" "4")"
 
@@ -244,18 +246,13 @@ select_targets_menu() {
   esac
 }
 
-run_selected_targets() {
-  local repo="$1"
-  local t
-
+function run_selected_targets() {
+  local repo="$1" t
   say ""
   say "Selected targets:"
-  for t in "${SELECTED_TARGETS[@]}"; do
-    say "  - $t"
-  done
+  for t in "${SELECTED_TARGETS[@]}"; do say "  - $t"; done
   say ""
 
-  # If any target needs env, build env once up front
   local need_env_any=1
   for t in "${SELECTED_TARGETS[@]}"; do
     if needs_env "$t"; then
@@ -280,21 +277,66 @@ run_selected_targets() {
   )
 }
 
+# ---------------- persist exports to ~/.zshrc ----------------
+function persist_exports_to_zshrc() {
+  local zshrc="${HOME}/.zshrc"
+  local begin="# >>> SKY130 PDK ENV >>>"
+  local end="# <<< SKY130 PDK ENV <<<"
+
+  local block
+  block=$(cat <<EOF
+$begin
+# Added by install_skywater_pdks_nosudo.zsh
+export PDK_ROOT="$PDK_ROOT"
+export SKYWATERPDK="$SKYWATERPDK"
+export SKYWATER_PDK_REPO="$SKYWATER_PDK_REPO"
+$end
+EOF
+)
+
+  say ""
+  say "Persist exports to $zshrc ?"
+  say "  PDK_ROOT=$PDK_ROOT"
+  say "  SKYWATERPDK=$SKYWATERPDK"
+  say "  SKYWATER_PDK_REPO=$SKYWATER_PDK_REPO"
+  say ""
+  if ! ask_yn "Append/update ~/.zshrc block?" "y"; then
+    say "Skipping ~/.zshrc update."
+    return 0
+  fi
+
+  if [[ -f "$zshrc" ]] && grep -qF "$begin" "$zshrc"; then
+    say "Updating existing block in ~/.zshrc ..."
+    awk -v begin="$begin" -v end="$end" -v newblock="$block" '
+      BEGIN { inblock=0 }
+      $0==begin { print newblock; inblock=1; next }
+      $0==end   { inblock=0; next }
+      inblock==0 { print }
+    ' "$zshrc" > "${zshrc}.tmp.$$"
+    mv -f "${zshrc}.tmp.$$" "$zshrc"
+  else
+    say "Appending new block to ~/.zshrc ..."
+    printf "\n%s\n" "$block" >> "$zshrc"
+  fi
+
+  say "Done. To apply now:"
+  say "  source ~/.zshrc"
+}
+
 # ---------------- main ----------------
 OS="$(detect_os)"
-say "SkyWater Open PDK installer (Sky130)"
+say "SkyWater PDK installer/builder (no sudo)"
 say "OS detected: $OS"
 say ""
-
-if ! check_deps; then
-  die "Missing dependencies. Ensure git, make, python3, tcsh, find, grep, sed are installed and in PATH."
-fi
-
 say "Current working directory:"
 say "  $(pwd)"
 say ""
 
-PDK_ROOT_DEFAULT="${HOME}/pdks"
+if ! check_deps; then
+  die "Missing dependencies. Need: git make python3 tcsh find grep sed awk"
+fi
+
+PDK_ROOT_DEFAULT="${PDK_ROOT:-${HOME}/pdks}"
 PDK_ROOT="$(ask "Where should PDK_ROOT be installed?" "$PDK_ROOT_DEFAULT")"
 PDK_ROOT="${PDK_ROOT/#\~/${HOME}}"
 [[ -z "$PDK_ROOT" ]] && die "PDK_ROOT cannot be empty."
@@ -305,60 +347,65 @@ if [[ ! -d "$PDK_ROOT" ]]; then
   mkdir -p "$PDK_ROOT"
 fi
 
-REPO_URL="$(ask "SkyWater PDK git URL" "https://github.com/google/skywater-pdk.git")"
-WORKDIR_DEFAULT="${PDK_ROOT}/skywater-pdk"
+REPO_URL_DEFAULT="https://github.com/google/skywater-pdk.git"
+REPO_URL="$(ask "SkyWater PDK git URL" "$REPO_URL_DEFAULT")"
+
+WORKDIR_DEFAULT="${SKYWATERPDK:-${SKYWATER_PDK_REPO:-${PDK_ROOT}/skywater-pdk}}"
 WORKDIR="$(ask "Where should the repo be cloned/built?" "$WORKDIR_DEFAULT")"
 WORKDIR="${WORKDIR/#\~/${HOME}}"
-TARGET="$(ask "Build target" "sky130")"
 
-say ""
-if [[ -d "$WORKDIR/.git" ]]; then
-  say "Repository already exists:"
-  say "  $WORKDIR"
-  ask_yn "Update it (git pull)?" "y" && ( cd "$WORKDIR" && git pull --rebase )
-else
-  say "Cloning repository..."
-  mkdir -p "$(dirname "$WORKDIR")"
-  git clone "$REPO_URL" "$WORKDIR"
-fi
-
+export SKYWATERPDK="$WORKDIR"
 export SKYWATER_PDK_REPO="$WORKDIR"
 
-# Ensure git rewrite rules are installed before any submodule activity
-set_git_https_rewrites
-
-# Two-phase submodule update to avoid nested git+ssh before patching
-submodules_two_phase_update "$WORKDIR"
-
 say ""
-say "Build summary:"
-say "  PDK_ROOT          = $PDK_ROOT"
-say "  SKYWATER_PDK_REPO = $SKYWATER_PDK_REPO"
-say "  TARGET            = $TARGET"
-say ""
+MODE="full"
+if [[ -d "$WORKDIR/.git" ]]; then
+  say "Repo already exists at:"
+  say "  $WORKDIR"
+  say ""
+  say "Choose mode:"
+  say "  1) Full: update repo + submodules + run selected make targets"
+  say "  2) Make-only: skip all git/submodule work, just run selected make targets"
+  say ""
+  m="$(ask "Choice" "2")"
+  case "$m" in
+    1) MODE="full" ;;
+    2) MODE="make" ;;
+    *) die "Unknown choice: $m" ;;
+  esac
+else
+  MODE="full"
+fi
 
-ask_yn "Proceed with build?" "y" || die "Aborted."
+if [[ "$MODE" == "full" ]]; then
+  say ""
+  if [[ -d "$WORKDIR/.git" ]]; then
+    if ask_yn "Update repo (git pull --rebase)?" "y"; then
+      ( cd "$WORKDIR" && git pull --rebase )
+    else
+      say "Keeping existing repo state."
+    fi
+  else
+    say "Cloning repository..."
+    mkdir -p "$(dirname "$WORKDIR")"
+    git clone "$REPO_URL" "$WORKDIR"
+  fi
+
+  set_git_https_rewrites
+  submodules_two_phase_update "$WORKDIR"
+else
+  say ""
+  say "Make-only mode: skipping git/submodule actions."
+fi
 
 select_targets_menu
 run_selected_targets "$WORKDIR"
 
+persist_exports_to_zshrc
+
 say ""
-say "Installation complete."
-say ""
-say "PDK installed at:"
-say "  $PDK_ROOT"
-say ""
-say "ngspice models:"
-say "  $PDK_ROOT/sky130A/libs.tech/ngspice/"
-say ""
-say "This session exports:"
-say "  PDK_ROOT=\"$PDK_ROOT\""
-say "  SKYWATER_PDK_REPO=\"$SKYWATER_PDK_REPO\""
-say ""
-say "To make PDK_ROOT permanent, add to ~/.zshrc:"
-say "  export PDK_ROOT=\"$PDK_ROOT\""
-say "Optional:"
-say "  export SKYWATER_PDK_REPO=\"$SKYWATER_PDK_REPO\""
-say ""
-say "Then:"
-say "  source ~/.zshrc"
+say "Done."
+say "Exports for this session:"
+say "  PDK_ROOT=$PDK_ROOT"
+say "  SKYWATERPDK=$SKYWATERPDK"
+say "  SKYWATER_PDK_REPO=$SKYWATER_PDK_REPO"
