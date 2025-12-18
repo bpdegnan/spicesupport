@@ -173,6 +173,47 @@ function conda_accept_tos_if_needed() {
   "$conda_bin" tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r || true
 }
 
+function make_env_with_tos_retry() {
+  local repo="$1"
+  local logfile
+  logfile="$(mktemp -t skywater-make-env.XXXXXX 2>/dev/null || mktemp /tmp/skywater-make-env.XXXXXX)"
+
+  say "Running: make env (log: $logfile)"
+  (
+    cd "$repo"
+    # tee keeps console output while also saving a log we can grep
+    make env 2>&1 | tee "$logfile"
+  )
+  local rc=$?
+
+  if (( rc == 0 )); then
+    rm -f "$logfile" || true
+    return 0
+  fi
+
+  # If env failed, check if it was the Anaconda ToS gate.
+  if grep -q "CondaToSNonInteractiveError" "$logfile"; then
+    say ""
+    say "Detected CondaToSNonInteractiveError. Accepting ToS and retrying make env..."
+
+    local conda_bin="${repo}/env/conda/bin/conda"
+    if [[ ! -x "$conda_bin" ]]; then
+      die "Expected conda at $conda_bin but it does not exist (make env may have failed too early)."
+    fi
+
+    "$conda_bin" tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main || true
+    "$conda_bin" tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r || true
+
+    say "Retry: make env"
+    ( cd "$repo" && make env )
+    rc=$?
+  fi
+
+  rm -f "$logfile" || true
+  return $rc
+}
+
+
 # ---------------- interactive make target selection ----------------
 typeset -a TARGETS
 TARGETS=(
@@ -262,6 +303,37 @@ function select_targets_menu() {
   esac
 }
 
+function ensure_conda_tos_accepted() {
+  local conda_bin="$1"
+  [[ -x "$conda_bin" ]] || return 1
+
+  # Always attempt acceptance (idempotent). This avoids relying on tos status behavior.
+  "$conda_bin" tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main >/dev/null 2>&1 || true
+  "$conda_bin" tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r    >/dev/null 2>&1 || true
+
+  return 0
+}
+
+function make_env_firewall_safe() {
+  local repo="$1"
+  local conda_bin="${repo}/env/conda/bin/conda"
+
+  # If conda isn't there yet, run make env once to bootstrap it (it may fail on ToS; that's fine).
+  if [[ ! -x "$conda_bin" ]]; then
+    say "Bootstrapping conda via: make env (first pass)"
+    ( cd "$repo" && make env ) || true
+  fi
+
+  # Now conda should exist; if it still doesn't, fail loudly.
+  [[ -x "$conda_bin" ]] || die "Conda not found at $conda_bin after bootstrap."
+
+  say "Accepting Anaconda ToS (non-interactive)..."
+  ensure_conda_tos_accepted "$conda_bin"
+
+  say "Running: make env (second pass)"
+  ( cd "$repo" && make env )
+}
+
 function run_selected_targets() {
   local repo="$1" t
   say ""
@@ -282,12 +354,7 @@ function run_selected_targets() {
 
 if (( need_env_any == 0 )); then
   say "Ensuring environment exists: make env"
-
-  # If the repo-installed conda exists, accept ToS before running make env
-  local conda_bin="${repo}/env/conda/bin/conda"
-  conda_accept_tos_if_needed "$conda_bin"
-
-  make env
+  make_env_firewall_safe "$repo"
 fi
 
     for t in "${SELECTED_TARGETS[@]}"; do
