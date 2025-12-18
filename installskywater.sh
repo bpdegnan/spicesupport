@@ -157,6 +157,22 @@ function submodules_two_phase_update() {
   ( cd "$repo" && git submodule update --init --recursive )
 }
 
+function conda_accept_tos_if_needed() {
+  local conda_bin="$1"   # full path to conda
+  [[ -x "$conda_bin" ]] || return 0
+
+  # Try a non-destructive ToS status check; if it fails, accept for the known channels.
+  if "$conda_bin" tos status >/dev/null 2>&1; then
+    return 0
+  fi
+
+  say "Conda ToS may need acceptance for non-interactive installs."
+  say "Attempting to accept ToS for required channels (user-level)..."
+
+  "$conda_bin" tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main || true
+  "$conda_bin" tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r || true
+}
+
 # ---------------- interactive make target selection ----------------
 typeset -a TARGETS
 TARGETS=(
@@ -264,10 +280,15 @@ function run_selected_targets() {
   (
     cd "$repo"
 
-    if (( need_env_any == 0 )); then
-      say "Ensuring environment exists: make env"
-      make env
-    fi
+if (( need_env_any == 0 )); then
+  say "Ensuring environment exists: make env"
+
+  # If the repo-installed conda exists, accept ToS before running make env
+  local conda_bin="${repo}/env/conda/bin/conda"
+  conda_accept_tos_if_needed "$conda_bin"
+
+  make env
+fi
 
     for t in "${SELECTED_TARGETS[@]}"; do
       say ""
