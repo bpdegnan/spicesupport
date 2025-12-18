@@ -299,8 +299,8 @@ fi
 }
 
 # ---------------- persist exports to ~/.zshrc ----------------
-function persist_exports_to_zshrc() {
-  local zshrc="${HOME}/.zshrc"
+function upsert_block_in_file() {
+  local file="$1"
   local begin="# >>> SKY130 PDK ENV >>>"
   local end="# <<< SKY130 PDK ENV <<<"
 
@@ -315,34 +315,88 @@ $end
 EOF
 )
 
-  say ""
-  say "Persist exports to $zshrc ?"
-  say "  PDK_ROOT=$PDK_ROOT"
-  say "  SKYWATERPDK=$SKYWATERPDK"
-  say "  SKYWATER_PDK_REPO=$SKYWATER_PDK_REPO"
-  say ""
-  if ! ask_yn "Append/update ~/.zshrc block?" "y"; then
-    say "Skipping ~/.zshrc update."
-    return 0
-  fi
+  # Ensure file exists
+  [[ -f "$file" ]] || : > "$file"
 
-  if [[ -f "$zshrc" ]] && grep -qF "$begin" "$zshrc"; then
-    say "Updating existing block in ~/.zshrc ..."
+  if grep -qF "$begin" "$file"; then
+    # Replace existing block
     awk -v begin="$begin" -v end="$end" -v newblock="$block" '
       BEGIN { inblock=0 }
       $0==begin { print newblock; inblock=1; next }
       $0==end   { inblock=0; next }
       inblock==0 { print }
-    ' "$zshrc" > "${zshrc}.tmp.$$"
-    mv -f "${zshrc}.tmp.$$" "$zshrc"
+    ' "$file" > "${file}.tmp.$$" && mv -f "${file}.tmp.$$" "$file"
   else
-    say "Appending new block to ~/.zshrc ..."
-    printf "\n%s\n" "$block" >> "$zshrc"
+    # Append new block
+    printf "\n%s\n" "$block" >> "$file"
   fi
-
-  say "Done. To apply now:"
-  say "  source ~/.zshrc"
 }
+
+function persist_exports() {
+  local rc1="${HOME}/.zshrc"
+  local rc2="${HOME}/.zprofile"
+
+  say ""
+  say "Persist these exports for future shells?"
+  say "  PDK_ROOT=$PDK_ROOT"
+  say "  SKYWATERPDK=$SKYWATERPDK"
+  say "  SKYWATER_PDK_REPO=$SKYWATER_PDK_REPO"
+  say ""
+  say "Where should I write them?"
+  say "  1) ~/.zshrc"
+  say "  2) ~/.zprofile"
+  say "  3) both"
+  say "  4) skip"
+  local c
+  c="$(ask "Choice" "3")"
+
+  case "$c" in
+    1) upsert_block_in_file "$rc1" ;;
+    2) upsert_block_in_file "$rc2" ;;
+    3) upsert_block_in_file "$rc1"; upsert_block_in_file "$rc2" ;;
+    4) say "Skipping persistence." ; return 0 ;;
+    *) die "Unknown choice: $c" ;;
+  esac
+
+  say "Done. Apply now with:"
+  say "  source ~/.zshrc"
+  say "  source ~/.zprofile"
+}
+
+function print_export_banner() {
+  say ""
+  say "************************************************************"
+  say "***   IMPORTANT: SkyWater PDK environment variables     ***"
+  say "************************************************************"
+  say ""
+  say "The following variables define where the SkyWater PDK lives:"
+  say ""
+  say "  export PDK_ROOT=\"$PDK_ROOT\""
+  say "  export SKYWATERPDK=\"$SKYWATERPDK\""
+  say "  export SKYWATER_PDK_REPO=\"$SKYWATER_PDK_REPO\""
+  say ""
+  say "NOTE:"
+  say "  - These exports apply automatically in NEW shells"
+  say "    *after* ~/.zshrc and/or ~/.zprofile are sourced."
+  say "  - This script CANNOT modify the environment of"
+  say "    your current shell when run as ./script.zsh."
+  say ""
+  say "If you want these variables active RIGHT NOW,"
+  say "either run:"
+  say ""
+  say "  source ~/.zshrc"
+  say "  source ~/.zprofile"
+  say ""
+  say "or copy/paste the exports above into your shell."
+  say ""
+  say "If you prefer, you may also add them by hand to"
+  say "  ~/.zshrc  (interactive shells)"
+  say "  ~/.zprofile (login shells, macOS Terminal/iTerm)"
+  say ""
+  say "************************************************************"
+  say ""
+}
+
 
 # ---------------- main ----------------
 OS="$(detect_os)"
@@ -377,6 +431,10 @@ WORKDIR="${WORKDIR/#\~/${HOME}}"
 
 export SKYWATERPDK="$WORKDIR"
 export SKYWATER_PDK_REPO="$WORKDIR"
+
+persist_exports
+
+print_export_banner
 
 say ""
 MODE="full"
@@ -419,10 +477,12 @@ else
   say "Make-only mode: skipping git/submodule actions."
 fi
 
+
+
 select_targets_menu
 run_selected_targets "$WORKDIR"
 
-persist_exports_to_zshrc
+
 
 say ""
 say "Done."
