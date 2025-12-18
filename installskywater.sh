@@ -156,6 +156,130 @@ submodules_two_phase_update() {
   ( cd "$repo" && git submodule update --init --recursive )
 }
 
+
+# ---- interactive target selection ----
+# Curated list based on the Makefile you have (make -qp output)
+TARGETS=(
+  submodules
+  libraries-info
+  env
+  env-info
+  enter
+  timing
+  check
+  sky130_fd_sc_hd
+  sky130_fd_sc_hdll
+  sky130_fd_sc_hs
+  sky130_fd_sc_hvl
+  sky130_fd_sc_lp
+  sky130_fd_sc_ls
+  sky130_fd_sc_ms
+  sky130_fd_sc_ms-leakage
+)
+
+needs_env() {
+  # return 0 if the target likely needs the conda/python tooling
+  case "$1" in
+    timing|check|sky130_fd_sc_*) return 0 ;;
+    *) return 1 ;;
+  esac
+}
+
+select_targets_menu() {
+  local choice=""
+  say ""
+  say "Select what to build:"
+  say "  1) One target"
+  say "  2) Multiple targets"
+  say "  3) All targets"
+  say "  4) Just submodules (fastest)"
+  say ""
+  choice="$(ask "Choice" "4")"
+
+  case "$choice" in
+    1)
+      say ""
+      say "Available targets:"
+      local i=1
+      for t in "${TARGETS[@]}"; do
+        say "  $i) $t"
+        i=$((i+1))
+      done
+      say ""
+      local n
+      n="$(ask "Enter target number" "1")"
+      [[ "$n" =~ '^[0-9]+$' ]] || die "Not a number: $n"
+      (( n >= 1 && n <= ${#TARGETS[@]} )) || die "Out of range."
+      SELECTED_TARGETS=("${TARGETS[$n]}")
+      ;;
+    2)
+      say ""
+      say "Available targets:"
+      local i=1
+      for t in "${TARGETS[@]}"; do
+        say "  $i) $t"
+        i=$((i+1))
+      done
+      say ""
+      say "Enter a space-separated list of numbers, e.g.: 1 6 8"
+      local nums
+      nums="$(ask "Numbers" "1")"
+      SELECTED_TARGETS=()
+      local n
+      for n in ${(z)nums}; do
+        [[ "$n" =~ '^[0-9]+$' ]] || die "Not a number: $n"
+        (( n >= 1 && n <= ${#TARGETS[@]} )) || die "Out of range: $n"
+        SELECTED_TARGETS+=("${TARGETS[$n]}")
+      done
+      ;;
+    3)
+      SELECTED_TARGETS=("${TARGETS[@]}")
+      ;;
+    4)
+      SELECTED_TARGETS=(submodules)
+      ;;
+    *)
+      die "Unknown choice: $choice"
+      ;;
+  esac
+}
+
+run_selected_targets() {
+  local repo="$1"
+  local t
+
+  say ""
+  say "Selected targets:"
+  for t in "${SELECTED_TARGETS[@]}"; do
+    say "  - $t"
+  done
+  say ""
+
+  # If any target needs env, build env once up front
+  local need_env_any=1
+  for t in "${SELECTED_TARGETS[@]}"; do
+    if needs_env "$t"; then
+      need_env_any=0
+      break
+    fi
+  done
+
+  (
+    cd "$repo"
+
+    if (( need_env_any == 0 )); then
+      say "Ensuring environment exists: make env"
+      make env
+    fi
+
+    for t in "${SELECTED_TARGETS[@]}"; do
+      say ""
+      say "== Running: make $t =="
+      make "$t"
+    done
+  )
+}
+
 # ---------------- main ----------------
 OS="$(detect_os)"
 say "SkyWater Open PDK installer (Sky130)"
@@ -215,9 +339,8 @@ say ""
 
 ask_yn "Proceed with build?" "y" || die "Aborted."
 
-say ""
-say "Building SkyWater PDK ..."
-( cd "$WORKDIR" && make "$TARGET" PDK_ROOT="$PDK_ROOT" )
+select_targets_menu
+run_selected_targets "$WORKDIR"
 
 say ""
 say "Installation complete."
