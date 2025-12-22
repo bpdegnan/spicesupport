@@ -1,0 +1,44 @@
+* Transmission gate AC characterization - HSPICE version
+* Standard t-gate vs m=2 vs mulid0=2
+
+* Include the PDK models
+.lib '$SPICE_LIB/sky130.lib.spice' tt
+
+* Include abstract device definitions
+.include 'devices.cir'
+
+* Options
+.option post accurate
+
+* Supply
+Vdd vdd 0 DC 1.8
+
+* Bias point for AC analysis
+.param VBIAS=0.9
+
+* Standard transmission gate (m=1)
+Xn1 in1 vdd out1 0 abnmos
+Xp1 in1 0 out1 vdd abpmos
+Vin1 in1 0 DC VBIAS AC 1
+Cload1 out1 0 10f
+
+* Transmission gate with m=2
+Xn2 in2 vdd out2 0 abnmos m=2
+Xp2 in2 0 out2 vdd abpmos m=2
+Vin2 in2 0 DC VBIAS AC 1
+Cload2 out2 0 10f
+
+* Transmission gate with mulid0=2
+Xn3 in3 vdd out3 0 abnmos mulid0=2
+Xp3 in3 0 out3 vdd abpmos mulid0=2
+Vin3 in3 0 DC VBIAS AC 1
+Cload3 out3 0 10f
+
+* AC analysis
+.ac dec 100 1k 1g
+
+* Output
+.print ac vdb(out1) vdb(out2) vdb(out3) vp(out1) vp(out2) vp(out3)
+.probe ac vdb(out1) vdb(out2) vdb(out3) vp(out1) vp(out2) vp(out3)
+
+.end
