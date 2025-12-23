@@ -13,7 +13,52 @@
 
 * Supply
 Vdd vdd 0 DC 1.8
+* Transmission gate AC characterization - HSPICE version
+* Standard t-gate vs m=2 vs mulid0=2
 
+* HSPICE options
+.option post accurate
+.option scale=1e-6
+
+* Include the PDK models - use the HSPICE compatible model file
+* You may need to point to the correct .spice file for HSPICE
+.lib '$SPICE_LIB/sky130.lib.spice' tt
+
+* Include HSPICE-compatible abstract device definitions
+.include 'devices_hspice.cir'
+
+* Supply
+Vdd vdd 0 DC 1.8
+
+* Bias point for AC analysis
+.param VBIAS=0.9
+
+* Standard transmission gate (m=1)
+Xn1 in1 vdd out1 0 abnmos l=0.15u w=1u
+Xp1 in1 0 out1 vdd abpmos l=0.15u w=1u
+Vin1 in1 0 DC VBIAS AC 1
+Cload1 out1 0 10f
+
+* Transmission gate with m=2
+Xn2 in2 vdd out2 0 abnmos l=0.15u w=1u m=2
+Xp2 in2 0 out2 vdd abpmos l=0.15u w=1u m=2
+Vin2 in2 0 DC VBIAS AC 1
+Cload2 out2 0 10f
+
+* Transmission gate with mulid0=2
+Xn3 in3 vdd out3 0 abnmos l=0.15u w=1u mulid0=2
+Xp3 in3 0 out3 vdd abpmos l=0.15u w=1u mulid0=2
+Vin3 in3 0 DC VBIAS AC 1
+Cload3 out3 0 10f
+
+* AC analysis
+.ac dec 100 1k 1g
+
+* Output
+.print ac vdb(out1) vdb(out2) vdb(out3) vp(out1) vp(out2) vp(out3)
+.probe ac v(out1) v(out2) v(out3)
+
+.end
 * Bias point for AC analysis
 .param VBIAS=0.9
 
