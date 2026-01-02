@@ -6,8 +6,10 @@
 .option post accurate
 .option scale=1e-6
 
+* Include the HSPICE-compatible PDK library
 .lib '../sky130.l' tt
 .include '../devices_hspice.cir'
+
 
 * Supply
 Vdd vdd 0 DC 1.8
@@ -17,14 +19,14 @@ Vdd vdd 0 DC 1.8
 
 * Standard transmission gate (m=1)
 * NMOS: gate=VDD (on), PMOS: gate=0 (on)
-Xn1 in1 vdd out1 0 abnmos l=0.15u w=1u m=1
-Xp1 in1 0 out1 vdd abpmos l=0.15u w=1u m=1
+Xn1 in1 vdd out1 0 abnmos l=0.15 w=1 m=1
+Xp1 in1 0 out1 vdd abpmos l=0.15 w=1 m=1
 Vin1 in1 0 DC VBIAS AC 1
 Cload1 out1 0 10f
 
 * Transmission gate with m=2
-Xn2 in2 vdd out2 0 abnmos l=0.15u w=1u m=2
-Xp2 in2 0 out2 vdd abpmos l=0.15u w=1u m=2
+Xn2 in2 vdd out2 0 abnmos l=0.15 w=1 m=2
+Xp2 in2 0 out2 vdd abpmos l=0.15 w=1 m=2
 Vin2 in2 0 DC VBIAS AC 1
 Cload2 out2 0 10f
 
@@ -36,3 +38,4 @@ Cload2 out2 0 10f
 .probe ac v(out1) v(out2)
 
 .end
+
