@@ -82,14 +82,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.05955351+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))}
++ vth0=-1.05955351
 + k1=0.43448553
 + k2=0.019777346
 + k3=-15.845
@@ -133,8 +133,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.25706245+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor={1.3376708+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))}
++ voff=-0.25706245
++ nfactor=1.3376708
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -286,23 +286,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=3.0e-6
 + sbref=3.0e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.1 pmos
@@ -356,14 +356,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.05955351+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))}
++ vth0=-1.05955351
 + k1=0.43448553
 + k2=0.019777346
 + k3=-15.845
@@ -407,8 +407,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.25706245+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor={1.3376708+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))}
++ voff=-0.25706245
++ nfactor=1.3376708
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -560,23 +560,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=3.0e-6
 + sbref=3.0e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.2 pmos
@@ -630,14 +630,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.06313713036384+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))} lvth0=2.87692612774624e-8
++ vth0=-1.06313713036384 lvth0=2.87692612774624e-8
 + k1=0.43813350754211 lk1=-2.92859199323285e-8
 + k2=0.018505134186116 lk2=1.0213301175319e-8
 + k3=-15.845
@@ -681,8 +681,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.26700524634887+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))} lvoff=7.98206497751723e-8
-+ nfactor={1.1833079277709+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))} lnfactor=1.23922328590075e-6
++ voff=-0.26700524634887 lvoff=7.98206497751723e-8
++ nfactor=1.1833079277709 lnfactor=1.23922328590075e-6
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -834,23 +834,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=3.0e-6
 + sbref=3.0e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.3 pmos
@@ -904,14 +904,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.06465013124466+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))} lvth0=3.48636106693951e-8
++ vth0=-1.06465013124466 lvth0=3.48636106693951e-8
 + k1=0.4242721924985 lk1=2.65472907275519e-8
 + k2=0.023299152360404 lk2=-9.09694650249498e-9
 + k3=-15.845
@@ -955,8 +955,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.25410325634546+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))} lvoff=2.78515888653169e-8
-+ nfactor={1.514261668126+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))} lnfactor=-9.38544088047108e-8
++ voff=-0.25410325634546 lvoff=2.78515888653169e-8
++ nfactor=1.514261668126 lnfactor=-9.38544088047108e-8
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -1108,23 +1108,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=3.0e-6
 + sbref=3.0e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.4 pmos
@@ -1178,14 +1178,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.0639711628476+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))} lvth0=3.34866709077782e-8
++ vth0=-1.0639711628476 lvth0=3.34866709077782e-8
 + k1=0.354542539783 lk1=1.67958189678753e-7
 + k2=0.051575195178736 lk2=-6.64404220255585e-08 pk2=5.04870979341448e-29
 + k3=-15.845
@@ -1229,8 +1229,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.2479929006116+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))} lvoff=1.54598607613175e-8
-+ nfactor={1.2665691307516+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))} lnfactor=4.08463084680124e-7
++ voff=-0.2479929006116 lvoff=1.54598607613175e-8
++ nfactor=1.2665691307516 lnfactor=4.08463084680124e-7
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -1382,23 +1382,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=2.74e-6
 + sbref=2.74e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.5 pmos
@@ -1452,14 +1452,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.0624270051384+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))} lvth0=3.18992953126138e-8
++ vth0=-1.0624270051384 lvth0=3.18992953126138e-8
 + k1=0.56285163226288 lk1=-4.61810576814534e-8
 + k2=-0.036139298542928 lk2=2.37290249463875e-08 pk2=1.26217744835362e-29
 + k3=-15.845
@@ -1503,8 +1503,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.22937597595944+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))} lvoff=-3.67811437800722e-9
-+ nfactor={1.6385354519392+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))} lnfactor=2.60861700951257e-8
++ voff=-0.22937597595944 lvoff=-3.67811437800722e-9
++ nfactor=1.6385354519392 lnfactor=2.60861700951257e-8
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -1656,23 +1656,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=1.74e-6
 + sbref=1.74e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.6 pmos
@@ -1726,14 +1726,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope1/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.0124385194416+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope1/sqrt(l*w*mult))} lvth0=5.50597472653156e-9
++ vth0=-1.0124385194416 lvth0=5.50597472653156e-9
 + k1=0.0870956844758403 lk1=2.0501237367873e-7
 + k2=0.14027851671536 lk2=-6.94174644962055e-08 wk2=5.29395592033938e-23 pk2=1.26217744835362e-29
 + k3=-15.845
@@ -1777,8 +1777,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.20612908974192+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope1/sqrt(l*w*mult))} lvoff=-1.59521913382231e-8
-+ nfactor={1.3360896749344+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope1/sqrt(l*w*mult))} lnfactor=1.85773911004336e-7
++ voff=-0.20612908974192 lvoff=-1.59521913382231e-8
++ nfactor=1.3360896749344 lnfactor=1.85773911004336e-7
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -1930,23 +1930,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=1.24e-6
 + sbref=1.24e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.7 pmos
@@ -2000,14 +2000,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope1/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-0.897340812171429+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope1/sqrt(l*w*mult))} lvth0=-2.6489806722089e-8
++ vth0=-0.897340812171429 lvth0=-2.6489806722089e-8
 + k1=0.237429301868572 lk1=1.6322143204696e-7
 + k2=0.109518224818628 lk2=-6.08664724724169e-8
 + k3=-15.845
@@ -2051,8 +2051,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.0670403896439999+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope1/sqrt(l*w*mult))} lvoff=-5.46171809010437e-8
-+ nfactor={1.68579180914286+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope1/sqrt(l*w*mult))} lnfactor=8.85609141199953e-8
++ voff=-0.0670403896439999 lvoff=-5.46171809010437e-8
++ nfactor=1.68579180914286 lnfactor=8.85609141199953e-8
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -2204,23 +2204,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=1.1e-6
 + sbref=1.1e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.8 pmos
@@ -2274,14 +2274,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope1/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-0.8585156044+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope1/sqrt(l*w*mult))} lvth0=-3.45649840360528e-8
++ vth0=-0.8585156044 lvth0=-3.45649840360528e-8
 + k1=-0.556924842106668 lk1=3.28437561744082e-7
 + k2=0.480439082930667 lk2=-1.38013559909424e-7
 + k3=-15.845
@@ -2325,8 +2325,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={0.036059445901333+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope1/sqrt(l*w*mult))} lvoff=-7.60607094964466e-8
-+ nfactor={-0.0205282519999965+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope1/sqrt(l*w*mult))} lnfactor=4.43455010996976e-7
++ voff=0.036059445901333 lvoff=-7.60607094964466e-8
++ nfactor=-0.0205282519999965 lnfactor=4.43455010996976e-7
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -2478,23 +2478,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=1.04e-6
 + sbref=1.04e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.9 pmos
@@ -2548,14 +2548,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.07081481302489+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))} wvth0=7.86646183119181e-8
++ vth0=-1.07081481302489 wvth0=7.86646183119181e-8
 + k1=0.444261859177239 wk1=-6.82914935793182e-8
 + k2=0.0156234349599887 wk2=2.90166977783888e-8
 + k3=-15.845
@@ -2599,8 +2599,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.269379060845788+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))} wvoff=8.60363573326029e-8
-+ nfactor={0.77913338195144+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))} wnfactor=3.90160292344455e-6
++ voff=-0.269379060845788 wvoff=8.60363573326029e-8
++ nfactor=0.77913338195144 wnfactor=3.90160292344455e-6
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -2752,23 +2752,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=3.0e-6
 + sbref=3.0e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.10 pmos
@@ -2822,14 +2822,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.07081481302489+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))} wvth0=7.86646183119181e-8
++ vth0=-1.07081481302489 wvth0=7.86646183119181e-8
 + k1=0.444261859177239 wk1=-6.82914935793165e-8
 + k2=0.0156234349599887 wk2=2.90166977783888e-8
 + k3=-15.845
@@ -2873,8 +2873,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.269379060845788+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))} wvoff=8.60363573326021e-8
-+ nfactor={0.77913338195144+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))} wnfactor=3.90160292344455e-6
++ voff=-0.269379060845788 wvoff=8.60363573326021e-8
++ nfactor=0.77913338195144 wnfactor=3.90160292344455e-6
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -3026,23 +3026,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=3.0e-6
 + sbref=3.0e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.11 pmos
@@ -3096,14 +3096,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.07217603295513+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))} lvth0=1.09278572652923e-08 wvth0=6.31402796577384e-08 pvth0=1.24629204423651e-13
++ vth0=-1.07217603295513 lvth0=1.09278572652923e-08 wvth0=6.31402796577384e-08 pvth0=1.24629204423651e-13
 + k1=0.417770816632546 lk1=2.12669771656287e-07 wk1=1.42241382250679e-07 pk1=-1.69015540076871e-12
 + k2=0.0238580777309972 lk2=-6.61076133499426e-08 wk2=-3.73924100854532e-08 pk2=5.33131521021628e-13
 + k3=-15.845
@@ -3147,8 +3147,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.300303243065369+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))} lvoff=2.4825896376861e-07 wvoff=2.32599566539056e-07 pvoff=-1.17660768475091e-12
-+ nfactor={0.220392379615385+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))} lnfactor=4.48556606186184e-06 wnfactor=6.72634275934427e-06 pnfactor=-2.26769775057249e-11
++ voff=-0.300303243065369 lvoff=2.4825896376861e-07 wvoff=2.32599566539056e-07 pvoff=-1.17660768475091e-12
++ nfactor=0.220392379615385 lnfactor=4.48556606186184e-06 wnfactor=6.72634275934427e-06 pnfactor=-2.26769775057249e-11
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -3300,23 +3300,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=3.0e-6
 + sbref=3.0e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.12 pmos
@@ -3370,14 +3370,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.07803369344703+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))} lvth0=3.45224434347528e-08 wvth0=9.34894310166505e-08 pvth0=2.38318693978028e-15
++ vth0=-1.07803369344703 lvth0=3.45224434347528e-08 wvth0=9.34894310166505e-08 pvth0=2.38318693978028e-15
 + k1=0.515778983259007 lk1=-1.82105947417098e-07 wk1=-6.39210822425474e-07 pk1=1.45752470224038e-12
 + k2=-0.00871027749946673 lk2=6.50773306981034e-08 wk2=2.23598421669588e-07 pk2=-5.18136417397698e-13
 + k3=-15.845
@@ -3421,8 +3421,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.254605045408927+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))} lvoff=6.41871719868327e-08 wvoff=3.50519340998654e-09 pvoff=-2.53818298919492e-13
-+ nfactor={0.928009366123206+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))} lnfactor=1.63529333161216e-06 wnfactor=4.09520225764236e-06 pnfactor=-1.20787751385556e-11
++ voff=-0.254605045408927 lvoff=6.41871719868327e-08 wvoff=3.50519340998654e-09 pvoff=-2.53818298919492e-13
++ nfactor=0.928009366123206 lnfactor=1.63529333161216e-06 wnfactor=4.09520225764236e-06 pnfactor=-1.20787751385556e-11
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -3574,23 +3574,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=3.0e-6
 + sbref=3.0e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.13 pmos
@@ -3644,14 +3644,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.08403263211279+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))} lvth0=4.66882190616416e-08 wvth0=1.40137230925579e-07 pvth0=-9.22179915019122e-14
++ vth0=-1.08403263211279 lvth0=4.66882190616416e-08 wvth0=1.40137230925579e-07 pvth0=-9.22179915019122e-14
 + k1=0.324438550909221 lk1=2.05930153303079e-07 wk1=2.10288169067784e-07 pk1=-2.65249058520049e-13
 + k2=0.0663841555451893 lk2=-8.72132783832624e-08 wk2=-1.03446396233932e-07 pk2=1.45106548772826e-13
 + k3=-15.845
@@ -3695,8 +3695,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.208292079609894+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))} lvoff=-2.9734966898017e-08 wvoff=-2.77325805358916e-07 pvoff=3.15703596611859e-13
-+ nfactor={2.0655144687291+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))} lnfactor=-6.71553366411369e-07 wnfactor=-5.58094653213443e-06 pnfactor=7.54433849332621e-12
++ voff=-0.208292079609894 lvoff=-2.9734966898017e-08 wvoff=-2.77325805358916e-07 pvoff=3.15703596611859e-13
++ nfactor=2.0655144687291 lnfactor=-6.71553366411369e-07 wnfactor=-5.58094653213443e-06 pnfactor=7.54433849332621e-12
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -3848,23 +3848,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=2.74e-6
 + sbref=2.74e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.14 pmos
@@ -3918,14 +3918,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.065934911151+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))} lvth0=2.80839790855768e-08 wvth0=2.45040992987469e-08 pvth0=2.6651480212875e-14
++ vth0=-1.065934911151 lvth0=2.80839790855768e-08 wvth0=2.45040992987469e-08 pvth0=2.6651480212875e-14
 + k1=0.592920162830969 lk1=-7.00657219731344e-08 wk1=-2.10040478895788e-07 pk1=1.66843747642727e-13
 + k2=-0.0543909295533397 lk2=3.69420597970042e-08 wk2=1.27494800897408e-07 pk2=-9.2298230583826e-14
 + k3=-15.845
@@ -3969,8 +3969,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.244832686193965+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))} lvoff=7.82833818312952e-09 wvoff=1.07971183109911e-07 pvoff=-8.0377083970235e-14
-+ nfactor={1.04003502020121+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))} lnfactor=3.82627200921925e-07 wnfactor=4.18076024755921e-06 pnfactor=-2.49057893571749e-12
++ voff=-0.244832686193965 lvoff=7.82833818312952e-09 wvoff=1.07971183109911e-07 pvoff=-8.0377083970235e-14
++ nfactor=1.04003502020121 lnfactor=3.82627200921925e-07 wnfactor=4.18076024755921e-06 pnfactor=-2.49057893571749e-12
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -4122,23 +4122,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=1.74e-6
 + sbref=1.74e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.15 pmos
@@ -4192,14 +4192,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope1/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.04103433295755+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope1/sqrt(l*w*mult))} lvth0=1.49367726063723e-08 wvth0=1.99752972686958e-07 pvth0=-6.58778219496136e-14
++ vth0=-1.04103433295755 lvth0=1.49367726063723e-08 wvth0=1.99752972686958e-07 pvth0=-6.58778219496136e-14
 + k1=0.0514910163996825 lk1=2.15802370192828e-07 wk1=2.48712570662786e-07 pk1=-7.53723574876054e-14
 + k2=0.159319176640184 lk2=-7.58943117519023e-08 wk2=-1.33006477321721e-07 pk2=4.52433183005357e-14
 + k3=-15.845
@@ -4243,8 +4243,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.198053973684804+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))} lvoff=-1.68702606771574e-08 wvoff=-5.64078527194733e-08 pvoff=6.41307439925072e-15
-+ nfactor={1.51612745620061+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope1/sqrt(l*w*mult))} lnfactor=1.31256107823473e-07 wnfactor=-1.25763451296229e-06 pnfactor=3.80828237100733e-13
++ voff=-0.198053973684804 lvoff=-1.68702606771574e-08 wvoff=-5.64078527194733e-08 pvoff=6.41307439925072e-15
++ nfactor=1.51612745620061 lnfactor=1.31256107823473e-07 wnfactor=-1.25763451296229e-06 pnfactor=3.80828237100733e-13
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -4396,23 +4396,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=1.24e-6
 + sbref=1.24e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.16 pmos
@@ -4466,14 +4466,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope1/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-0.843499238756392+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope1/sqrt(l*w*mult))} lvth0=-3.99756131604187e-08 wvth0=-3.7610450696913e-07 pvth0=9.42036471050179e-14
++ vth0=-0.843499238756392 lvth0=-3.99756131604187e-08 wvth0=-3.7610450696913e-07 pvth0=9.42036471050179e-14
 + k1=0.345431055681784 lk1=1.34090566552874e-07 wk1=-7.54434608673133e-07 pk1=2.03490520601628e-13
 + k2=0.0698700846096645 lk2=-5.10285375565221e-08 wk2=2.76957809360206e-07 pk2=-6.87218338255993e-14
 + k3=-15.845
@@ -4517,8 +4517,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.120647836650488+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope1/sqrt(l*w*mult))} lvoff=-3.8388237899053e-08 wvoff=3.74469042181031e-07 pvoff=-1.1336553186035e-13
-+ nfactor={2.15927967548548+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope1/sqrt(l*w*mult))} lnfactor=-4.753249131109e-08 wnfactor=-3.30749844834442e-06 pnfactor=9.5066581276974e-13
++ voff=-0.120647836650488 lvoff=-3.8388237899053e-08 wvoff=3.74469042181031e-07 pvoff=-1.1336553186035e-13
++ nfactor=2.15927967548548 lnfactor=-4.753249131109e-08 wnfactor=-3.30749844834442e-06 pnfactor=9.5066581276974e-13
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -4670,23 +4670,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=1.1e-6
 + sbref=1.1e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.17 pmos
@@ -4740,14 +4740,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope1/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-0.85192925885292+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope1/sqrt(l*w*mult))} lvth0=-3.82222701405816e-08 wvth0=-4.6008206811037e-08 pvth0=2.5547577827741e-14
++ vth0=-0.85192925885292 lvth0=-3.82222701405816e-08 wvth0=-4.6008206811037e-08 pvth0=2.5547577827741e-14
 + k1=-0.724663606244714 lk1=3.56657415097643e-07 wk1=1.17172105464756e-06 pk1=-1.97126743501111e-13
 + k2=0.545043873773805 lk2=-1.49858983617193e-07 wk2=-4.5128980203829e-07 pk2=8.2744930373951e-14
 + k3=-15.845
@@ -4791,8 +4791,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={0.158821789465682+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope1/sqrt(l*w*mult))} lvoff=-9.65145664957027e-08 wvoff=-8.57543117188114e-07 pvoff=1.4287821314252e-13
-+ nfactor={-0.950436192991006+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope1/sqrt(l*w*mult))} lnfactor=5.99251092741599e-07 wnfactor=6.49577167771671e-06 pnfactor=-1.08829673420946e-12
++ voff=0.158821789465682 lvoff=-9.65145664957027e-08 wvoff=-8.57543117188114e-07 pvoff=1.4287821314252e-13
++ nfactor=-0.950436192991006 lnfactor=5.99251092741599e-07 wnfactor=6.49577167771671e-06 pnfactor=-1.08829673420946e-12
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -4944,23 +4944,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=1.04e-6
 + sbref=1.04e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.18 pmos
@@ -5014,14 +5014,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.06587170387177+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))} wvth0=5.40212804961859e-8
++ vth0=-1.06587170387177 wvth0=5.40212804961859e-8
 + k1=0.44180966168701 wk1=-5.60663273386714e-8
 + k2=0.0215768006129515 wk2=-6.63164911639826e-10
 + k3=-15.845
@@ -5065,8 +5065,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.251471733730319+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))} wvoff=-3.2386915917047e-9
-+ nfactor={1.28816711935094+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))} wnfactor=1.36387009947623e-6
++ voff=-0.251471733730319 wvoff=-3.2386915917047e-9
++ nfactor=1.28816711935094 wnfactor=1.36387009947623e-6
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -5218,23 +5218,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=3.0e-6
 + sbref=3.0e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.19 pmos
@@ -5288,14 +5288,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.06587170387177+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))} wvth0=5.40212804961876e-8
++ vth0=-1.06587170387177 wvth0=5.40212804961876e-8
 + k1=0.44180966168701 wk1=-5.60663273386706e-8
 + k2=0.0215768006129515 wk2=-6.63164911639853e-10
 + k3=-15.845
@@ -5339,8 +5339,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.251471733730319+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))} wvoff=-3.23869159170427e-9
-+ nfactor={1.28816711935094+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))} wnfactor=1.36387009947623e-6
++ voff=-0.251471733730319 wvoff=-3.23869159170427e-9
++ nfactor=1.28816711935094 wnfactor=1.36387009947623e-6
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -5492,23 +5492,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=3.0e-6
 + sbref=3.0e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.20 pmos
@@ -5562,14 +5562,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.06963437051224+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))} lvth0=3.02066426377255e-08 wvth0=5.04690955399505e-08 pvth0=2.85168982024773e-14
++ vth0=-1.06963437051224 lvth0=3.02066426377255e-08 wvth0=5.04690955399505e-08 pvth0=2.85168982024773e-14
 + k1=0.52976404061942 lk1=-7.06096698616839e-07 wk1=-4.16088763066334e-07 pk1=2.89025579375245e-12
 + k2=-0.0102118934657894 lk2=2.55199254599803e-07 wk2=1.32459758573231e-07 pk2=-1.06870923226146e-12
 + k3=-15.845
@@ -5613,8 +5613,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.253832649645215+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))} lvoff=1.89534046337942e-08 wvoff=9.25432572850707e-10 pvoff=-3.34295388235551e-14
-+ nfactor={1.22318305266557+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))} lnfactor=5.21691307541333e-07 wnfactor=1.72703795968711e-06 pnfactor=-2.91550722375856e-12
++ voff=-0.253832649645215 lvoff=1.89534046337942e-08 wvoff=9.25432572850707e-10 pvoff=-3.34295388235551e-14
++ nfactor=1.22318305266557 lnfactor=5.21691307541333e-07 wnfactor=1.72703795968711e-06 pnfactor=-2.91550722375856e-12
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -5766,23 +5766,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=3.0e-6
 + sbref=3.0e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.21 pmos
@@ -5836,14 +5836,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.07232599320665+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))} lvth0=4.1048466551324e-08 wvth0=6.50343067583214e-08 pvth0=-3.01515978026035e-14
++ vth0=-1.07232599320665 lvth0=4.1048466551324e-08 wvth0=6.50343067583214e-08 pvth0=-3.01515978026035e-14
 + k1=0.37366012860566 lk1=-7.73120142723565e-08 wk1=6.93074070362553e-08 pk1=9.35085845333262e-13
 + k2=0.0449017933247142 lk2=3.32019855718958e-08 wk2=-4.3678778043131e-08 pk2=-3.59225320433194e-13
 + k3=-15.845
@@ -5887,8 +5887,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.245204931884238+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))} lvoff=-1.57989389748084e-08 wvoff=-4.33580592351117e-08 pvoff=1.44943834777012e-13
-+ nfactor={1.67455573885579+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))} lnfactor=-1.29643245596062e-06 wnfactor=3.73375794083068e-07 pnfactor=2.53702773534853e-12
++ voff=-0.245204931884238 lvoff=-1.57989389748084e-08 wvoff=-4.33580592351117e-08 pvoff=1.44943834777012e-13
++ nfactor=1.67455573885579 lnfactor=-1.29643245596062e-06 wnfactor=3.73375794083068e-07 pnfactor=2.53702773534853e-12
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -6040,23 +6040,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=3.0e-6
 + sbref=3.0e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.22 pmos
@@ -6110,14 +6110,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.05428126947424+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))} lvth0=4.45398335868474e-09 wvth0=-8.18498031200323e-09 pvth0=1.18336237744569e-13
++ vth0=-1.05428126947424 lvth0=4.45398335868474e-09 wvth0=-8.18498031200323e-09 pvth0=1.18336237744569e-13
 + k1=0.0980653419667101 lk1=4.81590905893993e-07 wk1=1.33884739921875e-06 pk1=-1.63952602433292e-12
 + k2=0.154627916744053 lk2=-1.89321276009043e-07 wk2=-5.43376155013411e-07 pk2=6.54154963694011e-13
 + k3=-15.845
@@ -6161,8 +6161,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.306431699428405+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))} lvoff=1.08368210883552e-07 wvoff=2.11938689795257e-07 pvoff=-3.72794908695587e-13
-+ nfactor={-0.352535582831902+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))} lnfactor=2.81448441932616e-06 wnfactor=6.47398133412741e-06 pnfactor=-9.83492709259492e-12
++ voff=-0.306431699428405 lvoff=1.08368210883552e-07 wvoff=2.11938689795257e-07 pvoff=-3.72794908695587e-13
++ nfactor=-0.352535582831902 lnfactor=2.81448441932616e-06 wnfactor=6.47398133412741e-06 pnfactor=-9.83492709259492e-12
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -6314,23 +6314,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=2.74e-6
 + sbref=2.74e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.23 pmos
@@ -6384,14 +6384,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.09316551071421+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))} lvth0=4.4426516742476e-08 wvth0=1.60259317962494e-07 pvth0=-5.48224795500348e-14
++ vth0=-1.09316551071421 lvth0=4.4426516742476e-08 wvth0=1.60259317962494e-07 pvth0=-5.48224795500348e-14
 + k1=0.607856353255918 lk1=-4.2468136219177e-08 wk1=-2.84503246138047e-07 pk1=2.92589588861162e-14
 + k2=-0.0503231996028657 lk2=2.13660121821936e-08 wk2=1.07215571730609e-07 pk2=-1.46455242981209e-14
 + k3=-15.845
@@ -6435,8 +6435,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.187819540799715+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))} lvoff=-1.35636648408379e-08 wvoff=-1.76261707236047e-07 pvoff=2.62704410478296e-14
-+ nfactor={2.93720749969435+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))} lnfactor=-5.67331992593843e-07 wnfactor=-5.27738863376058e-06 pnfactor=2.24534021795432e-12
++ voff=-0.187819540799715 lvoff=-1.35636648408379e-08 wvoff=-1.76261707236047e-07 pvoff=2.62704410478296e-14
++ nfactor=2.93720749969435 lnfactor=-5.67331992593843e-07 wnfactor=-5.27738863376058e-06 pnfactor=2.24534021795432e-12
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -6588,23 +6588,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=1.74e-6
 + sbref=1.74e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.24 pmos
@@ -6658,14 +6658,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope1/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.00333620026152+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope1/sqrt(l*w*mult))} lvth0=-3.00228122482068e-09 wvth0=1.18129959895948e-08 pvth0=2.35553970957932e-14
++ vth0=-1.00333620026152 lvth0=-3.00228122482068e-09 wvth0=1.18129959895948e-08 pvth0=2.35553970957932e-14
 + k1=0.111235728789203 lk1=2.19741594051755e-07 wk1=-4.91382524751791e-08 pk1=-9.50109333879541e-14
 + k2=0.127938719360873 lk2=-7.27541418876327e-08 wk2=2.34374096309928e-08 pk2=2.95883399525312e-14
 + k3=-15.845
@@ -6709,8 +6709,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.205339729331252+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope1/sqrt(l*w*mult))} lvoff=-4.31321553844871e-09 wvoff=-2.00855033485626e-08 pvoff=-5.61887204903156e-14
-+ nfactor={1.38500884853079+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope1/sqrt(l*w*mult))} lnfactor=2.52210268836702e-07 wnfactor=-6.03956829010318e-07 pnfactor=-2.22175693772163e-13
++ voff=-0.205339729331252 lvoff=-4.31321553844871e-09 wvoff=-2.00855033485626e-08 pvoff=-5.61887204903156e-14
++ nfactor=1.38500884853079 lnfactor=2.52210268836702e-07 wnfactor=-6.03956829010318e-07 pnfactor=-2.22175693772163e-13
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -6862,23 +6862,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=1.24e-6
 + sbref=1.24e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.25 pmos
@@ -6932,14 +6932,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope1/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-0.948983603979549+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope1/sqrt(l*w*mult))} lvth0=-1.81116507600524e-08 wvth0=1.49776424636347e-07 pvth0=-1.47967805068629e-14
++ vth0=-0.948983603979549 lvth0=-1.81116507600524e-08 wvth0=1.49776424636347e-07 pvth0=-1.47967805068629e-14
 + k1=0.517108815050108 lk1=1.06913746548259e-07 wk1=-1.61031557114145e-06 pk1=3.38977627073446e-13
 + k2=0.00989741452749859 lk2=-3.99400756396127e-08 wk2=5.75945091001007e-07 pk2=-1.24002165376156e-13
 + k3=-15.845
@@ -6983,8 +6983,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={0.0957599861269758+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope1/sqrt(l*w*mult))} lvoff=-8.80153232392507e-08 wvoff=-7.04408829512716e-07 pvoff=1.34044952303405e-13
-+ nfactor={2.17112661306528+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope1/sqrt(l*w*mult))} lnfactor=3.36789637092887e-08 wnfactor=-3.36656007854864e-06 pnfactor=5.45794858360495e-13
++ voff=0.0957599861269758 lvoff=-8.80153232392507e-08 wvoff=-7.04408829512716e-07 pvoff=1.34044952303405e-13
++ nfactor=2.17112661306528 lnfactor=3.36789637092887e-08 wnfactor=-3.36656007854864e-06 pnfactor=5.45794858360495e-13
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -7136,23 +7136,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=1.1e-6
 + sbref=1.1e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.26 pmos
@@ -7206,14 +7206,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope1/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-0.956083599107522+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope1/sqrt(l*w*mult))} lvth0=-1.66349369733752e-08 wvth0=4.7324202869037e-07 pvth0=-8.20737445628477e-14
++ vth0=-0.956083599107522 lvth0=-1.66349369733752e-08 wvth0=4.7324202869037e-07 pvth0=-8.20737445628477e-14
 + k1=-0.296887372665633 lk1=2.7621518563888e-07 wk1=-9.60911243582975e-07 pk1=2.03909319793214e-13
 + k2=0.396688359746296 lk2=-1.2038795075378e-07 wk2=2.88320620421442e-07 pk2=-6.41797269892537e-14
 + k3=-15.845
@@ -7257,8 +7257,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={0.0793320731109519+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope1/sqrt(l*w*mult))} lvoff=-8.45985144668743e-08 wvoff=-4.61255705293041e-07 pvoff=8.34720203032029e-14
-+ nfactor={3.61329944061981+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope1/sqrt(l*w*mult))} lnfactor=-2.66275678348123e-07 wnfactor=-1.62562403529487e-05 pnfactor=3.22669367927243e-12
++ voff=0.0793320731109519 lvoff=-8.45985144668743e-08 wvoff=-4.61255705293041e-07 pvoff=8.34720203032029e-14
++ nfactor=3.61329944061981 lnfactor=-2.66275678348123e-07 wnfactor=-1.62562403529487e-05 pnfactor=3.22669367927243e-12
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -7410,23 +7410,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=1.04e-6
 + sbref=1.04e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.27 pmos
@@ -7480,14 +7480,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.0477765+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))}
++ vth0=-1.0477765
 + k1=0.42302944
 + k2=0.021354664
 + k3=-15.845
@@ -7531,8 +7531,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.25255658+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor={1.745015+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))}
++ voff=-0.25255658
++ nfactor=1.745015
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -7684,23 +7684,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=3.0e-6
 + sbref=3.0e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.28 pmos
@@ -7754,14 +7754,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.0477765+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))}
++ vth0=-1.0477765
 + k1=0.42302944
 + k2=0.021354664
 + k3=-15.845
@@ -7805,8 +7805,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.25255658+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor={1.745015+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))}
++ voff=-0.25255658
++ nfactor=1.745015
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -7958,23 +7958,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=3.0e-6
 + sbref=3.0e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.29 pmos
@@ -8028,14 +8028,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.05272902201567+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))} lvth0=3.9758787311535e-8
++ vth0=-1.05272902201567 lvth0=3.9758787311535e-8
 + k1=0.39038913267053 lk1=2.62035995557297e-7
 + k2=0.034157405339651 lk2=-1.02780253841822e-7
 + k3=-15.845
@@ -8079,8 +8079,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.25352266271189+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))} lvoff=7.75570041805986e-9
-+ nfactor={1.8016792246885+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))} lnfactor=-4.54899715828586e-7
++ voff=-0.25352266271189 lvoff=7.75570041805986e-9
++ nfactor=1.8016792246885 lnfactor=-4.54899715828586e-7
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -8232,23 +8232,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=3.0e-6
 + sbref=3.0e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.30 pmos
@@ -8302,14 +8302,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.05054181799566+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))} lvth0=3.09487557653806e-8
++ vth0=-1.05054181799566 lvth0=3.09487557653806e-8
 + k1=0.39687564013418 lk1=2.35908421331804e-7
 + k2=0.0302709592108142 lk2=-8.71256954722211e-8
 + k3=-15.845
@@ -8353,8 +8353,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.25972833662654+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))} lvoff=3.27520804781837e-8
-+ nfactor={1.7996233243084+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))} lnfactor=-4.46618573768344e-7
++ voff=-0.25972833662654 lvoff=3.27520804781837e-8
++ nfactor=1.7996233243084 lnfactor=-4.46618573768344e-7
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -8506,23 +8506,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=3.0e-6
 + sbref=3.0e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.31 pmos
@@ -8576,14 +8576,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.0570229462+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))} lvth0=4.40924059902446e-8
++ vth0=-1.0570229462 lvth0=4.40924059902446e-8
 + k1=0.5465315097348 lk1=-6.75918863478171e-8
 + k2=-0.0273837315122164 lk2=2.97973254577963e-8
 + k3=-15.845
@@ -8627,8 +8627,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.23543979096316+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))} lvoff=-1.6504798664603e-8
-+ nfactor={1.8160174582484+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))} lnfactor=-4.79865680669056e-7
++ voff=-0.23543979096316 lvoff=-1.6504798664603e-8
++ nfactor=1.8160174582484 lnfactor=-4.79865680669056e-7
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -8780,23 +8780,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=2.74e-6
 + sbref=2.74e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.32 pmos
@@ -8850,14 +8850,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.0394843501744+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))} lvth0=2.60629397390807e-8
++ vth0=-1.0394843501744 lvth0=2.60629397390807e-8
 + k1=0.51255790431576 lk1=-3.26674276603094e-8
 + k2=-0.014409803791552 lk2=1.64602834480859e-08 pk2=1.57772181044202e-30
 + k3=-15.845
@@ -8901,8 +8901,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.24686093148736+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))} lvoff=-4.76400325941179e-9
-+ nfactor={1.1694703716344+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))} lnfactor=1.84776965805096e-7
++ voff=-0.24686093148736 lvoff=-4.76400325941179e-9
++ nfactor=1.1694703716344 lnfactor=1.84776965805096e-7
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -9054,23 +9054,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=1.74e-6
 + sbref=1.74e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.33 pmos
@@ -9124,14 +9124,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope1/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-0.9993792675712+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope1/sqrt(l*w*mult))} lvth0=4.88793738558286e-9
++ vth0=-0.9993792675712 lvth0=4.88793738558286e-9
 + k1=0.0947761652936001 lk1=1.87916317162523e-7
 + k2=0.135789416375152 lk2=-6.28431024092917e-08 wk2=2.64697796016969e-23 pk2=1.26217744835362e-29
 + k3=-15.845
@@ -9175,8 +9175,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.21206765718896+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope1/sqrt(l*w*mult))} lvoff=-2.31344345696753e-8
-+ nfactor={1.1827048333296+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope1/sqrt(l*w*mult))} lnfactor=1.77789328843571e-7
++ voff=-0.21206765718896 lvoff=-2.31344345696753e-8
++ nfactor=1.1827048333296 lnfactor=1.77789328843571e-7
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -9328,23 +9328,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=1.24e-6
 + sbref=1.24e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.34 pmos
@@ -9398,14 +9398,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope1/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-0.898813839137143+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope1/sqrt(l*w*mult))} lvth0=-2.3068044933944e-8
++ vth0=-0.898813839137143 lvth0=-2.3068044933944e-8
 + k1=-0.0222895163119983 lk1=2.204591718607e-7
 + k2=0.202818495717771 lk2=-8.14763821175879e-8
 + k3=-15.845
@@ -9449,8 +9449,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.140191869549715+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope1/sqrt(l*w*mult))} lvoff=-4.31150410239341e-8
-+ nfactor={1.04344895699429+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope1/sqrt(l*w*mult))} lnfactor=2.16500791394273e-7
++ voff=-0.140191869549715 lvoff=-4.31150410239341e-8
++ nfactor=1.04344895699429 lnfactor=2.16500791394273e-7
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -9602,23 +9602,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=1.1e-6
 + sbref=1.1e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.35 pmos
@@ -9672,14 +9672,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope1/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-0.631418774042189+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope1/sqrt(l*w*mult))} lvth0=-7.86830097329121e-08 wvth0=-4.96009807674038e-07 pvth0=1.03164087878508e-13
++ vth0=-0.631418774042189 lvth0=-7.86830097329121e-08 wvth0=-4.96009807674038e-07 pvth0=1.03164087878508e-13
 + k1=1.13537408832746 lk1=-2.03209659410525e-08 wk1=-5.23677343759238e-06 pk1=1.08918603373796e-12
 + k2=-0.168045627012562 lk2=-4.34109495915141e-09 wk2=1.97427305956624e-06 pk2=-4.10625105113063e-13
 + k3=-15.845
@@ -9723,8 +9723,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.21588387747846+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope1/sqrt(l*w*mult))} lvoff=-2.73720116788496e-08 wvoff=4.20079690912184e-07 pvoff=-8.73715347534432e-14
-+ nfactor={-1.37669570949875+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope1/sqrt(l*w*mult))} lnfactor=7.19861840288825e-07 wnfactor=-1.35914775374701e-06 pnfactor=2.8268642300633e-13
++ voff=-0.21588387747846 lvoff=-2.73720116788496e-08 wvoff=4.20079690912184e-07 pvoff=-8.73715347534432e-14
++ nfactor=-1.37669570949875 lnfactor=7.19861840288825e-07 wnfactor=-1.35914775374701e-06 pnfactor=2.8268642300633e-13
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -9876,23 +9876,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=1.04e-6
 + sbref=1.04e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.36 pmos
@@ -9946,14 +9946,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.0477765+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))}
++ vth0=-1.0477765
 + k1=0.42302944
 + k2=0.021354664
 + k3=-15.845
@@ -9997,8 +9997,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.25255658+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor={1.745015+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))}
++ voff=-0.25255658
++ nfactor=1.745015
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -10150,23 +10150,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=3.0e-6
 + sbref=3.0e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.37 pmos
@@ -10220,14 +10220,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.0477765+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))}
++ vth0=-1.0477765
 + k1=0.42302944
 + k2=0.021354664
 + k3=-15.845
@@ -10271,8 +10271,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.25255658+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor={1.745015+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))}
++ voff=-0.25255658
++ nfactor=1.745015
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -10424,23 +10424,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=3.0e-6
 + sbref=3.0e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.38 pmos
@@ -10494,14 +10494,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.05272902201567+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))} lvth0=3.97587873115384e-8
++ vth0=-1.05272902201567 lvth0=3.97587873115384e-8
 + k1=0.39038913267053 lk1=2.62035995557296e-7
 + k2=0.034157405339651 lk2=-1.02780253841822e-07 pk2=-2.01948391736579e-28
 + k3=-15.845
@@ -10545,8 +10545,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.25352266271189+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))} lvoff=7.75570041805986e-9
-+ nfactor={1.8016792246885+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))} lnfactor=-4.54899715828579e-7
++ voff=-0.25352266271189 lvoff=7.75570041805986e-9
++ nfactor=1.8016792246885 lnfactor=-4.54899715828579e-7
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -10698,23 +10698,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=3.0e-6
 + sbref=3.0e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.39 pmos
@@ -10768,14 +10768,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.05054181799566+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))} lvth0=3.09487557653857e-8
++ vth0=-1.05054181799566 lvth0=3.09487557653857e-8
 + k1=0.396875640134181 lk1=2.35908421331805e-7
 + k2=0.0302709592108142 lk2=-8.71256954722211e-08 pk2=5.04870979341448e-29
 + k3=-15.845
@@ -10819,8 +10819,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.25972833662654+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))} lvoff=3.27520804781846e-8
-+ nfactor={1.7996233243084+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))} lnfactor=-4.46618573768347e-7
++ voff=-0.25972833662654 lvoff=3.27520804781846e-8
++ nfactor=1.7996233243084 lnfactor=-4.46618573768347e-7
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -10972,23 +10972,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=3.0e-6
 + sbref=3.0e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.40 pmos
@@ -11042,14 +11042,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.0570229462+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))} lvth0=4.40924059902455e-8
++ vth0=-1.0570229462 lvth0=4.40924059902455e-8
 + k1=0.5465315097348 lk1=-6.75918863478176e-8
 + k2=-0.0273837315122164 lk2=2.97973254577963e-8
 + k3=-15.845
@@ -11093,8 +11093,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.23543979096316+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))} lvoff=-1.65047986646032e-8
-+ nfactor={1.8160174582484+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))} lnfactor=-4.79865680669059e-7
++ voff=-0.23543979096316 lvoff=-1.65047986646032e-8
++ nfactor=1.8160174582484 lnfactor=-4.79865680669059e-7
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -11246,23 +11246,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=2.74e-6
 + sbref=2.74e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.41 pmos
@@ -11316,14 +11316,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.0394843501744+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))} lvth0=2.6062939739082e-8
++ vth0=-1.0394843501744 lvth0=2.6062939739082e-8
 + k1=0.512557904315759 lk1=-3.26674276603094e-8
 + k2=-0.014409803791552 lk2=1.6460283448086e-08 wk2=1.32348898008484e-23 pk2=9.46633086265214e-30
 + k3=-15.845
@@ -11367,8 +11367,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.24686093148736+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))} lvoff=-4.76400325941179e-9
-+ nfactor={1.1694703716344+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))} lnfactor=1.84776965805098e-7
++ voff=-0.24686093148736 lvoff=-4.76400325941179e-9
++ nfactor=1.1694703716344 lnfactor=1.84776965805098e-7
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -11520,23 +11520,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=1.74e-6
 + sbref=1.74e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.42 pmos
@@ -11590,14 +11590,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope1/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-0.9993792675712+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope1/sqrt(l*w*mult))} lvth0=4.88793738558286e-9
++ vth0=-0.9993792675712 lvth0=4.88793738558286e-9
 + k1=0.0947761652936006 lk1=1.87916317162523e-7
 + k2=0.135789416375152 lk2=-6.28431024092917e-08 wk2=-5.29395592033938e-23 pk2=-2.52435489670724e-29
 + k3=-15.845
@@ -11641,8 +11641,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.21206765718896+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope1/sqrt(l*w*mult))} lvoff=-2.31344345696753e-8
-+ nfactor={1.1827048333296+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope1/sqrt(l*w*mult))} lnfactor=1.77789328843571e-7
++ voff=-0.21206765718896 lvoff=-2.31344345696753e-8
++ nfactor=1.1827048333296 lnfactor=1.77789328843571e-7
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -11794,23 +11794,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=1.24e-6
 + sbref=1.24e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.43 pmos
@@ -11864,14 +11864,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope1/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-0.898813839137144+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope1/sqrt(l*w*mult))} lvth0=-2.3068044933944e-8
++ vth0=-0.898813839137144 lvth0=-2.3068044933944e-8
 + k1=-0.022289516312 lk1=2.20459171860702e-7
 + k2=0.202818495717771 lk2=-8.14763821175879e-8
 + k3=-15.845
@@ -11915,8 +11915,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.140191869549716+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope1/sqrt(l*w*mult))} lvoff=-4.31150410239343e-8
-+ nfactor={1.04344895699429+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope1/sqrt(l*w*mult))} lnfactor=2.16500791394272e-7
++ voff=-0.140191869549716 lvoff=-4.31150410239343e-8
++ nfactor=1.04344895699429 lnfactor=2.16500791394272e-7
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -12068,23 +12068,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=1.1e-6
 + sbref=1.1e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.44 pmos
@@ -12138,14 +12138,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope1/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.05499365499774+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope1/sqrt(l*w*mult))} lvth0=9.41548260727043e-09 wvth0=3.44952457091043e-07 pvth0=-7.17459716454515e-14
++ vth0=-1.05499365499774 lvth0=9.41548260727043e-09 wvth0=3.44952457091043e-07 pvth0=-7.17459716454515e-14
 + k1=-5.8336075143807 lk1=1.42914357964301e-06 wk1=8.5993882783679e-06 pk1=-1.78856956924118e-12
 + k2=2.57411961054937 lk2=-5.74678558389182e-07 wk2=-3.47000041420037e-06 pk2=7.21718446148706e-13
 + k3=-15.845
@@ -12189,8 +12189,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={0.677644819184748+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope1/sqrt(l*w*mult))} lvoff=-2.13215258240437e-07 wvoff=-1.35392521391912e-06 pvoff=2.8160019739261e-13
-+ nfactor={-4.66791149869223+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope1/sqrt(l*w*mult))} lnfactor=1.4043952298516e-06 wnfactor=5.17520640263463e-06 pnfactor=-1.07638082927116e-12
++ voff=0.677644819184748 lvoff=-2.13215258240437e-07 wvoff=-1.35392521391912e-06 pvoff=2.8160019739261e-13
++ nfactor=-4.66791149869223 lnfactor=1.4043952298516e-06 wnfactor=5.17520640263463e-06 pnfactor=-1.07638082927116e-12
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -12342,23 +12342,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=1.04e-6
 + sbref=1.04e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.45 pmos
@@ -12412,14 +12412,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.0477765+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))}
++ vth0=-1.0477765
 + k1=0.42302944
 + k2=0.021354664
 + k3=-15.845
@@ -12463,8 +12463,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.25255658+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor={1.745015+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))}
++ voff=-0.25255658
++ nfactor=1.745015
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -12616,23 +12616,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=3.0e-6
 + sbref=3.0e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.46 pmos
@@ -12686,14 +12686,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.0477765+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))}
++ vth0=-1.0477765
 + k1=0.42302944
 + k2=0.021354664
 + k3=-15.845
@@ -12737,8 +12737,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.25255658+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor={1.745015+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))}
++ voff=-0.25255658
++ nfactor=1.745015
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -12890,23 +12890,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=3.0e-6
 + sbref=3.0e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.47 pmos
@@ -12960,14 +12960,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.05272902201568+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))} lvth0=3.97587873115384e-8
++ vth0=-1.05272902201568 lvth0=3.97587873115384e-8
 + k1=0.390389132670528 lk1=2.62035995557316e-7
 + k2=0.0341574053396512 lk2=-1.02780253841821e-7
 + k3=-15.845
@@ -13011,8 +13011,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.253522662711887+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))} lvoff=7.75570041807003e-9
-+ nfactor={1.80167922468848+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))} lnfactor=-4.54899715828525e-7
++ voff=-0.253522662711887 lvoff=7.75570041807003e-9
++ nfactor=1.80167922468848 lnfactor=-4.54899715828525e-7
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -13164,23 +13164,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=3.0e-6
 + sbref=3.0e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.48 pmos
@@ -13234,14 +13234,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.05054181799566+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))} lvth0=3.09487557653687e-8
++ vth0=-1.05054181799566 lvth0=3.09487557653687e-8
 + k1=0.396875640134176 lk1=2.35908421331797e-7
 + k2=0.030270959210814 lk2=-8.7125695472221e-08 pk2=-8.07793566946316e-28
 + k3=-15.845
@@ -13285,8 +13285,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.259728336626541+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))} lvoff=3.27520804781854e-8
-+ nfactor={1.79962332430839+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))} lnfactor=-4.46618573768354e-7
++ voff=-0.259728336626541 lvoff=3.27520804781854e-8
++ nfactor=1.79962332430839 lnfactor=-4.46618573768354e-7
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -13438,23 +13438,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=3.0e-6
 + sbref=3.0e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.49 pmos
@@ -13508,14 +13508,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.05702294619999+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))} lvth0=4.40924059902506e-8
++ vth0=-1.05702294619999 lvth0=4.40924059902506e-8
 + k1=0.546531509734791 lk1=-6.75918863478201e-8
 + k2=-0.0273837315122161 lk2=2.97973254577964e-8
 + k3=-15.845
@@ -13559,8 +13559,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.235439790963159+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))} lvoff=-1.65047986646045e-8
-+ nfactor={1.81601745824841+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))} lnfactor=-4.79865680669056e-7
++ voff=-0.235439790963159 lvoff=-1.65047986646045e-8
++ nfactor=1.81601745824841 lnfactor=-4.79865680669056e-7
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -13712,23 +13712,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=2.74e-6
 + sbref=2.74e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.50 pmos
@@ -13782,14 +13782,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.03948435017439+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))} lvth0=2.6062939739076e-8
++ vth0=-1.03948435017439 lvth0=2.6062939739076e-8
 + k1=0.512557904315756 lk1=-3.26674276603115e-8
 + k2=-0.0144098037915521 lk2=1.64602834480861e-08 wk2=1.05879118406788e-22 pk2=2.52435489670724e-29
 + k3=-15.845
@@ -13833,8 +13833,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.246860931487362+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))} lvoff=-4.76400325941179e-9
-+ nfactor={1.16947037163436+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))} lnfactor=1.84776965805099e-7
++ voff=-0.246860931487362 lvoff=-4.76400325941179e-9
++ nfactor=1.16947037163436 lnfactor=1.84776965805099e-7
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -13986,23 +13986,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=1.74e-6
 + sbref=1.74e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.51 pmos
@@ -14056,14 +14056,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope1/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-0.999379267571214+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope1/sqrt(l*w*mult))} lvth0=4.88793738558752e-9
++ vth0=-0.999379267571214 lvth0=4.88793738558752e-9
 + k1=0.0947761652936023 lk1=1.87916317162521e-7
 + k2=0.135789416375152 lk2=-6.28431024092917e-08 pk2=3.02922587604869e-28
 + k3=-15.845
@@ -14107,8 +14107,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.21206765718896+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope1/sqrt(l*w*mult))} lvoff=-2.31344345696754e-8
-+ nfactor={1.18270483332961+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope1/sqrt(l*w*mult))} lnfactor=1.77789328843567e-7
++ voff=-0.21206765718896 lvoff=-2.31344345696754e-8
++ nfactor=1.18270483332961 lnfactor=1.77789328843567e-7
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -14260,23 +14260,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=1.24e-6
 + sbref=1.24e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.52 pmos
@@ -14330,14 +14330,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope1/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-0.898813839137148+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope1/sqrt(l*w*mult))} lvth0=-2.30680449339414e-8
++ vth0=-0.898813839137148 lvth0=-2.30680449339414e-8
 + k1=-0.0222895163119858 lk1=2.20459171860698e-7
 + k2=0.202818495717768 lk2=-8.14763821175869e-08 pk2=8.07793566946316e-28
 + k3=-15.845
@@ -14381,8 +14381,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.140191869549724+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope1/sqrt(l*w*mult))} lvoff=-4.31150410239358e-8
-+ nfactor={1.04344895699438+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope1/sqrt(l*w*mult))} lnfactor=2.16500791394274e-7
++ voff=-0.140191869549724 lvoff=-4.31150410239358e-8
++ nfactor=1.04344895699438 lnfactor=2.16500791394274e-7
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -14534,23 +14534,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=1.1e-6
 + sbref=1.1e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.53 pmos
@@ -14604,14 +14604,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope1/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={5.06083760555936+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope1/sqrt(l*w*mult))} lvth0=-1.26260402961347e-06 wvth0=-9.84030522075687e-06 pvth0=2.04666540225478e-12
++ vth0=5.06083760555936 lvth0=-1.26260402961347e-06 wvth0=-9.84030522075687e-06 pvth0=2.04666540225478e-12
 + k1=-0.670026059893303 lk1=3.55180600087097e-7
 + k2=-1.91120888457414 lk2=3.58215944654566e-07 wk2=3.99983067601606e-06 pk2=-8.31916782643231e-13
 + k3=-15.845
@@ -14655,8 +14655,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={8.96383466603152+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope1/sqrt(l*w*mult))} lvoff=-1.9366433121064e-06 wvoff=-1.51536811525769e-05 pvoff=3.15178383556216e-12
-+ nfactor={-90.1684545286597+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope1/sqrt(l*w*mult))} lnfactor=1.91874821735685e-05 wnfactor=0.000147567143860507 pnfactor=-3.0692195117259e-11
++ voff=8.96383466603152 lvoff=-1.9366433121064e-06 wvoff=-1.51536811525769e-05 pvoff=3.15178383556216e-12
++ nfactor=-90.1684545286597 lnfactor=1.91874821735685e-05 wnfactor=0.000147567143860507 pnfactor=-3.0692195117259e-11
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -14808,23 +14808,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=1.04e-6
 + sbref=1.04e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.54 pmos
@@ -14878,14 +14878,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.13721960981+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))} wvth0=1.46274564127018e-7
++ vth0=-1.13721960981 wvth0=1.46274564127018e-7
 + k1=0.203519229344934 wk1=3.58985286325653e-7
 + k2=0.0981375988951133 wk2=-1.25570212820576e-7
 + k3=-15.845
@@ -14929,8 +14929,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.252878050853266+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))} wvoff=5.25730925959465e-10
-+ nfactor={2.33929763662267+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))} wnfactor=-9.71885188528142e-7
++ voff=-0.252878050853266 wvoff=5.25730925959465e-10
++ nfactor=2.33929763662267 wnfactor=-9.71885188528142e-7
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -15082,23 +15082,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=3.0e-6
 + sbref=3.0e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.55 pmos
@@ -15152,14 +15152,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.13721960981+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))} wvth0=1.46274564127017e-7
++ vth0=-1.13721960981 wvth0=1.46274564127017e-7
 + k1=0.203519229344933 wk1=3.58985286325653e-7
 + k2=0.0981375988951133 wk2=-1.25570212820576e-7
 + k3=-15.845
@@ -15203,8 +15203,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.252878050853266+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))} wvoff=5.25730925959677e-10
-+ nfactor={2.33929763662267+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))} wnfactor=-9.71885188528144e-7
++ voff=-0.252878050853266 wvoff=5.25730925959677e-10
++ nfactor=2.33929763662267 wnfactor=-9.71885188528144e-7
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -15356,23 +15356,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=3.0e-6
 + sbref=3.0e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.56 pmos
@@ -15426,14 +15426,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.16849585331384+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))} lvth0=2.51085307533899e-07 wvth0=1.89324172923742e-07 pvth0=-3.4560174282479e-13
++ vth0=-1.16849585331384 lvth0=2.51085307533899e-07 wvth0=1.89324172923742e-07 pvth0=-3.4560174282479e-13
 + k1=-0.0684463462446692 lk1=2.18333637724642e-06 wk1=7.50375963301182e-07 pk1=-3.14207965807141e-12
 + k2=0.190687381623033 lk2=-7.4298854514235e-07 wk2=-2.55987902280029e-07 pk2=1.04699164596821e-12
 + k3=-15.845
@@ -15477,8 +15477,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.220739138238022+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))} lvoff=-2.58010804808232e-07 wvoff=-5.36139202130727e-08 pvoff=4.34632469668336e-13
-+ nfactor={3.88350450622816+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))} lnfactor=-1.23968742187104e-05 wnfactor=-3.40460082719276e-06 pnfactor=1.95298119546119e-11
++ voff=-0.220739138238022 lvoff=-2.58010804808232e-07 wvoff=-5.36139202130727e-08 pvoff=4.34632469668336e-13
++ nfactor=3.88350450622816 lnfactor=-1.23968742187104e-05 wnfactor=-3.40460082719276e-06 pnfactor=1.95298119546119e-11
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -15630,23 +15630,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=3.0e-6
 + sbref=3.0e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.57 pmos
@@ -15700,14 +15700,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.12862681659169+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))} lvth0=9.04933060455088e-08 wvth0=1.27699597640955e-07 pvth0=-9.73786930806283e-14
++ vth0=-1.12862681659169 lvth0=9.04933060455088e-08 wvth0=1.27699597640955e-07 pvth0=-9.73786930806283e-14
 + k1=0.265168445669288 lk1=8.39539998794508e-07 wk1=2.1539291851177e-07 pk1=-9.87174373456203e-13
 + k2=0.0856273628741691 lk2=-3.19808050342149e-07 wk2=-9.05294307711021e-08 pk2=3.80526908231913e-13
 + k3=-15.845
@@ -15751,8 +15751,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.329461403567899+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))} lvoff=1.79921175273331e-07 wvoff=1.14040913757977e-07 pvoff=-2.40679189709046e-13
-+ nfactor={0.290510173684805+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))} lnfactor=2.07566383684219e-06 wnfactor=2.46799187544725e-06 pnfactor=-4.12492098050966e-12
++ voff=-0.329461403567899 lvoff=1.79921175273331e-07 wvoff=1.14040913757977e-07 pvoff=-2.40679189709046e-13
++ nfactor=0.290510173684805 lnfactor=2.07566383684219e-06 wnfactor=2.46799187544725e-06 pnfactor=-4.12492098050966e-12
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -15904,23 +15904,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=3.0e-6
 + sbref=3.0e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.58 pmos
@@ -15974,14 +15974,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.14491397512949+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))} lvth0=1.23523468114267e-07 wvth0=1.43736303161259e-07 pvth0=-1.29900939435341e-13
++ vth0=-1.14491397512949 lvth0=1.23523468114267e-07 wvth0=1.43736303161259e-07 pvth0=-1.29900939435341e-13
 + k1=0.79387414802023 lk1=-2.32668821104779e-07 wk1=-4.04502221379415e-07 pk1=2.69965531501442e-13
 + k2=-0.128470728595044 lk2=1.14380309980317e-07 wk2=1.65316886550679e-07 pk2=-1.38326353140851e-13
 + k3=-15.845
@@ -16025,8 +16025,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.199636694206759+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))} lvoff=-8.33617774145498e-08 wvoff=-5.85521051712637e-08 pvoff=1.09337381563228e-13
-+ nfactor={2.82345525672655+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))} lnfactor=-3.06111839622547e-06 wnfactor=-1.64755591761634e-06 pnfactor=4.22136055724979e-12
++ voff=-0.199636694206759 lvoff=-8.33617774145498e-08 wvoff=-5.85521051712637e-08 pvoff=1.09337381563228e-13
++ nfactor=2.82345525672655 lnfactor=-3.06111839622547e-06 wnfactor=-1.64755591761634e-06 pnfactor=4.22136055724979e-12
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -16178,23 +16178,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=2.74e-6
 + sbref=2.74e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.59 pmos
@@ -16248,14 +16248,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.02472168522517+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))} lvth0=-3.27635998885838e-11 wvth0=-2.41427471091771e-08 pvth0=4.26767096940637e-14
++ vth0=-1.02472168522517 lvth0=-3.27635998885838e-11 wvth0=-2.41427471091771e-08 pvth0=4.26767096940637e-14
 + k1=0.887957685245111 lk1=-3.29385568369508e-07 wk1=-6.13925873613569e-07 pk1=4.85250532914325e-13
 + k2=-0.131553997279161 lk2=1.17549873188366e-07 wk2=1.91576700304927e-07 pk2=-1.65321126562453e-13
 + k3=-15.845
@@ -16299,8 +16299,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.263163280019567+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))} lvoff=-1.80572095180129e-08 wvoff=2.66607336312529e-08 pvoff=2.17396058283072e-14
-+ nfactor={-0.643670559204143+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))} lnfactor=5.03045337041487e-07 wnfactor=2.9651965357941e-06 pnfactor=-5.204936118267e-13
++ voff=-0.263163280019567 lvoff=-1.80572095180129e-08 wvoff=2.66607336312529e-08 pvoff=2.17396058283072e-14
++ nfactor=-0.643670559204143 lnfactor=5.03045337041487e-07 wnfactor=2.9651965357941e-06 pnfactor=-5.204936118267e-13
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -16452,23 +16452,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=1.74e-6
 + sbref=1.74e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.60 pmos
@@ -16522,14 +16522,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope1/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.03122419291467+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope1/sqrt(l*w*mult))} lvth0=3.40048243007515e-09 wvth0=5.2078942516297e-08 pvth0=2.43257223208837e-15
++ vth0=-1.03122419291467 lvth0=3.40048243007515e-09 wvth0=5.2078942516297e-08 pvth0=2.43257223208837e-15
 + k1=-0.975762274849525 lk1=6.54636205920939e-07 wk1=1.75075021481023e-06 pk1=-7.63270065660382e-13
 + k2=0.536681092126767 lk2=-2.35270235196891e-07 wk2=-6.5561511956912e-07 pk2=2.81985988029205e-13
 + k3=-15.845
@@ -16573,8 +16573,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.264525644871572+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope1/sqrt(l*w*mult))} lvoff=-1.73378972245326e-08 wvoff=8.57893838838389e-08 pvoff=-9.47961196125516e-15
-+ nfactor={-1.19507566029197+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope1/sqrt(l*w*mult))} lnfactor=7.94180613554647e-07 wnfactor=3.88860367258087e-06 pnfactor=-1.00804149916447e-12
++ voff=-0.264525644871572 lvoff=-1.73378972245326e-08 wvoff=8.57893838838389e-08 pvoff=-9.47961196125516e-15
++ nfactor=-1.19507566029197 lnfactor=7.94180613554647e-07 wnfactor=3.88860367258087e-06 pnfactor=-1.00804149916447e-12
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -16726,23 +16726,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=1.24e-6
 + sbref=1.24e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.61 pmos
@@ -16796,14 +16796,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope1/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-0.89785483493703+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope1/sqrt(l*w*mult))} lvth0=-3.36745986554131e-08 wvth0=-1.56834798863205e-09 pvth0=1.73458752249719e-14
++ vth0=-0.89785483493703 lvth0=-3.36745986554131e-08 wvth0=-1.56834798863205e-09 pvth0=1.73458752249719e-14
 + k1=3.25699492471341 lk1=-5.22019502471163e-07 wk1=-5.36291619643431e-06 pk1=1.21424383266867e-12
 + k2=-1.00997991442022 lk2=1.94682964691092e-07 wk2=1.98340106011207e-06 pk2=-4.51628841728009e-13
 + k3=-15.845
@@ -16847,8 +16847,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.442652006206496+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope1/sqrt(l*w*mult))} lvoff=3.21790937102405e-08 wvoff=4.94640948299436e-07 pvoff=-1.23135440650018e-13
-+ nfactor={2.61882092417292+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope1/sqrt(l*w*mult))} lnfactor=-2.66036870167578e-07 wnfactor=-2.57635102722259e-06 pnfactor=7.89138327924491e-13
++ voff=-0.442652006206496 lvoff=3.21790937102405e-08 wvoff=4.94640948299436e-07 pvoff=-1.23135440650018e-13
++ nfactor=2.61882092417292 lnfactor=-2.66036870167578e-07 wnfactor=-2.57635102722259e-06 pnfactor=7.89138327924491e-13
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -17000,23 +17000,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=1.1e-6
 + sbref=1.1e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.62 pmos
@@ -17070,14 +17070,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope1/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.50228255977295+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope1/sqrt(l*w*mult))} lvth0=9.20391149777593e-08 wvth0=8.92970305290255e-07 pvth0=-1.68707430193196e-13
++ vth0=-1.50228255977295 lvth0=9.20391149777593e-08 wvth0=8.92970305290255e-07 pvth0=-1.68707430193196e-13
 + k1=-2.8786037284572 lk1=7.54111390204487e-07 wk1=3.61189069226355e-06 pk1=-6.5240830249782e-13
 + k2=1.58581188824321 lk2=-3.45210580761269e-07 wk2=-1.71916981908741e-06 pk2=3.18461470294931e-13
 + k3=-15.845
@@ -17121,8 +17121,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.109758858335734+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope1/sqrt(l*w*mult))} lvoff=-3.70586863291031e-08 wvoff=-3.14797076856199e-07 pvoff=4.52179553260525e-14
-+ nfactor={-2.52023047888621+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope1/sqrt(l*w*mult))} lnfactor=8.02824153051882e-07 wnfactor=4.22792190565471e-06 pnfactor=-6.26068790838793e-13
++ voff=-0.109758858335734 lvoff=-3.70586863291031e-08 wvoff=-3.14797076856199e-07 pvoff=4.52179553260525e-14
++ nfactor=-2.52023047888621 lnfactor=8.02824153051882e-07 wnfactor=4.22792190565471e-06 pnfactor=-6.26068790838793e-13
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -17274,23 +17274,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=1.04e-6
 + sbref=1.04e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.63 pmos
@@ -17344,14 +17344,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.019767+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))}
++ vth0=-1.019767
 + k1=0.49177002
 + k2=-0.002690247
 + k3=-15.845
@@ -17395,8 +17395,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.25245591+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor={1.5589128+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))}
++ voff=-0.25245591
++ nfactor=1.5589128
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -17548,23 +17548,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=3.0e-6
 + sbref=3.0e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.64 pmos
@@ -17618,14 +17618,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.019767+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))}
++ vth0=-1.019767
 + k1=0.49177002
 + k2=-0.002690247
 + k3=-15.845
@@ -17669,8 +17669,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.25245591+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor={1.5589128+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))}
++ voff=-0.25245591
++ nfactor=1.5589128
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -17822,23 +17822,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=3.0e-6
 + sbref=3.0e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.65 pmos
@@ -17892,14 +17892,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.016476133804+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))} lvth0=-2.64190343310947e-8
++ vth0=-1.016476133804 lvth0=-2.64190343310947e-8
 + k1=0.534075464395531 lk1=-3.39627599941981e-7
 + k2=-0.014860639538516 lk2=9.7703765254496e-08 pk2=-2.52435489670724e-29
 + k3=-15.845
@@ -17943,8 +17943,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.26378896640707+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))} lvoff=9.09816408392809e-8
-+ nfactor={1.1497465565696+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))} lnfactor=3.28478169226432e-6
++ voff=-0.26378896640707 lvoff=9.09816408392809e-8
++ nfactor=1.1497465565696 lnfactor=3.28478169226432e-6
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -18096,23 +18096,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=3.0e-6
 + sbref=3.0e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.66 pmos
@@ -18166,14 +18166,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.02608916006794+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))} lvth0=1.23021201037378e-8
++ vth0=-1.02608916006794 lvth0=1.23021201037378e-8
 + k1=0.43812032260554 lk1=4.68785597263962e-8
 + k2=0.01293585993148 lk2=-1.42602010526543e-8
 + k3=-15.845
@@ -18217,8 +18217,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.23789112252874+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))} lvoff=-1.33345635285058e-8
-+ nfactor={2.2722086903828+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))} lnfactor=-1.23648231318963e-6
++ voff=-0.23789112252874 lvoff=-1.33345635285058e-8
++ nfactor=2.2722086903828 lnfactor=-1.23648231318963e-6
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -18370,23 +18370,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=3.0e-6
 + sbref=3.0e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.67 pmos
@@ -18440,14 +18440,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.02949948709812+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))} lvth0=1.92182223970204e-8
++ vth0=-1.02949948709812 lvth0=1.92182223970204e-8
 + k1=0.469075083613521 lk1=-1.58973241406559e-8
 + k2=0.004272102579488 lk2=3.30979489209729e-9
 + k3=-15.845
@@ -18491,8 +18491,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.2466516868904+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))} lvoff=4.43175587016839e-9
-+ nfactor={1.5005339170744+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))} lnfactor=3.28464866982522e-7
++ voff=-0.2466516868904 lvoff=4.43175587016839e-9
++ nfactor=1.5005339170744 lnfactor=3.28464866982522e-7
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -18644,23 +18644,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=2.74e-6
 + sbref=2.74e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.68 pmos
@@ -18714,14 +18714,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.0441073431+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))} lvth0=3.42349230726832e-8
++ vth0=-1.0441073431 lvth0=3.42349230726832e-8
 + k1=0.394999825372881 lk1=6.02511524276241e-8
 + k2=0.0222744113979824 lk2=-1.51963625456091e-8
 + k3=-15.845
@@ -18765,8 +18765,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.24175577993144+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))} lvoff=-6.01177732758859e-10
-+ nfactor={1.7372633632936+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))} lnfactor=8.5109837022539e-8
++ voff=-0.24175577993144 lvoff=-6.01177732758859e-10
++ nfactor=1.7372633632936 lnfactor=8.5109837022539e-8
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -18918,23 +18918,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=1.74e-6
 + sbref=1.74e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.69 pmos
@@ -18988,14 +18988,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope1/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-0.989406890288+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope1/sqrt(l*w*mult))} lvth0=5.35374039338062e-9
++ vth0=-0.989406890288 lvth0=5.35374039338062e-9
 + k1=0.43001994765856 lk1=4.17609481022523e-8
 + k2=0.0102484393695712 lk2=-8.84679362627236e-9
 + k3=-15.845
@@ -19039,8 +19039,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.19564020951728+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope1/sqrt(l*w*mult))} lvoff=-2.49496455245904e-8
-+ nfactor={1.9273171671088+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope1/sqrt(l*w*mult))} lnfactor=-1.52362907462407e-8
++ voff=-0.19564020951728 lvoff=-2.49496455245904e-8
++ nfactor=1.9273171671088 lnfactor=-1.52362907462407e-8
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -19192,23 +19192,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=1.24e-6
 + sbref=1.24e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.70 pmos
@@ -19262,14 +19262,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope1/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-0.899114155485712+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope1/sqrt(l*w*mult))} lvth0=-1.9746556368837e-8
++ vth0=-0.899114155485712 lvth0=-1.9746556368837e-8
 + k1=-1.04921174370343 lk1=4.52969607520589e-7
 + k2=0.582611608243943 lk2=-1.67956886215321e-07 wk2=-1.58818677610181e-22 pk2=5.04870979341448e-29
 + k3=-15.845
@@ -19313,8 +19313,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.0454751583834279+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope1/sqrt(l*w*mult))} lvoff=-6.66937277591875e-8
-+ nfactor={0.550114353485718+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope1/sqrt(l*w*mult))} lnfactor=3.67609565007212e-7
++ voff=-0.0454751583834279 lvoff=-6.66937277591875e-8
++ nfactor=0.550114353485718 lnfactor=3.67609565007212e-7
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -19466,23 +19466,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=1.1e-6
 + sbref=1.1e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.71 pmos
@@ -19536,14 +19536,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope1/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-0.795606604232184+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope1/sqrt(l*w*mult))} lvth0=-4.12748849389571e-08 wvth0=1.28815823322332e-08 pvth0=-2.67921454611697e-15
++ vth0=-0.795606604232184 lvth0=-4.12748849389571e-08 wvth0=1.28815823322332e-08 pvth0=-2.67921454611697e-15
 + k1=4.11830102617436 lk1=-6.21811038460751e-07 wk1=-5.10199991329752e-06 pk1=1.06115475796693e-12
 + k2=-1.38668350242437 lk2=2.41632865262361e-07 wk2=1.98275275498596e-06 pk2=-4.1238878000402e-13
 + k3=-15.845
@@ -19587,8 +19587,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.792461582861876+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope1/sqrt(l*w*mult))} lvoff=8.86704846952355e-08 wvoff=5.35435571187402e-07 pvoff=-1.11364173580126e-13
-+ nfactor={4.79901743330167+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope1/sqrt(l*w*mult))} lnfactor=-5.1611128875755e-07 wnfactor=-4.88741235405034e-06 pnfactor=1.01652312069422e-12
++ voff=-0.792461582861876 lvoff=8.86704846952355e-08 wvoff=5.35435571187402e-07 pvoff=-1.11364173580126e-13
++ nfactor=4.79901743330167 lnfactor=-5.1611128875755e-07 wnfactor=-4.88741235405034e-06 pnfactor=1.01652312069422e-12
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -19740,23 +19740,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=1.04e-6
 + sbref=1.04e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.72 pmos
@@ -19810,14 +19810,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.019767+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))}
++ vth0=-1.019767
 + k1=0.49177002
 + k2=-0.002690247
 + k3=-15.845
@@ -19861,8 +19861,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.25245591+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor={1.5589128+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))}
++ voff=-0.25245591
++ nfactor=1.5589128
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -20014,23 +20014,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=3.0e-6
 + sbref=3.0e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.73 pmos
@@ -20084,14 +20084,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.019767+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))}
++ vth0=-1.019767
 + k1=0.49177002
 + k2=-0.002690247
 + k3=-15.845
@@ -20135,8 +20135,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.25245591+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor={1.5589128+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))}
++ voff=-0.25245591
++ nfactor=1.5589128
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -20288,23 +20288,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=3.0e-6
 + sbref=3.0e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.74 pmos
@@ -20358,14 +20358,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.016476133804+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))} lvth0=-2.64190343310947e-8
++ vth0=-1.016476133804 lvth0=-2.64190343310947e-8
 + k1=0.53407546439553 lk1=-3.39627599941978e-7
 + k2=-0.014860639538516 lk2=9.77037652544961e-08 wk2=-6.61744490042422e-24 pk2=5.04870979341448e-29
 + k3=-15.845
@@ -20409,8 +20409,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.26378896640707+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))} lvoff=9.09816408392809e-8
-+ nfactor={1.1497465565696+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))} lnfactor=3.28478169226435e-6
++ voff=-0.26378896640707 lvoff=9.09816408392809e-8
++ nfactor=1.1497465565696 lnfactor=3.28478169226435e-6
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -20562,23 +20562,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=3.0e-6
 + sbref=3.0e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.75 pmos
@@ -20632,14 +20632,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.02608916006794+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))} lvth0=1.23021201037378e-8
++ vth0=-1.02608916006794 lvth0=1.23021201037378e-8
 + k1=0.43812032260554 lk1=4.68785597263962e-8
 + k2=0.01293585993148 lk2=-1.42602010526543e-8
 + k3=-15.845
@@ -20683,8 +20683,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.23789112252874+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))} lvoff=-1.3334563528505e-8
-+ nfactor={2.2722086903828+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))} lnfactor=-1.23648231318964e-6
++ voff=-0.23789112252874 lvoff=-1.3334563528505e-8
++ nfactor=2.2722086903828 lnfactor=-1.23648231318964e-6
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -20836,23 +20836,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=3.0e-6
 + sbref=3.0e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.76 pmos
@@ -20906,14 +20906,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.02949948709812+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))} lvth0=1.92182223970221e-8
++ vth0=-1.02949948709812 lvth0=1.92182223970221e-8
 + k1=0.46907508361352 lk1=-1.58973241406542e-8
 + k2=0.004272102579488 lk2=3.30979489209729e-9
 + k3=-15.845
@@ -20957,8 +20957,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.2466516868904+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))} lvoff=4.43175587016839e-9
-+ nfactor={1.5005339170744+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))} lnfactor=3.28464866982522e-7
++ voff=-0.2466516868904 lvoff=4.43175587016839e-9
++ nfactor=1.5005339170744 lnfactor=3.28464866982522e-7
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -21110,23 +21110,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=2.74e-6
 + sbref=2.74e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.77 pmos
@@ -21180,14 +21180,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.0441073431+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))} lvth0=3.42349230726832e-8
++ vth0=-1.0441073431 lvth0=3.42349230726832e-8
 + k1=0.39499982537288 lk1=6.02511524276237e-8
 + k2=0.0222744113979824 lk2=-1.51963625456091e-08 pk2=6.31088724176809e-30
 + k3=-15.845
@@ -21231,8 +21231,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.24175577993144+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))} lvoff=-6.01177732758859e-10
-+ nfactor={1.7372633632936+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))} lnfactor=8.5109837022539e-8
++ voff=-0.24175577993144 lvoff=-6.01177732758859e-10
++ nfactor=1.7372633632936 lnfactor=8.5109837022539e-8
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -21384,23 +21384,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=1.74e-6
 + sbref=1.74e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.78 pmos
@@ -21454,14 +21454,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope1/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-0.989406890288+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope1/sqrt(l*w*mult))} lvth0=5.35374039338062e-9
++ vth0=-0.989406890288 lvth0=5.35374039338062e-9
 + k1=0.430019947658559 lk1=4.17609481022523e-8
 + k2=0.0102484393695712 lk2=-8.84679362627236e-09 pk2=-3.15544362088405e-30
 + k3=-15.845
@@ -21505,8 +21505,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.19564020951728+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope1/sqrt(l*w*mult))} lvoff=-2.49496455245903e-8
-+ nfactor={1.9273171671088+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope1/sqrt(l*w*mult))} lnfactor=-1.52362907462415e-8
++ voff=-0.19564020951728 lvoff=-2.49496455245903e-8
++ nfactor=1.9273171671088 lnfactor=-1.52362907462415e-8
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -21658,23 +21658,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=1.24e-6
 + sbref=1.24e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.79 pmos
@@ -21728,14 +21728,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope1/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-0.899114155485712+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope1/sqrt(l*w*mult))} lvth0=-1.97465563688362e-8
++ vth0=-0.899114155485712 lvth0=-1.97465563688362e-8
 + k1=-1.04921174370343 lk1=4.52969607520589e-7
 + k2=0.582611608243943 lk2=-1.67956886215321e-7
 + k3=-15.845
@@ -21779,8 +21779,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.045475158383427+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope1/sqrt(l*w*mult))} lvoff=-6.66937277591875e-8
-+ nfactor={0.550114353485711+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope1/sqrt(l*w*mult))} lnfactor=3.67609565007215e-7
++ voff=-0.045475158383427 lvoff=-6.66937277591875e-8
++ nfactor=0.550114353485711 lnfactor=3.67609565007215e-7
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -21932,23 +21932,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=1.1e-6
 + sbref=1.1e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.80 pmos
@@ -22002,14 +22002,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope1/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-0.767077914345563+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope1/sqrt(l*w*mult))} lvth0=-4.72085100910932e-08 wvth0=-1.52303661582568e-08 pvth0=3.16773339652276e-15
++ vth0=-0.767077914345563 lvth0=-4.72085100910932e-08 wvth0=-1.52303661582568e-08 pvth0=3.16773339652276e-15
 + k1=-5.85428844906348 lk1=1.45236790131502e-06 wk1=4.72491196940394e-06 pk1=-9.82724990692385e-13
 + k2=2.23290028267025 lk2=-5.111971270319e-07 wk2=-1.58395687409276e-06 pk2=3.29444022328805e-13
 + k3=-15.845
@@ -22053,8 +22053,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={0.220456653985726+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope1/sqrt(l*w*mult))} lvoff=-1.22004353550224e-07 wvoff=-4.62686158639979e-07 pvoff=9.62331687632118e-14
-+ nfactor={3.32921144413835+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope1/sqrt(l*w*mult))} lnfactor=-2.10409280683448e-07 wnfactor=-3.43907699681553e-06 pnfactor=7.15286746413668e-13
++ voff=0.220456653985726 lvoff=-1.22004353550224e-07 wvoff=-4.62686158639979e-07 pvoff=9.62331687632118e-14
++ nfactor=3.32921144413835 lnfactor=-2.10409280683448e-07 wnfactor=-3.43907699681553e-06 pnfactor=7.15286746413668e-13
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -22206,23 +22206,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=1.04e-6
 + sbref=1.04e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.81 pmos
@@ -22276,14 +22276,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-0.950470729975101+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))} wvth0=-5.71966007676452e-8
++ vth0=-0.950470729975101 wvth0=-5.71966007676452e-8
 + k1=0.53274593583127 wk1=-3.38212013149867e-8
 + k2=-0.0043856305323825 wk2=1.39935634363696e-9
 + k3=-15.845
@@ -22327,8 +22327,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.14070598491445+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))} wvoff=-9.22375165161974e-8
-+ nfactor={1.2571207257031+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))} wnfactor=2.49096824146482e-7
++ voff=-0.14070598491445 wvoff=-9.22375165161974e-8
++ nfactor=1.2571207257031 wnfactor=2.49096824146482e-7
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -22480,23 +22480,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=3.0e-6
 + sbref=3.0e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.82 pmos
@@ -22550,14 +22550,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-0.950470729975101+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))} wvth0=-5.71966007676452e-8
++ vth0=-0.950470729975101 wvth0=-5.71966007676452e-8
 + k1=0.53274593583127 wk1=-3.38212013149867e-8
 + k2=-0.0043856305323825 wk2=1.39935634363696e-9
 + k3=-15.845
@@ -22601,8 +22601,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.14070598491445+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))} wvoff=-9.22375165161972e-8
-+ nfactor={1.2571207257031+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))} wnfactor=2.49096824146482e-7
++ voff=-0.14070598491445 wvoff=-9.22375165161972e-8
++ nfactor=1.2571207257031 wnfactor=2.49096824146482e-7
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -22754,23 +22754,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=3.0e-6
 + sbref=3.0e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.83 pmos
@@ -22824,14 +22824,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-0.826096246413726+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))} lvth0=-9.98476861536911e-07 wvth0=-1.57138074088811e-07 pvth0=8.02328948524631e-13
++ vth0=-0.826096246413726 lvth0=-9.98476861536911e-07 wvth0=-1.57138074088811e-07 pvth0=8.02328948524631e-13
 + k1=0.656080299923008 lk1=-9.90126794916101e-07 wk1=-1.00701839606663e-07 pk1=5.36916961637919e-13
 + k2=-0.00169830334201462 lk2=-2.15738304363471e-08 wk2=-1.08640896303699e-08 pk2=9.84507971179755e-14
 + k3=-15.845
@@ -22875,8 +22875,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={0.00226276346076126+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))} lvoff=-1.14775139633121e-06 wvoff=-2.19597022629415e-07 pvoff=1.02244058676284e-12
-+ nfactor={0.431089270255342+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))} lnfactor=6.63137061195712e-06 wnfactor=5.93174118596954e-07 pnfactor=-2.76224839092085e-12
++ voff=0.00226276346076126 lvoff=-1.14775139633121e-06 wvoff=-2.19597022629415e-07 pvoff=1.02244058676284e-12
++ nfactor=0.431089270255342 lnfactor=6.63137061195712e-06 wnfactor=5.93174118596954e-07 pnfactor=-2.76224839092085e-12
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -23028,23 +23028,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=3.0e-6
 + sbref=3.0e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.84 pmos
@@ -23098,14 +23098,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.20600150053032+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))} lvth0=5.31776943181678e-07 wvth0=1.48498242501392e-07 pvth0=-4.28770467064906e-13
++ vth0=-1.20600150053032 lvth0=5.31776943181678e-07 wvth0=1.48498242501392e-07 pvth0=-4.28770467064906e-13
 + k1=0.321160683423464 lk1=3.5892540130866e-07 wk1=9.65375738956997e-08 pk1=-2.57561029076637e-13
 + k2=-0.0115142773622294 lk2=1.796479512539e-08 wk2=2.01809526111569e-08 pk2=-2.65982604903875e-14
 + k3=-15.845
@@ -23149,8 +23149,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.371907071953499+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))} lvoff=3.594002106794e-07 wvoff=1.10615719330791e-07 pvoff=-3.07652375299967e-13
-+ nfactor={3.57053313598733+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))} lnfactor=-6.01427160588491e-06 wnfactor=-1.0716268704713e-06 pnfactor=3.9435500154342e-12
++ voff=-0.371907071953499 lvoff=3.594002106794e-07 wvoff=1.10615719330791e-07 pvoff=-3.07652375299967e-13
++ nfactor=3.57053313598733 lnfactor=-6.01427160588491e-06 wnfactor=-1.0716268704713e-06 pnfactor=3.9435500154342e-12
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -23302,23 +23302,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=3.0e-6
 + sbref=3.0e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.85 pmos
@@ -23372,14 +23372,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-0.884619779317166+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))} lvth0=-1.19981330857944e-07 wvth0=-1.19582580740679e-07 pvth0=1.14894225500134e-13
++ vth0=-0.884619779317166 lvth0=-1.19981330857944e-07 wvth0=-1.19582580740679e-07 pvth0=1.14894225500134e-13
 + k1=0.644716835770763 lk1=-2.97242592977832e-07 wk1=-1.44973332224921e-07 pk1=2.32220190405108e-13
 + k2=-0.0340285625151805 lk2=6.36234952441529e-08 wk2=3.16130702239516e-08 pk2=-4.9782457823724e-14
 + k3=-15.845
@@ -23423,8 +23423,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.225170202535416+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))} lvoff=6.18196003419603e-08 wvoff=-1.7730649631026e-08 pvoff=-4.73674792018301e-14
-+ nfactor={-1.39723128963658+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))} lnfactor=4.06029503610725e-06 wnfactor=2.39179279905063e-06 pnfactor=-3.08022351332024e-12
++ voff=-0.225170202535416 lvoff=6.18196003419603e-08 wvoff=-1.7730649631026e-08 pvoff=-4.73674792018301e-14
++ nfactor=-1.39723128963658 lnfactor=4.06029503610725e-06 wnfactor=2.39179279905063e-06 pnfactor=-3.08022351332024e-12
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -23576,23 +23576,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=2.74e-6
 + sbref=2.74e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.86 pmos
@@ -23646,14 +23646,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.06522603991619+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))} lvth0=6.56797377627292e-08 wvth0=1.74312076262507e-08 pvth0=-2.59543047756093e-14
++ vth0=-1.06522603991619 lvth0=6.56797377627292e-08 wvth0=1.74312076262507e-08 pvth0=-2.59543047756093e-14
 + k1=0.284432272997548 lk1=7.31256141382783e-08 wk1=9.12615953036901e-08 pk1=-1.0626480275173e-14
 + k2=0.0381590533819347 lk2=-1.05845076466908e-08 wk2=-1.31110595933467e-08 pk2=-3.806589061099e-15
 + k3=-15.845
@@ -23697,8 +23697,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.116278783849872+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))} lvoff=-5.01194713697536e-08 wvoff=-1.03567733845156e-07 pvoff=4.08720133252851e-14
-+ nfactor={3.46968243908804+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))} lnfactor=-9.42833874056907e-07 wnfactor=-1.42992519229194e-06 pnfactor=8.48456721164027e-13
++ voff=-0.116278783849872 lvoff=-5.01194713697536e-08 wvoff=-1.03567733845156e-07 pvoff=4.08720133252851e-14
++ nfactor=3.46968243908804 lnfactor=-9.42833874056907e-07 wnfactor=-1.42992519229194e-06 pnfactor=8.48456721164027e-13
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -23850,23 +23850,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=1.74e-6
 + sbref=1.74e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.87 pmos
@@ -23920,14 +23920,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope1/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-0.90822930550617+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope1/sqrt(l*w*mult))} lvth0=-1.72126540449507e-08 wvth0=-6.70033452937613e-08 pvth0=1.86261259515219e-14
++ vth0=-0.90822930550617 lvth0=-1.72126540449507e-08 wvth0=-6.70033452937613e-08 pvth0=1.86261259515219e-14
 + k1=0.248004431126993 lk1=9.23590775118292e-08 wk1=1.50234187624126e-07 pk1=-4.17633013492557e-14
 + k2=0.0622434603725366 lk2=-2.33007855248447e-08 wk2=-4.29162847746838e-08 pk2=1.19302121719448e-14
 + k3=-15.845
@@ -23971,8 +23971,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.128711991236801+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope1/sqrt(l*w*mult))} lvoff=-4.35548870679443e-08 wvoff=-5.5242029328605e-08 pvoff=1.53566212490002e-14
-+ nfactor={1.47432825475324+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope1/sqrt(l*w*mult))} lnfactor=1.10689191021657e-07 wnfactor=3.73893514944764e-07 pnfactor=-1.03937910432465e-13
++ voff=-0.128711991236801 lvoff=-4.35548870679443e-08 wvoff=-5.5242029328605e-08 pvoff=1.53566212490002e-14
++ nfactor=1.47432825475324 lnfactor=1.10689191021657e-07 wnfactor=3.73893514944764e-07 pnfactor=-1.03937910432465e-13
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -24124,23 +24124,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=1.24e-6
 + sbref=1.24e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.88 pmos
@@ -24194,14 +24194,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope1/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-0.938359361478756+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope1/sqrt(l*w*mult))} lvth0=-8.83686004524396e-09 wvth0=3.23926869140483e-08 pvth0=-9.00477824986256e-15
++ vth0=-0.938359361478756 lvth0=-8.83686004524396e-09 wvth0=3.23926869140483e-08 pvth0=-9.00477824986256e-15
 + k1=-2.40846499358988 lk1=8.30825699950024e-07 wk1=1.12191703028093e-06 pk1=-3.11879471413736e-13
 + k2=0.856328152214882 lk2=-2.44046800840715e-07 wk2=-2.25923500404571e-07 pk2=6.28040220304658e-14
 + k3=-15.845
@@ -24245,8 +24245,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.099859314080347+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope1/sqrt(l*w*mult))} lvoff=-5.15755850853126e-08 wvoff=4.4888257915822e-08 pvoff=-1.24783970415035e-14
-+ nfactor={1.88788810007505+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope1/sqrt(l*w*mult))} lnfactor=-4.27548325966071e-09 wnfactor=-1.10418801579961e-06 pnfactor=3.06951018136102e-13
++ voff=-0.099859314080347 lvoff=-5.15755850853126e-08 wvoff=4.4888257915822e-08 pvoff=-1.24783970415035e-14
++ nfactor=1.88788810007505 lnfactor=-4.27548325966071e-09 wnfactor=-1.10418801579961e-06 pnfactor=3.06951018136102e-13
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -24398,23 +24398,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=1.1e-6
 + sbref=1.1e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.89 pmos
@@ -24468,14 +24468,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope1/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-0.409313924038159+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope1/sqrt(l*w*mult))} lvth0=-1.18871962487639e-07 wvth0=-3.10525973198869e-07 pvth0=6.23181880297028e-14
++ vth0=-0.409313924038159 lvth0=-1.18871962487639e-07 wvth0=-3.10525973198869e-07 pvth0=6.23181880297028e-14
 + k1=2.87063228078955 lk1=-2.67163183953605e-07 wk1=-2.47656954663507e-06 pk1=4.36562554745868e-13
 + k2=-0.219073747550769 lk2=-2.03761105122567e-08 wk2=4.39883365054233e-07 pk2=-7.56758163025798e-14
 + k3=-15.845
@@ -24519,8 +24519,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.958768674953031+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope1/sqrt(l*w*mult))} lvoff=1.27067255063875e-07 wvoff=5.10637229908507e-07 pvoff=-1.09348594228318e-13
-+ nfactor={-1.41054828822428+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope1/sqrt(l*w*mult))} lnfactor=6.8175970426994e-07 wnfactor=4.73083716150691e-07 pnfactor=-2.11025748487773e-14
++ voff=-0.958768674953031 lvoff=1.27067255063875e-07 wvoff=5.10637229908507e-07 pvoff=-1.09348594228318e-13
++ nfactor=-1.41054828822428 lnfactor=6.8175970426994e-07 wnfactor=4.73083716150691e-07 pnfactor=-2.11025748487773e-14
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -24672,23 +24672,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=1.04e-6
 + sbref=1.04e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.90 pmos
@@ -24742,14 +24742,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.0419279+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))}
++ vth0=-1.0419279
 + k1=0.47866595
 + k2=-0.0021480645
 + k3=-15.845
@@ -24793,8 +24793,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.28819346+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor={1.6554257+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))}
++ voff=-0.28819346
++ nfactor=1.6554257
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -24946,23 +24946,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=3.0e-6
 + sbref=3.0e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.91 pmos
@@ -25016,14 +25016,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.0419279+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))}
++ vth0=-1.0419279
 + k1=0.47866595
 + k2=-0.0021480645
 + k3=-15.845
@@ -25067,8 +25067,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.28819346+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))}
-+ nfactor={1.6554257+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))}
++ voff=-0.28819346
++ nfactor=1.6554257
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -25220,23 +25220,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=3.0e-6
 + sbref=3.0e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.92 pmos
@@ -25290,14 +25290,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.0773594922438+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))} lvth0=2.84444397354113e-7
++ vth0=-1.0773594922438 lvth0=2.84444397354113e-7
 + k1=0.49505840101435 lk1=-1.31598400033788e-7
 + k2=-0.0190699456975955 lk2=1.35848659191723e-07 wk2=3.30872245021211e-24
 + k3=-15.845
@@ -25341,8 +25341,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.34887212857885+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))} lvoff=4.87127623206986e-7
-+ nfactor={1.3795726677089+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))} lnfactor=2.21454483299657e-6
++ voff=-0.34887212857885 lvoff=4.87127623206986e-7
++ nfactor=1.3795726677089 lnfactor=2.21454483299657e-6
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -25494,23 +25494,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=3.0e-6
 + sbref=3.0e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.93 pmos
@@ -25564,14 +25564,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-0.968553316012839+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))} lvth0=-1.5382557483007e-7
++ vth0=-0.968553316012839 lvth0=-1.5382557483007e-7
 + k1=0.47552393562856 lk1=-5.2913807873411e-8
 + k2=0.020754997200448 lk2=-2.45657329022821e-8
 + k3=-15.845
@@ -25615,8 +25615,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.1950329130964+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))} lvoff=-1.32534890685738e-7
-+ nfactor={1.857005416148+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))} lnfactor=2.9145145147685e-7
++ voff=-0.1950329130964 lvoff=-1.32534890685738e-7
++ nfactor=1.857005416148 lnfactor=2.9145145147685e-7
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -25768,23 +25768,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=3.0e-6
 + sbref=3.0e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.94 pmos
@@ -25838,14 +25838,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.07583191906032+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))} lvth0=6.37341448069794e-8
++ vth0=-1.07583191906032 lvth0=6.37341448069794e-8
 + k1=0.4129049707924 lk1=7.40767013867425e-8
 + k2=0.016520629214348 lk2=-1.59784854388872e-8
 + k3=-15.845
@@ -25889,8 +25889,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.25352145096964+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))} lvoff=-1.39208377412623e-8
-+ nfactor={2.4272372583412+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))} lnfactor=-8.64971881708853e-7
++ voff=-0.25352145096964 lvoff=-1.39208377412623e-8
++ nfactor=2.4272372583412 lnfactor=-8.64971881708853e-7
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -26042,23 +26042,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=2.74e-6
 + sbref=2.74e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.95 pmos
@@ -26112,14 +26112,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.0373535982288+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))} lvth0=2.41788927320285e-8
++ vth0=-1.0373535982288 lvth0=2.41788927320285e-8
 + k1=0.430359253384721 lk1=5.61339083332286e-8
 + k2=0.0171945137005208 lk2=-1.6671230604059e-08 wk2=-4.96308367531817e-24 pk2=-5.52202633654708e-30
 + k3=-15.845
@@ -26163,8 +26163,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.28188323789512+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))} lvoff=1.52347388766883e-8
-+ nfactor={1.183236921712+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))} lnfactor=4.13845536341924e-7
++ voff=-0.28188323789512 lvoff=1.52347388766883e-8
++ nfactor=1.183236921712 lnfactor=4.13845536341924e-7
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -26316,23 +26316,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=1.74e-6
 + sbref=1.74e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.96 pmos
@@ -26386,14 +26386,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope1/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.0153674266624+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope1/sqrt(l*w*mult))} lvth0=1.25704579790273e-8
++ vth0=-1.0153674266624 lvth0=1.25704579790273e-8
 + k1=0.48822838598944 lk1=2.55797007475276e-8
 + k2=-0.00637953296617763 lk2=-4.22441685260222e-9
 + k3=-15.845
@@ -26437,8 +26437,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.2170438081808+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope1/sqrt(l*w*mult))} lvoff=-1.89997019393162e-8
-+ nfactor={2.0721827130352+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope1/sqrt(l*w*mult))} lnfactor=-5.550717412723e-8
++ voff=-0.2170438081808 lvoff=-1.89997019393162e-8
++ nfactor=2.0721827130352 lnfactor=-5.550717412723e-8
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -26590,23 +26590,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=1.24e-6
 + sbref=1.24e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.97 pmos
@@ -26660,14 +26660,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope1/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-0.886563565314287+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope1/sqrt(l*w*mult))} lvth0=-2.3235469829412e-8
++ vth0=-0.886563565314287 lvth0=-2.3235469829412e-8
 + k1=-0.614523479319423 lk1=3.3213148628101e-7
 + k2=0.495077243737657 lk2=-1.43623383294948e-07 wk2=1.05879118406788e-22 pk2=-2.52435489670724e-29
 + k3=-15.845
@@ -26711,8 +26711,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.0280831423982866+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope1/sqrt(l*w*mult))} lvoff=-7.15284994988654e-8
-+ nfactor={0.122295219640002+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope1/sqrt(l*w*mult))} lnfactor=4.86538150386715e-7
++ voff=-0.0280831423982866 lvoff=-7.15284994988654e-8
++ nfactor=0.122295219640002 lnfactor=4.86538150386715e-7
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -26864,23 +26864,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=1.1e-6
 + sbref=1.1e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.98 pmos
@@ -26934,14 +26934,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope1/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.00798429187781+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope1/sqrt(l*w*mult))} lvth0=2.01858424708101e-09 wvth0=6.38778052191776e-08 pvth0=-1.32858169519271e-14
++ vth0=-1.00798429187781 lvth0=2.01858424708101e-09 wvth0=6.38778052191776e-08 pvth0=-1.32858169519271e-14
 + k1=-4.88851898234773 lk1=1.22107126296486e-06 wk1=2.37594313195114e-06 pk1=-4.94167660128254e-13
 + k2=1.50150398554703 lk2=-3.52948068470396e-07 wk2=-6.36152528718813e-07 pk2=1.32312092143168e-13
 + k3=-15.845
@@ -26985,8 +26985,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={0.792240881525096+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))} lvoff=-2.42146052586641e-07 wvoff=-5.84430488838372e-07 pvoff=1.21554528512514e-13
-+ nfactor={-3.62230156819396+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope1/sqrt(l*w*mult))} lnfactor=1.26536934709473e-06 wnfactor=1.85629696576816e-06 pnfactor=-3.86087493316185e-13
++ voff=0.792240881525096 lvoff=-2.42146052586641e-07 wvoff=-5.84430488838372e-07 pvoff=1.21554528512514e-13
++ nfactor=-3.62230156819396 lnfactor=1.26536934709473e-06 wnfactor=1.85629696576816e-06 pnfactor=-3.86087493316185e-13
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -27138,23 +27138,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=1.04e-6
 + sbref=1.04e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.99 pmos
@@ -27208,14 +27208,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.11326102335215+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))} wvth0=3.81911978443809e-8
++ vth0=-1.11326102335215 wvth0=3.81911978443809e-8
 + k1=0.5433973549272 wk1=-3.46566892930645e-8
 + k2=-0.0852793716207807 wk2=4.45078534082705e-8
 + k3=-15.845
@@ -27259,8 +27259,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.415461382931554+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))} wvoff=6.8138253247755e-8
-+ nfactor={3.05861128106077+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))} wnfactor=-7.51254615252403e-7
++ voff=-0.415461382931554 wvoff=6.8138253247755e-8
++ nfactor=3.05861128106077 wnfactor=-7.51254615252403e-7
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -27412,23 +27412,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=3.0e-6
 + sbref=3.0e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.100 pmos
@@ -27482,14 +27482,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.13868730325264+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))} lvth0=5.09237228731543e-07 wvth0=5.18042297781171e-08 pvth0=-2.72641640212483e-13
++ vth0=-1.13868730325264 lvth0=5.09237228731543e-07 wvth0=5.18042297781171e-08 pvth0=-2.72641640212483e-13
 + k1=0.564852267623844 lk1=-4.29698734029446e-07 wk1=-4.6143482202529e-08 pk1=2.30057350549239e-13
 + k2=-0.107540793365244 lk2=4.45851487561056e-07 wk2=5.64264449711666e-08 pk2=-2.38705408798586e-13
 + k3=-15.845
@@ -27533,8 +27533,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.398443040851588+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))} lvoff=-3.40843150957435e-07 wvoff=5.90267656412101e-08 pvoff=1.82484764446033e-13
-+ nfactor={4.40818246636896+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))} lnfactor=-2.70291955044983e-05 wnfactor=-1.47380450121116e-06 pnfactor=1.44712204453835e-11
++ voff=-0.398443040851588 lvoff=-3.40843150957435e-07 wvoff=5.90267656412101e-08 pvoff=1.82484764446033e-13
++ nfactor=4.40818246636896 lnfactor=-2.70291955044983e-05 wnfactor=-1.47380450121116e-06 pnfactor=1.44712204453835e-11
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -27686,23 +27686,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=3.0e-6
 + sbref=3.0e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.101 pmos
@@ -27756,14 +27756,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.23455148758623+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))} lvth0=1.27883375019144e-06 wvth0=8.41593682087762e-08 pvth0=-5.32388303272153e-13
++ vth0=-1.23455148758623 lvth0=1.27883375019144e-06 wvth0=8.41593682087762e-08 pvth0=-5.32388303272153e-13
 + k1=0.578837878854054 lk1=-5.41975053158237e-07 wk1=-4.48548789554506e-08 pk1=2.19712459144934e-13
 + k2=-0.132263169415061 lk2=6.44322425820473e-07 wk2=6.06027690711861e-08 pk2=-2.72232888557653e-13
 + k3=-15.845
@@ -27807,8 +27807,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.711656369270886+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))} lvoff=2.17362969103274e-06 wvoff=1.94231852749439e-07 pvoff=-9.02940052397784e-13
-+ nfactor={0.0109069084194164+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))} lnfactor=8.27207990741392e-06 wnfactor=7.32772971930666e-07 pnfactor=-3.24315703006947e-12
++ voff=-0.711656369270886 lvoff=2.17362969103274e-06 wvoff=1.94231852749439e-07 pvoff=-9.02940052397784e-13
++ nfactor=0.0109069084194164 lnfactor=8.27207990741392e-06 wnfactor=7.32772971930666e-07 pnfactor=-3.24315703006947e-12
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -27960,23 +27960,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=3.0e-6
 + sbref=3.0e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.102 pmos
@@ -28030,14 +28030,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-0.764847969952619+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))} lvth0=-6.13126382394549e-07 wvth0=-1.09062253378943e-07 pvth0=2.45906069823721e-13
++ vth0=-0.764847969952619 lvth0=-6.13126382394549e-07 wvth0=-1.09062253378943e-07 pvth0=2.45906069823721e-13
 + k1=0.427985192937786 lk1=6.56577554802654e-08 wk1=2.54518720344479e-08 pk1=-6.34822901613645e-14
 + k2=0.0801979339213927 lk2=-2.11468348885523e-07 wk2=-3.18252846654874e-08 pk2=1.00066202757023e-13
 + k3=-15.845
@@ -28081,8 +28081,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.00572646503784502+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))} lvoff=-6.69847492059097e-07 wvoff=-1.01353195700256e-07 pvoff=2.87672975737006e-13
-+ nfactor={1.87556588426301+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))} lnfactor=7.61255928623639e-07 wnfactor=-9.93712985712451e-09 pnfactor=-2.51529652589471e-13
++ voff=-0.00572646503784502 lvoff=-6.69847492059097e-07 wvoff=-1.01353195700256e-07 pvoff=2.87672975737006e-13
++ nfactor=1.87556588426301 lnfactor=7.61255928623639e-07 wnfactor=-9.93712985712451e-09 pnfactor=-2.51529652589471e-13
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -28234,23 +28234,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=3.0e-6
 + sbref=3.0e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.103 pmos
@@ -28304,14 +28304,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-1.23956016871898+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))} lvth0=3.49584260157244e-07 wvth0=8.76588277868981e-08 pvth0=-1.53041922127631e-13
++ vth0=-1.23956016871898 lvth0=3.49584260157244e-07 wvth0=8.76588277868981e-08 pvth0=-1.53041922127631e-13
 + k1=0.307608382905939 lk1=3.09780481703131e-07 wk1=5.63749718410262e-08 pk1=-1.26193965491908e-13
 + k2=-0.0135669873388701 lk2=-2.13142137487654e-08 wk2=1.61086752191839e-08 pk2=2.85670731842799e-15
 + k3=-15.845
@@ -28355,8 +28355,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.505117774979488+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))} lvoff=3.42912091806837e-07 wvoff=1.34702709423545e-07 pvoff=-1.91045567183201e-13
-+ nfactor={3.16233025622179+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))} lnfactor=-1.84828677653629e-06 wnfactor=-3.93563057339881e-07 pnfactor=5.2645912483443e-13
++ voff=-0.505117774979488 lvoff=3.42912091806837e-07 wvoff=1.34702709423545e-07 pvoff=-1.91045567183201e-13
++ nfactor=3.16233025622179 lnfactor=-1.84828677653629e-06 wnfactor=-3.93563057339881e-07 pnfactor=5.2645912483443e-13
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -28508,23 +28508,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=2.74e-6
 + sbref=2.74e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.104 pmos
@@ -28578,14 +28578,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-0.889557183849071+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope/sqrt(l*w*mult))} lvth0=-1.02146082532018e-08 wvth0=-7.91290474468741e-08 pvth0=1.84140121581838e-14
++ vth0=-0.889557183849071 lvth0=-1.02146082532018e-08 wvth0=-7.91290474468741e-08 pvth0=1.84140121581838e-14
 + k1=0.603238458959026 lk1=5.8763110814697e-09 wk1=-9.25581782066799e-08 pk1=2.69075255593331e-14
 + k2=-0.0288760627544941 lk2=-5.57666793040898e-09 wk2=2.46658272835186e-08 pk2=-5.93994231788334e-15
 + k3=-15.845
@@ -28629,8 +28629,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.178390273289819+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))} lvoff=7.0401407998778e-09 wvoff=-5.54093260045541e-08 pvoff=4.3873238924596e-15
-+ nfactor={0.856087110130421+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope/sqrt(l*w*mult))} lnfactor=5.22503502727878e-07 wnfactor=1.75153457352247e-07 pnfactor=-5.81746276709018e-14
++ voff=-0.178390273289819 lvoff=7.0401407998778e-09 wvoff=-5.54093260045541e-08 pvoff=4.3873238924596e-15
++ nfactor=0.856087110130421 lnfactor=5.22503502727878e-07 wnfactor=1.75153457352247e-07 pnfactor=-5.81746276709018e-14
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -28782,23 +28782,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=1.74e-6
 + sbref=1.74e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.105 pmos
@@ -28852,14 +28852,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope1/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-0.840802497661218+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope1/sqrt(l*w*mult))} lvth0=-3.5956497504153e-08 wvth0=-9.34607013807863e-08 pvth0=2.5980953455442e-14
++ vth0=-0.840802497661218 lvth0=-3.5956497504153e-08 wvth0=-9.34607013807863e-08 pvth0=2.5980953455442e-14
 + k1=0.652310580953471 lk1=-2.00331804661336e-08 wk1=-8.78483273426215e-08 pk1=2.44207808213207e-14
 + k2=-0.0593001283568993 lk2=1.04868736188737e-08 wk2=2.83332739915483e-08 pk2=-7.87631017036254e-15
 + k3=-15.845
@@ -28903,8 +28903,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.0312500269039497+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope1/sqrt(l*w*mult))} lvoff=-7.06481436089048e-08 wvoff=-9.94725413041316e-08 pvoff=2.7652172812053e-14
-+ nfactor={1.81588987970968+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope1/sqrt(l*w*mult))} lnfactor=1.57391580232668e-08 wnfactor=1.37217183878385e-07 pnfactor=-3.81447305119846e-14
++ voff=-0.0312500269039497 lvoff=-7.06481436089048e-08 wvoff=-9.94725413041316e-08 pvoff=2.7652172812053e-14
++ nfactor=1.81588987970968 lnfactor=1.57391580232668e-08 wnfactor=1.37217183878385e-07 pnfactor=-3.81447305119846e-14
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -29056,23 +29056,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=1.24e-6
 + sbref=1.24e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.106 pmos
@@ -29126,14 +29126,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope1/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-0.886563565314288+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope1/sqrt(l*w*mult))} lvth0=-2.32354698294124e-8
++ vth0=-0.886563565314288 lvth0=-2.32354698294124e-8
 + k1=-0.614523479319425 lk1=3.32131486281009e-7
 + k2=0.495077243737657 lk2=-1.43623383294948e-07 wk2=2.64697796016969e-23 pk2=6.31088724176809e-30
 + k3=-15.845
@@ -29177,8 +29177,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.0280831423982866+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope/sqrt(l*w*mult))} lvoff=-7.15284994988652e-8
-+ nfactor={0.122295219640005+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope1/sqrt(l*w*mult))} lnfactor=4.86538150386715e-7
++ voff=-0.0280831423982866 lvoff=-7.15284994988652e-8
++ nfactor=0.122295219640005 lnfactor=4.86538150386715e-7
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -29330,23 +29330,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=1.1e-6
 + sbref=1.1e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .model sky130_fd_pr__pfet_01v8__model.107 pmos
@@ -29400,14 +29400,14 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + tnoib=.0e-6
 * BSIM4 - Process Parameters
 + epsrox=3.9
-+ toxe={4.23e-09+sky130_fd_pr__pfet_01v8__toxe_slope_spectre*(4.23e-09*(sky130_fd_pr__pfet_01v8__toxe_slope1/sqrt(l*w*mult)))}
++ toxe=4.23e-09
 + dtox=0.0
 + ndep=1.7000000000000000e+17
 + nsd=1.0e+20
 + rshg=0.1
 + rsh=1.0
 * Threshold Voltage Parameters
-+ vth0={-0.776926328257098+sky130_fd_pr__pfet_01v8__vth0_slope_spectre*(sky130_fd_pr__pfet_01v8__vth0_slope1/sqrt(l*w*mult))} lvth0=-4.60386994904642e-08 wvth0=-5.98288262512368e-08 pvth0=1.24436779143419e-14
++ vth0=-0.776926328257098 lvth0=-4.60386994904642e-08 wvth0=-5.98288262512368e-08 pvth0=1.24436779143419e-14
 + k1=-4.07900378532117 lk1=1.0527018161657e-06 wk1=1.94253500968166e-06 pk1=-4.04023971593668e-13
 + k2=1.29649356002937 lk2=-3.1030836008783e-07 wk2=-5.26391545977979e-07 pk2=1.09483124864868e-13
 + k3=-15.845
@@ -29451,8 +29451,8 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 + rsw=0.0
 + rswmin=0.0
 * Subthreshold Current Parameters
-+ voff={-0.249048672134716+sky130_fd_pr__pfet_01v8__voff_slope_spectre*(sky130_fd_pr__pfet_01v8__voff_slope1/sqrt(l*w*mult))} lvoff=-2.55703209000449e-08 wvoff=-2.69321838674287e-08 pvoff=5.60157105821871e-15
-+ nfactor={1.79675447745407+sky130_fd_pr__pfet_01v8__nfactor_slope_spectre*(sky130_fd_pr__pfet_01v8__nfactor_slope1/sqrt(l*w*mult))} lnfactor=1.38270718272485e-07 wnfactor=-1.04502337243465e-06 pnfactor=2.17352321185938e-13
++ voff=-0.249048672134716 lvoff=-2.55703209000449e-08 wvoff=-2.69321838674287e-08 pvoff=5.60157105821871e-15
++ nfactor=1.79675447745407 lnfactor=1.38270718272485e-07 wnfactor=-1.04502337243465e-06 pnfactor=2.17352321185938e-13
 + up=0.0
 + ud=0.0
 + lp=1.0
@@ -29604,23 +29604,23 @@ msky130_fd_pr__pfet_01v8 d g s b sky130_fd_pr__pfet_01v8__model l=l w=w ad=ad as
 * Stress Parameters
 + saref=1.04e-6
 + sbref=1.04e-6
-+ wlod={0+sky130_fd_pr__pfet_01v8__wlod_diff}
-+ kvth0={0+sky130_fd_pr__pfet_01v8__kvth0_diff}
-+ lkvth0={0+sky130_fd_pr__pfet_01v8__lkvth0_diff}
-+ wkvth0={0+sky130_fd_pr__pfet_01v8__wkvth0_diff}
++ wlod=0
++ kvth0=0
++ lkvth0=0
++ wkvth0=0
 + pkvth0=0.0
 + llodvth=0.0
 + wlodvth=1.0
 + stk2=0.0
 + lodk2=1.0
 + lodeta0=1.0
-+ ku0={0+sky130_fd_pr__pfet_01v8__ku0_diff}
-+ lku0={0+sky130_fd_pr__pfet_01v8__lku0_diff}
-+ wku0={0+sky130_fd_pr__pfet_01v8__wku0_diff}
++ ku0=0
++ lku0=0
++ wku0=0
 + pku0=0.0
 + llodku0=0.0
 + wlodku0=1.0
-+ kvsat={0+sky130_fd_pr__pfet_01v8__kvsat_diff}
++ kvsat=0
 + steta0=0.0
 + tku0=0.0
 .ends sky130_fd_pr__pfet_01v8
