@@ -8,12 +8,38 @@
 
 set -e
 
+#############################################
+# CONFIGURATION - Edit these paths as needed
+#############################################
+
+# ngspice binary - change this to test different versions
+# Examples:
+#   NGSPICE_BIN="ngspice"
+#   NGSPICE_BIN="/usr/local/bin/ngspice"
+#   NGSPICE_BIN="/opt/ngspice-43/bin/ngspice"
+#   NGSPICE_BIN="$HOME/ngspice-dev/src/ngspice"
+NGSPICE_BIN="ngspice"
+
+# HSPICE binary - change if not in PATH
+# Examples:
+#   HSPICE_BIN="hspice"
+#   HSPICE_BIN="/tools/synopsys/hspice/bin/hspice"
+HSPICE_BIN="hspice"
+
+# Python binary
+PYTHON_BIN="python3"
+
+#############################################
+# END CONFIGURATION
+#############################################
+
 MODE="${1:-both}"
 
 # Colors for output
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
+CYAN='\033[0;36m'
 NC='\033[0m' # No Color
 
 echo_status() {
@@ -28,21 +54,39 @@ echo_error() {
     echo -e "${RED}[ERROR]${NC} $1"
 }
 
+echo_config() {
+    echo -e "${CYAN}[CONFIG]${NC} $1"
+}
+
+# Show configuration
+show_config() {
+    echo_config "NGSPICE_BIN = $NGSPICE_BIN"
+    echo_config "HSPICE_BIN  = $HSPICE_BIN"
+    echo_config "PYTHON_BIN  = $PYTHON_BIN"
+    if [[ -n "$SPICE_LIB" ]]; then
+        echo_config "SPICE_LIB   = $SPICE_LIB"
+    fi
+    echo ""
+}
+
 # Check for required tools
 check_hspice() {
-    if command -v hspice &> /dev/null; then
+    if command -v "$HSPICE_BIN" &> /dev/null || [[ -x "$HSPICE_BIN" ]]; then
         return 0
     else
-        echo_warn "HSPICE not found in PATH"
+        echo_warn "HSPICE not found: $HSPICE_BIN"
         return 1
     fi
 }
 
 check_ngspice() {
-    if command -v ngspice &> /dev/null; then
+    if command -v "$NGSPICE_BIN" &> /dev/null || [[ -x "$NGSPICE_BIN" ]]; then
+        # Show version
+        echo_status "ngspice version:"
+        "$NGSPICE_BIN" --version 2>&1 | head -3 | sed 's/^/    /'
         return 0
     else
-        echo_warn "ngspice not found in PATH"
+        echo_warn "ngspice not found: $NGSPICE_BIN"
         return 1
     fi
 }
@@ -56,14 +100,14 @@ run_hspice() {
         return 1
     fi
     
-    hspice tgatehspice.cir > tgatehspice.out 2>&1
+    "$HSPICE_BIN" tgatehspice.cir > tgatehspice.out 2>&1
     
     if grep -q "job concluded" tgatehspice.out; then
         echo_status "HSPICE completed successfully"
         
         # Convert to CSV
         echo_status "Converting HSPICE output to CSV..."
-        python3 hspice_to_csv.py tgatehspice.out tgate_hspice.csv
+        "$PYTHON_BIN" hspice_to_csv.py tgatehspice.out tgate_hspice.csv
         echo_status "Created tgate_hspice.csv"
     else
         echo_error "HSPICE simulation failed - check tgatehspice.out"
@@ -88,7 +132,7 @@ run_ngspice() {
         return 1
     fi
     
-    ngspice -b tgatengspice.cir > tgatengspice.out 2>&1
+    "$NGSPICE_BIN" -b tgatengspice.cir > tgatengspice.out 2>&1
     
     if grep -q "ngspice AC analysis complete" tgatengspice.out; then
         echo_status "ngspice completed successfully"
@@ -121,11 +165,13 @@ plot_results() {
         return 1
     fi
     
-    python3 plot_ac_comparison.py $PLOT_ARGS -o tgate_comparison.png
+    "$PYTHON_BIN" plot_ac_comparison.py $PLOT_ARGS -o tgate_comparison.png
     echo_status "Created tgate_comparison.png"
 }
 
 # Main
+show_config
+
 case "$MODE" in
     hspice)
         run_hspice
@@ -152,13 +198,22 @@ case "$MODE" in
     plot)
         plot_results
         ;;
+    config)
+        # Just show config and exit
+        ;;
     *)
-        echo "Usage: $0 [hspice|ngspice|both|plot]"
+        echo "Usage: $0 [hspice|ngspice|both|plot|config]"
+        echo ""
+        echo "Options:"
+        echo "  hspice  - Run HSPICE only"
+        echo "  ngspice - Run ngspice only"
+        echo "  both    - Run both (default)"
+        echo "  plot    - Just plot existing data"
+        echo "  config  - Show configuration and exit"
+        echo ""
+        echo "Edit the CONFIGURATION section at top of script to change paths."
         exit 1
         ;;
 esac
 
 echo_status "Done!"
-
-
-
