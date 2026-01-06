@@ -7,7 +7,7 @@
 .lib $SPICE_LIB/sky130.lib.spice tt
 
 * Include abstract device definitions for ngspice
-.include devices_ngspice.cir
+.include ../devices_ngspice.cir
 
 * Supply
 Vdd vdd 0 DC 1.8
