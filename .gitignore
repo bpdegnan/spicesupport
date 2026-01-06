@@ -2,4 +2,5 @@
 *.png
 *.csv
 #setmeup.sh
+*.code-workspace
 

@@ -1,0 +1,48 @@
+* Transmission Gate AC Characterization - ngspice version
+* SkyWater 130nm PDK
+* Standard t-gate vs m=2
+* This matches tgatehspice.cir for comparison
+
+* Include the PDK models (original ngspice-compatible)
+.lib $SPICE_LIB/sky130.lib.spice tt
+
+* Include abstract device definitions for ngspice
+.include devices_ngspice.cir
+
+* Supply
+Vdd vdd 0 DC 1.8
+
+* Bias point for AC analysis
+.param VBIAS=0.9
+
+* Standard transmission gate (m=1)
+* NMOS: gate=VDD (on), PMOS: gate=0 (on)
+Xn1 in1 vdd out1 0 abnmos l=0.15 w=1 m=1
+Xp1 in1 0 out1 vdd abpmos l=0.15 w=1 m=1
+Vin1 in1 0 DC {VBIAS} AC 1
+Cload1 out1 0 10f
+
+* Transmission gate with m=2
+Xn2 in2 vdd out2 0 abnmos l=0.15 w=1 m=2
+Xp2 in2 0 out2 vdd abpmos l=0.15 w=1 m=2
+Vin2 in2 0 DC {VBIAS} AC 1
+Cload2 out2 0 10f
+
+.control
+    ac dec 100 1k 1g
+    
+    * Calculate dB and phase
+    let vdb_out1 = db(v(out1))
+    let vdb_out2 = db(v(out2))
+    let vp_out1 = 180/PI*cph(v(out1))
+    let vp_out2 = 180/PI*cph(v(out2))
+    
+    * Write to CSV
+    set wr_vecnames
+    set wr_singlescale
+    wrdata tgate_ngspice.csv vdb_out1 vdb_out2 vp_out1 vp_out2
+    
+    echo "ngspice AC analysis complete"
+.endc
+
+.end
