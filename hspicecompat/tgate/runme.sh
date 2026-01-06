@@ -145,30 +145,26 @@ run_ngspice() {
 }
 
 # Plot comparison
+# Plot comparison
 plot_results() {
     echo_status "Generating comparison plot..."
     
     PLOT_ARGS=""
     
     if [[ -f "tgate_hspice.csv" ]]; then
-        PLOT_ARGS="$PLOT_ARGS --hspice tgate_hspice.csv"
+        PLOT_ARGS="--hspice tgate_hspice.csv"
         echo_status "  Including HSPICE data"
     fi
     
     if [[ -f "tgate_ngspice.csv" ]]; then
-        PLOT_ARGS="$PLOT_ARGS --ngspice tgate_ngspice.csv"
+        if [[ -n "$PLOT_ARGS" ]]; then
+            PLOT_ARGS="$PLOT_ARGS --ngspice tgate_ngspice.csv"
+        else
+            PLOT_ARGS="--ngspice tgate_ngspice.csv"
+        fi
         echo_status "  Including ngspice data"
     fi
-    
-    if [[ -z "$PLOT_ARGS" ]]; then
-        echo_error "No data files found to plot"
-        return 1
-    fi
-    
-    "$PYTHON_BIN" plot_ac_comparison.py $PLOT_ARGS -o tgate_comparison.png
-    echo_status "Created tgate_comparison.png"
 }
-
 # Main
 show_config
 
