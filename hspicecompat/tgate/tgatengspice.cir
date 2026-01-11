@@ -29,20 +29,35 @@ Vin2 in2 0 DC {VBIAS} AC 1
 Cload2 out2 0 10f
 
 .control
+   
     ac dec 100 1k 1g
     
-    * Calculate dB and phase
-    let vdb_out1 = db(v(out1))
-    let vdb_out2 = db(v(out2))
-    let vp_out1 = 180/PI*cph(v(out1))
-    let vp_out2 = 180/PI*cph(v(out2))
+    * Debug: print the op point info
+    print all
     
-    * Write to CSV
-    set wr_vecnames
-    set wr_singlescale
-    wrdata tgate_ngspice.csv vdb_out1 vdb_out2 vp_out1 vp_out2
-    
-    echo "ngspice AC analysis complete"
+    * Check what's happening
+    echo "out1 magnitude at 1kHz:"
+    print db(v(out1)[0])
+    echo "out2 magnitude at 1kHz:"  
+    print db(v(out2)[0])
+  
 .endc
+
+* .control
+*     ac dec 100 1k 1g
+*     
+*     * Calculate dB and phase
+*     let vdb_out1 = db(v(out1))
+*     let vdb_out2 = db(v(out2))
+*     let vp_out1 = 180/PI*cph(v(out1))
+*     let vp_out2 = 180/PI*cph(v(out2))
+*     
+*     * Write to CSV
+*     set wr_vecnames
+*     set wr_singlescale
+*     wrdata tgate_ngspice.csv vdb_out1 vdb_out2 vp_out1 vp_out2
+*     
+*     echo "ngspice AC analysis complete"
+* .endc
 
 .end
