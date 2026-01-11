@@ -1,0 +1,39 @@
+* NMOS and PMOS gate sweep at two drain voltages - HSPICE version
+
+* HSPICE options
+.option post accurate
+.option scale=1e-6
+
+* Include the HSPICE-compatible PDK library
+.lib '../sky130.l' tt
+.include '../devices_hspice.cir'
+
+* NMOS at Vd=1.8V (saturation)
+Xnmos_sat nd_sat ng 0 0 abnmos
+Vd_sat nd_sat 0 DC 1.8
+
+* NMOS at Vd=100mV (linear)
+Xnmos_lin nd_lin ng 0 0 abnmos
+Vd_lin nd_lin 0 DC 0.1
+
+* PMOS at Vd=0V (saturation, |Vds|=1.8V)
+Xpmos_sat pd_sat ng vdd vdd abpmos
+Vp_sat pd_sat 0 DC 0
+
+* PMOS at Vd=1.7V (linear, |Vds|=100mV)
+Xpmos_lin pd_lin ng vdd vdd abpmos
+Vp_lin pd_lin 0 DC 1.7
+
+* Supply
+Vdd vdd 0 DC 1.8
+
+* Shared gate
+Vg ng 0 DC 0
+
+* DC sweep of gate voltage
+.dc Vg 0 1.8 0.001
+
+* Output currents
+.print dc v(ng) i(Vd_sat) i(Vd_lin) i(Vp_sat) i(Vp_lin)
+
+.end
