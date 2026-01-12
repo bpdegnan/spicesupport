@@ -3,4 +3,7 @@
 *.csv
 #setmeup.sh
 *.code-workspace
+*.csv
+*.out
+*.png
 
