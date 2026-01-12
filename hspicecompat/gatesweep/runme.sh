@@ -171,24 +171,21 @@ run_ngspice() {
 plot_results() {
     echo_status "Generating comparison plot..."
     
-    PLOT_ARGS=""
+    # Use arrays for proper argument handling in zsh
+    PLOT_ARGS=()
     
     if [[ -f "gatesweep_hspice.csv" ]]; then
-        PLOT_ARGS="--hspice gatesweep_hspice.csv"
+        PLOT_ARGS+=(--hspice gatesweep_hspice.csv)
         echo_status "  Including HSPICE data"
     fi
     
     if [[ -f "gatesweep_ngspice.csv" ]]; then
-        if [[ -n "$PLOT_ARGS" ]]; then
-            PLOT_ARGS="$PLOT_ARGS --ngspice gatesweep_ngspice.csv"
-        else
-            PLOT_ARGS="--ngspice gatesweep_ngspice.csv"
-        fi
+        PLOT_ARGS+=(--ngspice gatesweep_ngspice.csv)
         echo_status "  Including ngspice data"
     fi
     
-    if [[ -n "$PLOT_ARGS" ]]; then
-        "$PYTHON_BIN" plot_gatesweep_comparison.py $PLOT_ARGS -o gatesweep_comparison.png
+    if [[ ${#PLOT_ARGS[@]} -gt 0 ]]; then
+        "$PYTHON_BIN" plot_gatesweep_comparison.py "${PLOT_ARGS[@]}" -o gatesweep_comparison.png
         echo_status "Created gatesweep_comparison.png"
     else
         echo_warn "No data files found to plot"
