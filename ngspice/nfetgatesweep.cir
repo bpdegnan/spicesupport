@@ -1,0 +1,40 @@
+* NFET gate sweep with embedded spiceinit settings
+* Settings merged from .spiceinit for consistent behavior across systems
+
+* Include the PDK models
+.lib $SPICE_LIB/sky130.lib.spice tt
+
+* Include abstract device definitions
+.include devices_ngspice.cir
+
+* Options (from .spiceinit)
+.option noinit          ; don't print operating point data
+.option klu             ; select KLU as matrix solver
+* Note: .optran removed - not needed for DC sweep and causes verbose output
+
+* NMOS at Vd=1.8V (saturation)
+Xnmos_sat nd_sat ng 0 0 abnmos
+Vd_sat nd_sat 0 DC 1.8
+
+* Supply
+Vdd vdd 0 DC 1.8
+
+* Shared gate
+Vg ng 0 DC 0
+
+.control
+    * Settings from .spiceinit (must be before simulation commands)
+    set ngbehavior=hsa     ; set compatibility for reading PDK libs
+    set skywaterpdk        ; skip some checks for faster lib loading
+    set ng_nomodcheck      ; don't check the model parameters
+    set num_threads=8      ; CPU processor cores available
+
+    dc Vg 0 1.8 0.001
+    set wr_vecnames
+    set wr_singlescale
+    wrdata nfetgatesweep.csv v(ng) i(Vd_sat)
+    echo "Done"
+.endc
+
+.end
+
