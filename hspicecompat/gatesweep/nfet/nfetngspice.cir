@@ -1,0 +1,28 @@
+* NFET gate sweep at two drain voltages - ngspice version
+
+* Include the PDK models
+.lib $SPICE_LIB/sky130.lib.spice tt
+
+* Include abstract device definitions
+.include ../../devices_ngspice.cir
+
+* NFET at Vd=1.8V (saturation)
+Xnmos_sat nd_sat ng 0 0 abnmos
+Vd_sat nd_sat 0 DC 1.8
+
+* NFET at Vd=100mV (linear)
+Xnmos_lin nd_lin ng 0 0 abnmos
+Vd_lin nd_lin 0 DC 0.1
+
+* Shared gate
+Vg ng 0 DC 0
+
+.control
+    dc Vg 0 1.8 0.001
+    set wr_vecnames
+    set wr_singlescale
+    wrdata nfet_ngspice.csv v(ng) i(Vd_sat) i(Vd_lin)
+    echo "Done"
+.endc
+
+.end

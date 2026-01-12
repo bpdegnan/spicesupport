@@ -1,0 +1,27 @@
+* NFET gate sweep at two drain voltages - HSPICE version
+
+* HSPICE options
+.option post accurate
+
+* Include the HSPICE-compatible PDK library
+.lib '../../sky130.l' tt
+.include '../../devices_hspice.cir'
+
+* NFET at Vd=1.8V (saturation)
+Xnmos_sat nd_sat ng 0 0 abnmos
+Vd_sat nd_sat 0 DC 1.8
+
+* NFET at Vd=100mV (linear)
+Xnmos_lin nd_lin ng 0 0 abnmos
+Vd_lin nd_lin 0 DC 0.1
+
+* Shared gate
+Vg ng 0 DC 0
+
+* DC sweep of gate voltage
+.dc Vg 0 1.8 0.001
+
+* Output currents
+.print dc v(ng) i(Vd_sat) i(Vd_lin)
+
+.end
