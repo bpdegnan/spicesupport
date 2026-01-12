@@ -1,0 +1,48 @@
+* PFET drain sweep (Id-Vds) at multiple gate voltages - ngspice version
+
+* Include the PDK models
+.lib $SPICE_LIB/sky130.lib.spice tt
+
+* Include abstract device definitions
+.include ../../devices_ngspice.cir
+
+* Supply
+Vdd vdd 0 DC 1.8
+
+* Shared drain voltage (swept from VDD down to 0)
+Vd nd 0 DC 1.8
+
+* PFET at Vgs=1.2V (|Vgs|=0.6V overdrive)
+Vam_1 nd nd_1 DC 0
+Xpmos_1 nd_1 ng_1 vdd vdd abpmos
+Vg_1 ng_1 0 DC 1.2
+
+* PFET at Vgs=0.9V (|Vgs|=0.9V overdrive)
+Vam_2 nd nd_2 DC 0
+Xpmos_2 nd_2 ng_2 vdd vdd abpmos
+Vg_2 ng_2 0 DC 0.9
+
+* PFET at Vgs=0.6V (|Vgs|=1.2V overdrive)
+Vam_3 nd nd_3 DC 0
+Xpmos_3 nd_3 ng_3 vdd vdd abpmos
+Vg_3 ng_3 0 DC 0.6
+
+* PFET at Vgs=0.3V (|Vgs|=1.5V overdrive)
+Vam_4 nd nd_4 DC 0
+Xpmos_4 nd_4 ng_4 vdd vdd abpmos
+Vg_4 ng_4 0 DC 0.3
+
+* PFET at Vgs=0V (|Vgs|=1.8V overdrive)
+Vam_5 nd nd_5 DC 0
+Xpmos_5 nd_5 ng_5 vdd vdd abpmos
+Vg_5 ng_5 0 DC 0
+
+.control
+    dc Vd 1.8 0 -0.01
+    set wr_vecnames
+    set wr_singlescale
+    wrdata pfet_drainsweep_ngspice.csv v(nd) i(Vam_1) i(Vam_2) i(Vam_3) i(Vam_4) i(Vam_5)
+    echo "Done"
+.endc
+
+.end

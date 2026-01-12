@@ -1,0 +1,44 @@
+* NFET drain sweep (Id-Vds) at multiple gate voltages - HSPICE version
+
+* HSPICE options
+.option post accurate
+
+* Include the HSPICE-compatible PDK library
+.lib '../../sky130.l' tt
+.include '../../devices_hspice.cir'
+
+* Shared drain voltage (swept)
+Vd nd 0 DC 0
+
+* NFET at Vgs=0.6V - use 0V source as ammeter
+Vam_1 nd nd_1 DC 0
+Xnmos_1 nd_1 ng_1 0 0 abnmos
+Vg_1 ng_1 0 DC 0.6
+
+* NFET at Vgs=0.9V
+Vam_2 nd nd_2 DC 0
+Xnmos_2 nd_2 ng_2 0 0 abnmos
+Vg_2 ng_2 0 DC 0.9
+
+* NFET at Vgs=1.2V
+Vam_3 nd nd_3 DC 0
+Xnmos_3 nd_3 ng_3 0 0 abnmos
+Vg_3 ng_3 0 DC 1.2
+
+* NFET at Vgs=1.5V
+Vam_4 nd nd_4 DC 0
+Xnmos_4 nd_4 ng_4 0 0 abnmos
+Vg_4 ng_4 0 DC 1.5
+
+* NFET at Vgs=1.8V
+Vam_5 nd nd_5 DC 0
+Xnmos_5 nd_5 ng_5 0 0 abnmos
+Vg_5 ng_5 0 DC 1.8
+
+* DC sweep of drain voltage
+.dc Vd 0 1.8 0.01
+
+* Output currents
+.print dc v(nd) i(Vam_1) i(Vam_2) i(Vam_3) i(Vam_4) i(Vam_5)
+
+.end
