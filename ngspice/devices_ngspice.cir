@@ -1,0 +1,9 @@
+* Abstract devices so I can swap them out.
+* NMOS transistor subcircuit definition
+.subckt abnmos D G S B
+X1 D G S B sky130_fd_pr__nfet_01v8
+.ends abnmos
+* PMOS transistor subcircuit definition
+.subckt abpmos D G S B
+X1 D G S B sky130_fd_pr__pfet_01v8
+.ends abpmos
