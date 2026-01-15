@@ -54,14 +54,10 @@ CONFIGURE_ARGS=(
   --enable-capbypass
   --enable-xspice
   --enable-cider
-  --disable-debug
-  --disable-verilog
   --enable-pss
   --enable-relpath
   --disable-openmp
-  --enable-readline
-  --with-lapack=no
-  --with-blas=no
+  --enable-readline=yes
   --disable-cluster
   --disable-compiler-warnings
   --disable-plot
