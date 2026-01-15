@@ -59,8 +59,6 @@ CONFIGURE_ARGS=(
   --disable-openmp
   --enable-readline=yes
   --disable-cluster
-  --disable-compiler-warnings
-  --disable-plot
 )
 
 echo "Running ./configure with:"
