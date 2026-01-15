@@ -14,7 +14,25 @@ esac
 
 echo "Selected ngspice version: $VERSION"
 
-SRC_URL="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/${VERSION}/ngspice-${VERSION}.tar.gz"
+# Prefer old-releases, fall back to top-level
+URL_OLD="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/old-releases/${VERSION}/ngspice-${VERSION}.tar.gz/download"
+URL_NEW="https://sourceforge.net/projects/ngspice/files/ng-spice-rework/${VERSION}/ngspice-${VERSION}.tar.gz/download"
+
+echo "Checking SourceForge location..."
+if curl -fsIL "$URL_OLD" >/dev/null; then
+  SRC_URL="$URL_OLD"
+elif curl -fsIL "$URL_NEW" >/dev/null; then
+  SRC_URL="$URL_NEW"
+else
+  echo "Could not find ngspice-${VERSION}.tar.gz in either SourceForge location."
+  echo "Tried:"
+  echo "  $URL_OLD"
+  echo "  $URL_NEW"
+  exit 1
+fi
+
+echo "Using: $SRC_URL"
+
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 BUILD_DIR="${SCRIPT_DIR}/ngspice-${VERSION}"
