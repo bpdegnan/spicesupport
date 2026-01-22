@@ -1,6 +1,7 @@
 * NFET transient simulation - gate voltage ramp
 * Gate sweeps from 0V to VDD over 1ms
 * For comparing behavior across different systems/configurations
+* Settings merged from .spiceinit for consistent behavior
 
 * Include the PDK models
 .lib $SPICE_LIB/sky130.lib.spice tt
@@ -12,9 +13,10 @@
 .param VDD_VAL=1.8
 .param RAMP_TIME=1m
 
-* Options
+* Options (from .spiceinit)
 .option noinit          ; don't print operating point data
 .option klu             ; select KLU as matrix solver
+.optran 0 0 0 100p 2n 0 ; use transient op instead of dc operating point
 
 * Supply
 Vdd vdd 0 DC {VDD_VAL}
@@ -27,11 +29,11 @@ Xnmos nd ng 0 0 abnmos
 Vd nd 0 DC {VDD_VAL}
 
 .control
-    * Settings for PDK compatibility
-    set ngbehavior=hsa
-    set skywaterpdk
-    set ng_nomodcheck
-    set num_threads=8
+    * Settings from .spiceinit (must be before simulation commands)
+    set ngbehavior=hsa     ; set compatibility for reading PDK libs
+    set skywaterpdk        ; skip some checks for faster lib loading
+    set ng_nomodcheck      ; don't check the model parameters
+    set num_threads=8      ; CPU processor cores available
 
     * Transient simulation: step=1us, stop=1ms
     tran 1u 1m
@@ -39,7 +41,7 @@ Vd nd 0 DC {VDD_VAL}
     * Write results
     set wr_vecnames
     set wr_singlescale
-    wrdata nfettrans.csv time v(ng) i(Vd)
+    wrdata nfettrans.csv v(ng) i(Vd)
     echo "Done"
 .endc
 
