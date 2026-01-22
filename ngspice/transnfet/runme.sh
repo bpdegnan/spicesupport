@@ -94,7 +94,7 @@ plot_comparison() {
         echo "    $f"
     done
     
-    "$PYTHON_BIN" plot_hostname_comparison.py "${CSV_FILES[@]}" -o nfettrans_comparison.png
+    "$PYTHON_BIN" plot_transient_comparison.py "${CSV_FILES[@]}" -o nfettrans_comparison.png
     echo_status "Created nfettrans_comparison.png"
 }
 

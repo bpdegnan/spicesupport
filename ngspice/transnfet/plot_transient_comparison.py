@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
-Plot comparison of nfet_transient results from multiple hosts.
+Plot comparison of nfettrans results from multiple hosts.
 
 Usage:
-    python3 plot_transient_comparison.py nfet_transient.host1.csv nfet_transient.host2.csv ...
-    python3 plot_transient_comparison.py nfet_transient.*.csv -o comparison.png
+    python3 plot_transient_comparison.py nfettrans.host1.csv nfettrans.host2.csv ...
+    python3 plot_transient_comparison.py nfettrans.*.csv -o comparison.png
 """
 
 import argparse
@@ -24,7 +24,18 @@ def load_csv(filepath):
             header_idx = i
             break
     
-    header = [h.replace('-', '_') for h in lines[header_idx].split()]
+    raw_header = [h.replace('-', '_') for h in lines[header_idx].split()]
+    
+    # Handle duplicate column names by appending _N suffix
+    header = []
+    seen = {}
+    for h in raw_header:
+        if h in seen:
+            seen[h] += 1
+            header.append(f"{h}_{seen[h]}")
+        else:
+            seen[h] = 0
+            header.append(h)
     
     data_lines = []
     for line in lines[header_idx + 1:]:
@@ -45,9 +56,9 @@ def load_csv(filepath):
     return data
 
 def extract_hostname(filepath):
-    """Extract hostname from filename like nfet_transient.hostname.csv"""
+    """Extract hostname from filename like nfettrans.hostname.csv"""
     basename = os.path.basename(filepath)
-    match = re.match(r'nfet_transient\.(.+)\.csv', basename)
+    match = re.match(r'nfettrans\.(.+)\.csv', basename)
     if match:
         return match.group(1)
     return basename
@@ -60,7 +71,7 @@ def find_column(data, patterns):
                 return name
     return None
 
-def plot_comparison(csv_files, output_file='nfet_transient_comparison.png'):
+def plot_comparison(csv_files, output_file='nfettrans_comparison.png'):
     """Plot transient comparison from multiple hosts."""
     
     fig, axes = plt.subplots(3, 1, figsize=(12, 10))
@@ -69,7 +80,7 @@ def plot_comparison(csv_files, output_file='nfet_transient_comparison.png'):
     # Use a colormap for distinct colors
     colors = plt.cm.tab10(np.linspace(0, 1, len(csv_files)))
     
-    time_patterns = ['time', 't']
+    time_patterns = ['time', 'time_1', 't']
     vg_patterns = ['v(ng)', 'v_ng', 'vng']
     id_patterns = ['i(vd)', 'i(Vd)', 'i_vd', 'ivd']
     
@@ -109,9 +120,9 @@ def plot_comparison(csv_files, output_file='nfet_transient_comparison.png'):
             if vg is not None:
                 ax1.plot(time, vg, color=color, linewidth=1.5, label=hostname)
             
-            # Plot Id vs time
+            # Plot Id vs time (semilog)
             if id_curr is not None:
-                ax2.plot(time, id_curr * 1e6, color=color, linewidth=1.5, label=hostname)
+                ax2.semilogy(time, id_curr, color=color, linewidth=1.5, label=hostname)
                 
         except Exception as e:
             print(f"Warning: Could not load {filepath}: {e}")
@@ -130,13 +141,14 @@ def plot_comparison(csv_files, output_file='nfet_transient_comparison.png'):
     ax1.grid(True, linestyle='--', alpha=0.5)
     ax1.set_xlim(0, 1000)
     
-    # Format Id plot
+    # Format Id plot (semilog)
     ax2.set_xlabel('Time (µs)')
-    ax2.set_ylabel('|Id| (µA)')
-    ax2.set_title('Drain Current vs Time')
+    ax2.set_ylabel('|Id| (A)')
+    ax2.set_title('Drain Current vs Time (log scale)')
     ax2.legend(loc='lower right')
-    ax2.grid(True, linestyle='--', alpha=0.5)
+    ax2.grid(True, which='both', linestyle='--', alpha=0.5)
     ax2.set_xlim(0, 1000)
+    ax2.set_ylim(1e-14, 1e-2)  # 10fA to 10mA
     
     # Plot differences if we have multiple datasets
     hostnames = list(all_data.keys())
@@ -155,19 +167,19 @@ def plot_comparison(csv_files, output_file='nfet_transient_comparison.png'):
             
             # Check if same time points
             if len(time) == len(ref_time) and np.allclose(time, ref_time, rtol=1e-3):
-                # Calculate absolute difference in µA
-                diff = (id_curr - ref_id) * 1e6
+                # Calculate absolute difference in A
+                diff = (id_curr - ref_id)
                 ax3.plot(ref_time, diff, color=color, linewidth=1.5, 
                         label=f'{hostname} - {ref_host}')
             else:
                 # Interpolate to reference time points
                 id_interp = np.interp(ref_time, time, id_curr)
-                diff = (id_interp - ref_id) * 1e6
+                diff = (id_interp - ref_id)
                 ax3.plot(ref_time, diff, color=color, linewidth=1.5, 
                         label=f'{hostname} - {ref_host} (interp)')
         
         ax3.set_xlabel('Time (µs)')
-        ax3.set_ylabel('ΔId (µA)')
+        ax3.set_ylabel('ΔId (A)')
         ax3.set_title(f'Current Difference (reference: {ref_host})')
         ax3.legend(loc='best')
         ax3.grid(True, linestyle='--', alpha=0.5)
@@ -184,9 +196,9 @@ def plot_comparison(csv_files, output_file='nfet_transient_comparison.png'):
     plt.close()
 
 def main():
-    parser = argparse.ArgumentParser(description='Plot nfet_transient host comparison')
+    parser = argparse.ArgumentParser(description='Plot nfettrans host comparison')
     parser.add_argument('csv_files', nargs='+', help='CSV files to compare')
-    parser.add_argument('-o', '--output', default='nfet_transient_comparison.png', 
+    parser.add_argument('-o', '--output', default='nfettrans_comparison.png', 
                        help='Output PNG file')
     
     args = parser.parse_args()
