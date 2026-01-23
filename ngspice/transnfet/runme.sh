@@ -91,6 +91,9 @@ run_simulation() {
     GMIN=$(grep -i '\.option.*gmin' nfettrans.cir | sed -E 's/.*gmin[[:space:]]*=[[:space:]]*([^ ]+).*/\1/i' || echo "default")
     TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
     
+    # Output filename includes gmin
+    OUTFILE="nfettrans.gmin${GMIN}.${HOSTNAME}.csv"
+    
     # Run ngspice
     "$NGSPICE_BIN" -b nfettrans.cir > nfettrans.out 2>&1
     
@@ -106,17 +109,17 @@ run_simulation() {
             # Convert whitespace to comma (portable for macOS/Linux)
             # Strip leading/trailing whitespace, then convert remaining whitespace to commas
             sed -E 's/^[[:space:]]+//; s/[[:space:]]+$//; s/[[:space:]]+/,/g' nfettrans.csv
-        } > "nfettrans.${HOSTNAME}.csv"
+        } > "$OUTFILE"
         rm nfettrans.csv
-        echo_status "Created nfettrans.${HOSTNAME}.csv"
+        echo_status "Created $OUTFILE"
         
         # Show metadata
         echo_status "Metadata:"
-        grep '^#' "nfettrans.${HOSTNAME}.csv" | sed 's/^/    /'
+        grep '^#' "$OUTFILE" | sed 's/^/    /'
         
         # Show column headers
         echo_status "CSV columns:"
-        grep -v '^#' "nfettrans.${HOSTNAME}.csv" | head -1 | sed 's/^/    /'
+        grep -v '^#' "$OUTFILE" | head -1 | sed 's/^/    /'
     else
         echo_error "Simulation failed - check nfettrans.out"
         cat nfettrans.out
@@ -140,13 +143,13 @@ plot_comparison() {
         echo "    $f"
     done
     
-    "$PYTHON_BIN" plot_transient_currents.py "${CSV_FILES[@]}" -o nfettrans_comparison.png
-    echo_status "Created nfettrans_comparison.png"
+    # Let Python auto-generate output filename from gmin
+    "$PYTHON_BIN" plot_transient_currents.py "${CSV_FILES[@]}"
 }
 
 clean_files() {
     echo_status "Cleaning generated files..."
-    rm -f nfettrans.*.csv nfettrans.out nfettrans_comparison.png nfettrans_currents.png
+    rm -f nfettrans.*.csv nfettrans.out nfettrans.*.png nfettrans_currents.png nfettrans_comparison.png
     echo_status "Done"
 }
 

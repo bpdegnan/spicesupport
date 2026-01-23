@@ -74,12 +74,25 @@ def load_csv(filepath):
     return data, header, metadata
 
 def extract_hostname(filepath):
-    """Extract hostname from filename like nfettrans.hostname.csv"""
+    """Extract hostname from filename like nfettrans.gminXX.hostname.csv or nfettrans.hostname.csv"""
     basename = os.path.basename(filepath)
+    # Try new format: nfettrans.gminXX.hostname.csv
+    match = re.match(r'nfettrans\.gmin[^.]+\.(.+)\.csv', basename)
+    if match:
+        return match.group(1)
+    # Try old format: nfettrans.hostname.csv
     match = re.match(r'nfettrans\.(.+)\.csv', basename)
     if match:
         return match.group(1)
     return os.path.splitext(basename)[0]
+
+def extract_gmin_from_filename(filepath):
+    """Extract gmin value from filename like nfettrans.gminXX.hostname.csv"""
+    basename = os.path.basename(filepath)
+    match = re.match(r'nfettrans\.(gmin[^.]+)\.', basename)
+    if match:
+        return match.group(1)
+    return None
 
 def find_column(names, patterns):
     """Find first column matching any pattern (case-insensitive)."""
@@ -135,26 +148,29 @@ def plot_terminal_currents(csv_files, output_file='nfettrans_currents.png'):
                 'time': time_us, 'ig': ig, 'id': id_, 'is': is_, 'ib': ib
             }
             
-            host_suffix = f' ({hostname})' if n_files > 1 else ''
-            
             # Plot all terminal currents on semilogy
             # Solid = positive, dashed = negative
             for term, curr in [('ig', ig), ('id', id_), ('is', is_), ('ib', ib)]:
                 if curr is not None:
                     curr_pos = np.where(curr > 0, curr, np.nan)
                     curr_neg = np.where(curr < 0, -curr, np.nan)
+                    # Only add label on first file to avoid duplicates
+                    label_pos = f'{term_labels[term]} +' if file_idx == 0 else None
+                    label_neg = f'{term_labels[term]} −' if file_idx == 0 else None
                     ax_curr.semilogy(time_us, curr_pos, '-', 
                                     color=term_colors[term], linewidth=1.5,
-                                    label=f'{term_labels[term]} +{host_suffix}')
+                                    label=label_pos)
                     ax_curr.semilogy(time_us, curr_neg, '--', 
                                     color=term_colors[term], linewidth=1.5,
-                                    label=f'{term_labels[term]} −{host_suffix}')
+                                    label=label_neg)
             
             # KCL
             if all(x is not None for x in [ig, id_, is_, ib]):
                 kcl = ig + id_ + is_ + ib
+                # Only label on first file
+                kcl_label = '|Ig+Id+Is+Ib|' if file_idx == 0 else None
                 ax_kcl.semilogy(time_us, np.abs(kcl), color=color, linewidth=1.5, 
-                           label=hostname if n_files > 1 else '|Ig+Id+Is+Ib|')
+                           label=kcl_label)
                 print(f"  KCL max error: {np.max(np.abs(kcl)):.2e} A")
             
         except Exception as e:
@@ -209,9 +225,18 @@ def plot_terminal_currents(csv_files, output_file='nfettrans_currents.png'):
 def main():
     parser = argparse.ArgumentParser(description='Plot NFET terminal currents')
     parser.add_argument('csv_files', nargs='+', help='CSV files to plot')
-    parser.add_argument('-o', '--output', default='nfettrans_currents.png',
-                       help='Output PNG file')
+    parser.add_argument('-o', '--output', default=None,
+                       help='Output PNG file (default: auto from gmin)')
     args = parser.parse_args()
+    
+    # Auto-generate output filename from first CSV file's gmin
+    if args.output is None:
+        gmin_str = extract_gmin_from_filename(args.csv_files[0])
+        if gmin_str:
+            args.output = f'nfettrans.{gmin_str}.png'
+        else:
+            args.output = 'nfettrans_currents.png'
+    
     plot_terminal_currents(args.csv_files, args.output)
 
 if __name__ == '__main__':

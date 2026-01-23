@@ -6,4 +6,4 @@
 *.csv
 *.out
 *.png
-
+#**/fixme.sh
