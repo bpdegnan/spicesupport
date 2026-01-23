@@ -18,7 +18,7 @@
 .option noinit          ; don't print operating point data
 .option klu             ; select KLU as matrix solver
 .optran 0 0 0 100p 2n 0 ; use transient op instead of dc operating point
-.option gmin=1e-14
+.option gmin=1e-10
 
 * Supply
 Vdd vdd 0 DC {VDD_VAL}
