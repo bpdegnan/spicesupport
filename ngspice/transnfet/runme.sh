@@ -68,9 +68,15 @@ run_simulation() {
     "$NGSPICE_BIN" -b nfettrans.cir > nfettrans.out 2>&1
     
     if grep -q "Done" nfettrans.out && [[ -f "nfettrans.csv" ]]; then
-        # Rename output with hostname
-        mv nfettrans.csv "nfettrans.${HOSTNAME}.csv"
+        # Convert whitespace to comma (portable for macOS/Linux)
+        # Strip leading/trailing whitespace, then convert remaining whitespace to commas
+        sed -E 's/^[[:space:]]+//; s/[[:space:]]+$//; s/[[:space:]]+/,/g' nfettrans.csv > "nfettrans.${HOSTNAME}.csv"
+        rm nfettrans.csv
         echo_status "Created nfettrans.${HOSTNAME}.csv"
+        
+        # Show column headers
+        echo_status "CSV columns:"
+        head -1 "nfettrans.${HOSTNAME}.csv" | sed 's/^/    /'
     else
         echo_error "Simulation failed - check nfettrans.out"
         cat nfettrans.out
@@ -94,13 +100,13 @@ plot_comparison() {
         echo "    $f"
     done
     
-    "$PYTHON_BIN" plot_transient_comparison.py "${CSV_FILES[@]}" -o nfettrans_comparison.png
+    "$PYTHON_BIN" plot_transient_currents.py "${CSV_FILES[@]}" -o nfettrans_comparison.png
     echo_status "Created nfettrans_comparison.png"
 }
 
 clean_files() {
     echo_status "Cleaning generated files..."
-    rm -f nfettrans.*.csv nfettrans.out nfettrans_comparison.png
+    rm -f nfettrans.*.csv nfettrans.out nfettrans_comparison.png nfettrans_currents.png
     echo_status "Done"
 }
 

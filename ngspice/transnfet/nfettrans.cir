@@ -1,5 +1,6 @@
 * NFET transient simulation - gate voltage ramp
 * Gate sweeps from 0V to VDD over 1ms
+* Measures all terminal currents: gate, drain, source, bulk
 * For comparing behavior across different systems/configurations
 * Settings merged from .spiceinit for consistent behavior
 
@@ -22,12 +23,22 @@
 * Supply
 Vdd vdd 0 DC {VDD_VAL}
 
-* Gate voltage ramp: 0V at t=0, VDD at t=RAMP_TIME
-Vg ng 0 PWL(0 0 {RAMP_TIME} {VDD_VAL})
+* Gate voltage ramp with current sensing
+Vg ng_int 0 PWL(0 0 {RAMP_TIME} {VDD_VAL})
+Vg_sense ng_int ng DC 0
 
-* NFET with drain at VDD (saturation region during ramp)
-Xnmos nd ng 0 0 abnmos
-Vd nd 0 DC {VDD_VAL}
+* Drain at VDD with current sensing
+Vd vdd nd_int DC 0
+Vd_sense nd_int nd DC 0
+
+* Source at ground with current sensing
+Vs_sense ns 0 DC 0
+
+* Bulk at ground with current sensing
+Vb_sense nb 0 DC 0
+
+* NFET: drain, gate, source, bulk
+Xnmos nd ng ns nb abnmos
 
 .control
     * Settings from .spiceinit (must be before simulation commands)
@@ -42,7 +53,7 @@ Vd nd 0 DC {VDD_VAL}
     * Write results
     set wr_vecnames
     set wr_singlescale
-    wrdata nfettrans.csv v(ng) i(Vd)
+    wrdata nfettrans.csv v(ng) i(Vg_sense) i(Vd_sense) i(Vs_sense) i(Vb_sense)
     echo "Done"
 .endc
 
