@@ -111,8 +111,9 @@ def plot_comparison(csv_files, output_file='nfettrans_comparison.png'):
             id_col = find_column(data, id_patterns)
             if id_col is None and len(col_names) > 2:
                 id_col = col_names[2]
+            #id_curr = np.abs(data[id_col]) if id_col else None
             id_curr = np.abs(data[id_col]) if id_col else None
-            
+
             # Store for difference calculation
             all_data[hostname] = {'time': time, 'vg': vg, 'id': id_curr}
             
@@ -122,7 +123,7 @@ def plot_comparison(csv_files, output_file='nfettrans_comparison.png'):
             
             # Plot Id vs time (semilog)
             if id_curr is not None:
-                ax2.semilogy(time, id_curr, color=color, linewidth=1.5, label=hostname)
+                ax2.plot(time, id_curr, color=color, linewidth=1.5, label=hostname)
                 
         except Exception as e:
             print(f"Warning: Could not load {filepath}: {e}")
@@ -191,9 +192,10 @@ def plot_comparison(csv_files, output_file='nfettrans_comparison.png'):
         ax3.set_title('Current Difference')
     
     plt.tight_layout()
-    plt.savefig(output_file, dpi=150)
-    print(f"Saved {output_file}")
-    plt.close()
+    plt.show()
+    #plt.savefig(output_file, dpi=150)
+    #print(f"Saved {output_file}")
+    #plt.close()
 
 def main():
     parser = argparse.ArgumentParser(description='Plot nfettrans host comparison')
