@@ -15,13 +15,21 @@ import re
 import os
 
 def load_csv(filepath):
-    """Load CSV file (comma or whitespace delimited)."""
+    """Load CSV file (comma or whitespace delimited) and extract metadata."""
     with open(filepath, 'r') as f:
         lines = f.readlines()
     
+    # Extract metadata from # comments
+    metadata = {}
     header_idx = 0
     for i, line in enumerate(lines):
-        if line.strip() and not line.strip().startswith('#'):
+        line_stripped = line.strip()
+        if line_stripped.startswith('#'):
+            # Parse "# key: value" format
+            if ':' in line_stripped:
+                key, _, value = line_stripped[1:].partition(':')
+                metadata[key.strip()] = value.strip()
+        elif line_stripped:
             header_idx = i
             break
     
@@ -63,7 +71,7 @@ def load_csv(filepath):
         if i < arr.shape[1]:
             data[name] = arr[:, i]
     
-    return data, header
+    return data, header, metadata
 
 def extract_hostname(filepath):
     """Extract hostname from filename like nfettrans.hostname.csv"""
@@ -94,14 +102,19 @@ def plot_terminal_currents(csv_files, output_file='nfettrans_currents.png'):
     term_labels = {'ig': 'Ig (gate)', 'id': 'Id (drain)', 'is': 'Is (source)', 'ib': 'Ib (bulk)'}
     
     all_data = {}
+    all_metadata = {}
     
     for file_idx, filepath in enumerate(csv_files):
         hostname = extract_hostname(filepath)
         color = colors[file_idx]
         
         try:
-            data, col_names = load_csv(filepath)
+            data, col_names, metadata = load_csv(filepath)
+            all_metadata[hostname] = metadata
             print(f"{hostname}: {col_names}")
+            if metadata:
+                for k, v in metadata.items():
+                    print(f"  {k}: {v}")
             
             time_col = find_column(col_names, ['time'])
             ig_col = find_column(col_names, ['i(vg_sense)', 'i_vg_sense', 'i(vsense_g)'])
@@ -149,6 +162,22 @@ def plot_terminal_currents(csv_files, output_file='nfettrans_currents.png'):
             import traceback
             traceback.print_exc()
     
+    # Build metadata text for figure
+    meta_lines = []
+    for hostname, meta in all_metadata.items():
+        parts = [hostname]
+        if 'ngspice' in meta:
+            # Extract just version number
+            ver = meta['ngspice'].split()[0] if meta['ngspice'] else ''
+            parts.append(f"ngspice {ver}")
+        if 'gmin' in meta:
+            parts.append(f"gmin={meta['gmin']}")
+        if 'source' in meta:
+            parts.append(meta['source'])
+        if 'note' in meta:
+            parts.append(f"[{meta['note']}]")
+        meta_lines.append(', '.join(parts))
+    
     # Format
     ax_curr.set_xlabel('Time (µs)')
     ax_curr.set_ylabel('|I| (A)')
@@ -165,7 +194,14 @@ def plot_terminal_currents(csv_files, output_file='nfettrans_currents.png'):
     ax_kcl.set_xlim(0, 1000)
     ax_kcl.legend(loc='best')
     
+    # Add metadata as figure text at bottom
+    if meta_lines:
+        meta_text = '\n'.join(meta_lines)
+        fig.text(0.02, 0.01, meta_text, fontsize=8, family='monospace',
+                verticalalignment='bottom', alpha=0.7)
+    
     plt.tight_layout()
+    plt.subplots_adjust(bottom=0.08 + 0.02 * len(meta_lines))  # Make room for metadata
     plt.savefig(output_file, dpi=150)
     print(f"\nSaved {output_file}")
     plt.show()

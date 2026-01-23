@@ -1,3 +1,8 @@
+# hostname: saiwaicho
+# ngspice: ******
+# gmin: 1e-14
+# source: nfettrans.cir
+# timestamp: 2026-01-23T17:43:01Z
 time,v(ng),i(Vg_sense),i(Vd_sense),i(Vs_sense),i(Vb_sense)
 0.00000000e+00,-0.00000000e+00,-0.00000000e+00,6.13488888e-14,3.33330698e-14,2.80158190e-14
 1.00000000e-08,1.80000000e-05,4.46266413e-12,-4.26315732e-13,5.43179187e-13,3.49316922e-12

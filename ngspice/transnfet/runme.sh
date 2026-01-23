@@ -1,9 +1,10 @@
 #!/usr/bin/env zsh
 # Run nfettrans and save output with hostname suffix
-# Usage: ./runme.sh [run|plot|clean]
+# Usage: ./runme.sh [run|plot|clean] [--note "description"]
 #   run   - run simulation (default)
 #   plot  - plot all hostname CSV files for comparison
 #   clean - remove generated files
+#   --note "text" - add a note to the CSV metadata
 
 set -e
 
@@ -11,7 +12,28 @@ NGSPICE_BIN="ngspice"
 PYTHON_BIN="python3"
 HOSTNAME=$(hostname -s)
 
-MODE="${1:-run}"
+MODE=""
+NOTE=""
+
+# Parse arguments
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        --note)
+            NOTE="$2"
+            shift 2
+            ;;
+        run|plot|clean)
+            MODE="$1"
+            shift
+            ;;
+        *)
+            echo "Unknown option: $1"
+            exit 1
+            ;;
+    esac
+done
+
+MODE="${MODE:-run}"
 
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -64,19 +86,37 @@ run_simulation() {
     check_ngspice || return 1
     check_spice_lib || return 1
     
+    # Extract metadata
+    NGSPICE_VERSION=$("$NGSPICE_BIN" --version 2>&1 | head -1)
+    GMIN=$(grep -i '\.option.*gmin' nfettrans.cir | sed -E 's/.*gmin[[:space:]]*=[[:space:]]*([^ ]+).*/\1/i' || echo "default")
+    TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+    
     # Run ngspice
     "$NGSPICE_BIN" -b nfettrans.cir > nfettrans.out 2>&1
     
     if grep -q "Done" nfettrans.out && [[ -f "nfettrans.csv" ]]; then
-        # Convert whitespace to comma (portable for macOS/Linux)
-        # Strip leading/trailing whitespace, then convert remaining whitespace to commas
-        sed -E 's/^[[:space:]]+//; s/[[:space:]]+$//; s/[[:space:]]+/,/g' nfettrans.csv > "nfettrans.${HOSTNAME}.csv"
+        # Create output with metadata header
+        {
+            echo "# hostname: $HOSTNAME"
+            echo "# ngspice: $NGSPICE_VERSION"
+            echo "# gmin: $GMIN"
+            echo "# source: nfettrans.cir"
+            echo "# timestamp: $TIMESTAMP"
+            [[ -n "$NOTE" ]] && echo "# note: $NOTE"
+            # Convert whitespace to comma (portable for macOS/Linux)
+            # Strip leading/trailing whitespace, then convert remaining whitespace to commas
+            sed -E 's/^[[:space:]]+//; s/[[:space:]]+$//; s/[[:space:]]+/,/g' nfettrans.csv
+        } > "nfettrans.${HOSTNAME}.csv"
         rm nfettrans.csv
         echo_status "Created nfettrans.${HOSTNAME}.csv"
         
+        # Show metadata
+        echo_status "Metadata:"
+        grep '^#' "nfettrans.${HOSTNAME}.csv" | sed 's/^/    /'
+        
         # Show column headers
         echo_status "CSV columns:"
-        head -1 "nfettrans.${HOSTNAME}.csv" | sed 's/^/    /'
+        grep -v '^#' "nfettrans.${HOSTNAME}.csv" | head -1 | sed 's/^/    /'
     else
         echo_error "Simulation failed - check nfettrans.out"
         cat nfettrans.out
@@ -123,12 +163,15 @@ case "$MODE" in
         clean_files
         ;;
     *)
-        echo "Usage: $0 [run|plot|clean]"
+        echo "Usage: $0 [run|plot|clean] [--note \"description\"]"
         echo ""
-        echo "Options:"
+        echo "Commands:"
         echo "  run   - Run simulation and save as nfettrans.HOSTNAME.csv (default)"
         echo "  plot  - Plot comparison of all nfettrans.*.csv files"
         echo "  clean - Remove generated files"
+        echo ""
+        echo "Options:"
+        echo "  --note \"text\"  - Add a note to the CSV metadata"
         exit 1
         ;;
 esac
