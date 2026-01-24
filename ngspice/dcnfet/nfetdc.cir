@@ -1,0 +1,57 @@
+* NFET DC gate sweep
+* Gate sweeps from 0V to VDD in 1000 steps
+* Measures all terminal currents: gate, drain, source, bulk
+* For comparing behavior across different systems/configurations
+* Settings merged from .spiceinit for consistent behavior
+
+* Include the PDK models
+.lib $SPICE_LIB/sky130.lib.spice tt
+
+* Include abstract device definitions
+.include devices_ngspice.cir
+
+* Parameters
+.param VDD_VAL=1.8
+
+* Options (from .spiceinit)
+.option noinit          ; don't print operating point data
+.option klu             ; select KLU as matrix solver
+.option gmin=1e-10
+
+* Supply
+Vdd vdd 0 DC {VDD_VAL}
+
+* Gate voltage sweep with current sensing
+Vg ng_int 0 DC 0
+Vg_sense ng_int ng DC 0
+
+* Drain at VDD with current sensing
+Vd vdd nd_int DC 0
+Vd_sense nd_int nd DC 0
+
+* Source at ground with current sensing
+Vs_sense ns 0 DC 0
+
+* Bulk at ground with current sensing
+Vb_sense nb 0 DC 0
+
+* NFET: drain, gate, source, bulk
+Xnmos nd ng ns nb abnmos
+
+.control
+    * Settings from .spiceinit (must be before simulation commands)
+    set ngbehavior=hsa     ; set compatibility for reading PDK libs
+    set skywaterpdk        ; skip some checks for faster lib loading
+    set ng_nomodcheck      ; don't check the model parameters
+    set num_threads=8      ; CPU processor cores available
+
+    dc Vg 0 1.8 0.001
+
+    * Write results
+    set wr_vecnames
+    set wr_singlescale
+    wrdata nfetdc.csv v(ng) i(Vg_sense) i(Vd_sense) i(Vs_sense) i(Vb_sense)
+    echo "Done"
+.endc
+
+.end
