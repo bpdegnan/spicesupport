@@ -1,0 +1,12 @@
+* Abstract devices for HSPICE with SkyWater 130nm PDK
+* These call the PDK subcircuit wrappers with proper parameters
+
+* NMOS transistor subcircuit definition
+.subckt abnmos D G S B l=0.15u w=1u m=1
+Xm1 D G S B sky130_fd_pr__nfet_01v8 l=l w=w mult=m
+.ends abnmos
+
+* PMOS transistor subcircuit definition
+.subckt abpmos D G S B l=0.15u w=1u m=1
+Xm1 D G S B sky130_fd_pr__pfet_01v8 l=l w=w mult=m
+.ends abpmos
