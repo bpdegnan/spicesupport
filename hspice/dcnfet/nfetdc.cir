@@ -1,27 +1,38 @@
-
 * HSPICE options
 .option post accurate
+.option gmin=1e-10
 
 * Include the HSPICE-compatible PDK library
 .lib '../sky130.l' tt
 .include '../devices_hspice.cir'
 
+* Parameters
+.param VDD_VAL=1.8
 
-* NFET at Vd=1.8V (saturation)
-Xnmos_sat nd_sat ng 0 0 abnmos
-Vd_sat nd_sat 0 DC 1.8
+* Supply
+Vdd vdd 0 DC VDD_VAL
 
-* NFET at Vd=100mV (linear)
-Xnmos_lin nd_lin ng 0 0 abnmos
-Vd_lin nd_lin 0 DC 0.1
+* Gate voltage sweep with current sensing
+Vg ng_int 0 DC 0
+Vg_sense ng_int ng DC 0
 
-* Shared gate
-Vg ng 0 DC 0
+* Drain at VDD with current sensing
+Vd vdd nd_int DC 0
+Vd_sense nd_int nd DC 0
 
-* DC sweep of gate voltage
-.dc Vg 0 1.8 0.001
+* Source at ground with current sensing
+Vs_sense ns 0 DC 0
+
+* Bulk at ground with current sensing
+Vb_sense nb 0 DC 0
+
+* NFET: drain, gate, source, bulk
+Xnmos nd ng ns nb abnmos
+
+* DC sweep of gate voltage: 0 to 1.8V in 1000 steps (step = 0.0018)
+.dc Vg 0 1.8 0.0018
 
 * Output currents
-.print dc v(ng) i(Vd_sat) i(Vd_lin)
+.print dc v(ng) i(Vg_sense) i(Vd_sense) i(Vs_sense) i(Vb_sense)
 
 .end
