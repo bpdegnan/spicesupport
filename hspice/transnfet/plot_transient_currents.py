@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """
-Plot NFET DC gatesweep with all terminal currents.
+Plot NFET transient gatesweep with all terminal currents.
 Supports comparison across multiple hosts.
 
 Usage:
-    python3 plot_dc_currents.py nfetdc.host1.csv
-    python3 plot_dc_currents.py nfetdc.*.csv -o comparison.png
+    python3 plot_transient_currents.py nfettrans.host1.csv
+    python3 plot_transient_currents.py nfettrans.*.csv -o comparison.png
 """
 
 import argparse
@@ -74,22 +74,22 @@ def load_csv(filepath):
     return data, header, metadata
 
 def extract_hostname(filepath):
-    """Extract hostname from filename like nfetdc.gminXX.hostname.csv or nfetdc.hostname.csv"""
+    """Extract hostname from filename like nfettrans.gminXX.hostname.csv or nfettrans.hostname.csv"""
     basename = os.path.basename(filepath)
-    # Try new format: nfetdc.gminXX.hostname.csv
-    match = re.match(r'nfetdc\.gmin[^.]+\.(.+)\.csv', basename)
+    # Try new format: nfettrans.gminXX.hostname.csv
+    match = re.match(r'nfettrans\.gmin[^.]+\.(.+)\.csv', basename)
     if match:
         return match.group(1)
-    # Try old format: nfetdc.hostname.csv
-    match = re.match(r'nfetdc\.(.+)\.csv', basename)
+    # Try old format: nfettrans.hostname.csv
+    match = re.match(r'nfettrans\.(.+)\.csv', basename)
     if match:
         return match.group(1)
     return os.path.splitext(basename)[0]
 
 def extract_gmin_from_filename(filepath):
-    """Extract gmin value from filename like nfetdc.gminXX.hostname.csv"""
+    """Extract gmin value from filename like nfettrans.gminXX.hostname.csv"""
     basename = os.path.basename(filepath)
-    match = re.match(r'nfetdc\.(gmin[^.]+)\.', basename)
+    match = re.match(r'nfettrans\.(gmin[^.]+)\.', basename)
     if match:
         return match.group(1)
     return None
@@ -102,8 +102,8 @@ def find_column(names, patterns):
                 return name
     return None
 
-def plot_dc_currents(csv_files, output_file='nfetdc_currents.png'):
-    """Plot all terminal currents from DC simulation."""
+def plot_terminal_currents(csv_files, output_file='nfettrans_currents.png'):
+    """Plot all terminal currents from transient simulation."""
     
     n_files = len(csv_files)
     colors = plt.cm.tab10(np.linspace(0, 1, max(n_files, 2)))
@@ -129,23 +129,23 @@ def plot_dc_currents(csv_files, output_file='nfetdc_currents.png'):
                 for k, v in metadata.items():
                     print(f"  {k}: {v}")
             
-            vg_col = find_column(col_names, ['v(ng)', 'v_ng'])
+            time_col = find_column(col_names, ['time'])
             ig_col = find_column(col_names, ['i(vg_sense)', 'i_vg_sense', 'i(vsense_g)'])
             id_col = find_column(col_names, ['i(vd_sense)', 'i_vd_sense', 'i(vsense_d)', 'i(vd)'])
             is_col = find_column(col_names, ['i(vs_sense)', 'i_vs_sense', 'i(vsense_s)'])
             ib_col = find_column(col_names, ['i(vb_sense)', 'i_vb_sense', 'i(vsense_b)'])
             
-            if vg_col is None:
-                vg_col = col_names[0]
+            if time_col is None:
+                time_col = col_names[0]
             
-            vg = data[vg_col]
+            time_us = data[time_col] * 1e6
             ig = data[ig_col] if ig_col else None
             id_ = data[id_col] if id_col else None
             is_ = data[is_col] if is_col else None
             ib = data[ib_col] if ib_col else None
             
             all_data[hostname] = {
-                'vg': vg, 'ig': ig, 'id': id_, 'is': is_, 'ib': ib
+                'time': time_us, 'ig': ig, 'id': id_, 'is': is_, 'ib': ib
             }
             
             # Plot all terminal currents on semilogy
@@ -157,10 +157,10 @@ def plot_dc_currents(csv_files, output_file='nfetdc_currents.png'):
                     # Only add label on first file to avoid duplicates
                     label_pos = f'{term_labels[term]} +' if file_idx == 0 else None
                     label_neg = f'{term_labels[term]} −' if file_idx == 0 else None
-                    ax_curr.semilogy(vg, curr_pos, '-', 
+                    ax_curr.semilogy(time_us, curr_pos, '-', 
                                     color=term_colors[term], linewidth=1.5,
                                     label=label_pos)
-                    ax_curr.semilogy(vg, curr_neg, '--', 
+                    ax_curr.semilogy(time_us, curr_neg, '--', 
                                     color=term_colors[term], linewidth=1.5,
                                     label=label_neg)
             
@@ -169,7 +169,7 @@ def plot_dc_currents(csv_files, output_file='nfetdc_currents.png'):
                 kcl = ig + id_ + is_ + ib
                 # Only label on first file
                 kcl_label = '|Ig+Id+Is+Ib|' if file_idx == 0 else None
-                ax_kcl.semilogy(vg, np.abs(kcl), color=color, linewidth=1.5, 
+                ax_kcl.semilogy(time_us, np.abs(kcl), color=color, linewidth=1.5, 
                            label=kcl_label)
                 print(f"  KCL max error: {np.max(np.abs(kcl)):.2e} A")
             
@@ -195,19 +195,19 @@ def plot_dc_currents(csv_files, output_file='nfetdc_currents.png'):
         meta_lines.append(', '.join(parts))
     
     # Format
-    ax_curr.set_xlabel('Vg (V)')
+    ax_curr.set_xlabel('Time (µs)')
     ax_curr.set_ylabel('|I| (A)')
-    ax_curr.set_title('Terminal Currents (DC)')
+    ax_curr.set_title('Terminal Currents')
     ax_curr.grid(True, which='both', linestyle='--', alpha=0.5)
-    ax_curr.set_xlim(0, 1.8)
+    ax_curr.set_xlim(0, 1000)
     ax_curr.set_ylim(1e-14, 1e-2)
     ax_curr.legend(loc='best', fontsize=8, ncol=2)
     
-    ax_kcl.set_xlabel('Vg (V)')
+    ax_kcl.set_xlabel('Time (µs)')
     ax_kcl.set_ylabel('|Ig + Id + Is + Ib| (A)')
     ax_kcl.set_title('KCL Check (should be ~0)')
     ax_kcl.grid(True, which='both', linestyle='--', alpha=0.5)
-    ax_kcl.set_xlim(0, 1.8)
+    ax_kcl.set_xlim(0, 1000)
     ax_kcl.legend(loc='best')
     
     # Add metadata as figure text at bottom
@@ -223,7 +223,7 @@ def plot_dc_currents(csv_files, output_file='nfetdc_currents.png'):
     plt.show()
 
 def main():
-    parser = argparse.ArgumentParser(description='Plot NFET DC terminal currents')
+    parser = argparse.ArgumentParser(description='Plot NFET terminal currents')
     parser.add_argument('csv_files', nargs='+', help='CSV files to plot')
     parser.add_argument('-o', '--output', default=None,
                        help='Output PNG file (default: auto from gmin)')
@@ -236,18 +236,18 @@ def main():
             _, _, metadata = load_csv(args.csv_files[0])
             gmin_val = metadata.get('gmin', None)
             if gmin_val:
-                args.output = f'nfetdc.gmin{gmin_val}.png'
+                args.output = f'nfettrans.gmin{gmin_val}.png'
             else:
                 # Fall back to filename extraction
                 gmin_str = extract_gmin_from_filename(args.csv_files[0])
                 if gmin_str:
-                    args.output = f'nfetdc.{gmin_str}.png'
+                    args.output = f'nfettrans.{gmin_str}.png'
                 else:
-                    args.output = 'nfetdc_currents.png'
+                    args.output = 'nfettrans_currents.png'
         except Exception:
-            args.output = 'nfetdc_currents.png'
+            args.output = 'nfettrans_currents.png'
     
-    plot_dc_currents(args.csv_files, args.output)
+    plot_terminal_currents(args.csv_files, args.output)
 
 if __name__ == '__main__':
     main()
