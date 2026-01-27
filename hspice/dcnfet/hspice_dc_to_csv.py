@@ -2,8 +2,8 @@
 """
 Parse HSPICE .out file and convert DC sweep analysis data to CSV.
 
-Handles the terminal current format:
-    v(ng) i(Vg_sense) i(Vd_sense) i(Vs_sense) i(Vb_sense)
+Handles HSPICE's paginated output format where columns are split across
+multiple sections when there are many output variables.
 
 Usage:
     python3 hspice_dc_to_csv.py nfetdc.out [output.csv]
@@ -35,101 +35,149 @@ def parse_hspice_value(s):
     return -value if negative else value
 
 def parse_hspice_dc_output(filepath):
-    """Parse HSPICE .out file and extract DC sweep data."""
+    """Parse HSPICE .out file and extract DC sweep data.
+    
+    Handles paginated output where columns are split across multiple sections.
+    """
     with open(filepath, 'r') as f:
-        content = f.read()
+        lines = f.readlines()
     
-    lines = content.split('\n')
-    
-    # Find the DC sweep data section
-    # Look for pattern: "volt" and "current" header line
-    header_line_idx = None
-    for i, line in enumerate(lines):
-        # Match header line with volt/current types
-        if re.match(r'^\s*(volt|current)(\s+(volt|current))+\s*$', line.lower()):
-            header_line_idx = i
-            break
-    
-    if header_line_idx is None:
-        # Try alternate pattern - look for column names directly
-        for i, line in enumerate(lines):
-            if 'v(ng)' in line.lower() or 'vg_sense' in line.lower():
-                header_line_idx = i
+    # Find all header sections (start of each page)
+    # Header pattern: line with "volt" and/or "voltage" and/or "current"
+    sections = []
+    i = 0
+    while i < len(lines):
+        line = lines[i].strip().lower()
+        # Look for header line with type indicators
+        if re.match(r'^(volt(age)?|current)(\s+(volt(age)?|current))*\s*$', line):
+            # Found a header line
+            header_types = lines[i].split()
+            
+            # Next line should have column names
+            i += 1
+            if i >= len(lines):
                 break
+            subheader_line = lines[i]
+            subheader_parts = subheader_line.split()
+            
+            # Build column info for this section
+            # First column type may not have a name (it's the sweep variable)
+            columns = []
+            for j, htype in enumerate(header_types):
+                htype_lower = htype.lower()
+                if j < len(subheader_parts):
+                    name = subheader_parts[j]
+                else:
+                    name = f'col{j}'
+                
+                if htype_lower in ('volt', 'voltage'):
+                    columns.append(f'v({name})')
+                else:  # current
+                    columns.append(f'i({name})')
+            
+            # If subheader has fewer parts, the first column name is implicit (sweep var)
+            # Check if first subheader entry aligns with types
+            if len(subheader_parts) < len(header_types):
+                # First column has no name - it's the sweep variable
+                # Shift names to align
+                columns = ['sweep']
+                for j, htype in enumerate(header_types[1:], 0):
+                    htype_lower = htype.lower()
+                    if j < len(subheader_parts):
+                        name = subheader_parts[j]
+                    else:
+                        name = f'col{j+1}'
+                    if htype_lower in ('volt', 'voltage'):
+                        columns.append(f'v({name})')
+                    else:
+                        columns.append(f'i({name})')
+            
+            # Skip to data
+            i += 1
+            
+            # Parse data rows until we hit end markers
+            data_rows = []
+            while i < len(lines):
+                data_line = lines[i].strip()
+                
+                # End markers
+                if not data_line:
+                    i += 1
+                    continue
+                if data_line.lower().startswith(('y', 'x', '*', '$', '>')):
+                    break
+                if 'job' in data_line.lower():
+                    break
+                if not re.match(r'^[\-\d]', data_line):
+                    break
+                
+                # Parse data row
+                try:
+                    parts = data_line.split()
+                    row = [parse_hspice_value(p) for p in parts]
+                    if all(v is not None for v in row):
+                        data_rows.append(row)
+                except (ValueError, IndexError):
+                    pass
+                
+                i += 1
+            
+            if data_rows:
+                sections.append({
+                    'columns': columns,
+                    'data': data_rows
+                })
+        else:
+            i += 1
     
-    if header_line_idx is None:
-        raise ValueError("Could not find header line in HSPICE output")
+    if not sections:
+        raise ValueError("Could not find any data sections in HSPICE output")
     
-    # Parse header types (volt/current)
-    header_types = lines[header_line_idx].split()
+    # Merge sections by sweep value (first column)
+    # First section defines the sweep values
+    primary = sections[0]
+    sweep_values = [row[0] for row in primary['data']]
     
-    # Next line should have node/source names
-    subheader_idx = header_line_idx + 1
-    subheader_line = lines[subheader_idx].strip()
+    # Build merged data
+    # Start with all columns from first section
+    all_columns = primary['columns'][:]
+    merged_data = [row[:] for row in primary['data']]
     
-    # Check if subheader line is actually data (starts with number)
-    if re.match(r'^[\-\d\.]', subheader_line):
-        # No subheader, use default names
-        columns = []
-        for j, htype in enumerate(header_types):
-            if htype.lower() == 'volt':
-                columns.append(f'v(col{j})')
-            else:
-                columns.append(f'i(col{j})')
-        data_start = subheader_idx
-    else:
-        # Parse subheader for column names
-        subheader_parts = subheader_line.split()
-        columns = []
-        for j, htype in enumerate(header_types):
-            if j < len(subheader_parts):
-                name = subheader_parts[j]
-                prefix = 'v' if htype.lower() == 'volt' else 'i'
-                columns.append(f'{prefix}({name})')
-            else:
-                prefix = 'v' if htype.lower() == 'volt' else 'i'
-                columns.append(f'{prefix}(col{j})')
-        data_start = subheader_idx + 1
-    
-    # Skip any blank lines or separator lines
-    while data_start < len(lines):
-        line = lines[data_start].strip()
-        if line and re.match(r'^[\-\d]', line):
-            break
-        data_start += 1
-    
-    # Parse data rows
-    data = []
-    for i in range(data_start, len(lines)):
-        line = lines[i].strip()
+    # Add columns from subsequent sections (skip their sweep column)
+    for section in sections[1:]:
+        # Add new column names (skip 'sweep' which is first)
+        for col in section['columns'][1:]:
+            all_columns.append(col)
         
-        # Stop at end markers
-        if not line:
-            continue
-        if line.startswith(('y', '*', '$', 'x', '>')):
-            break
-        if 'job' in line.lower() or 'concluded' in line.lower():
-            break
-        if not re.match(r'^[\-\d]', line):
-            break
+        # Build lookup by sweep value for this section
+        section_lookup = {}
+        for row in section['data']:
+            sweep_val = row[0]
+            section_lookup[sweep_val] = row[1:]  # Skip sweep column
         
-        # Parse values
-        try:
-            parts = line.split()
-            row = [parse_hspice_value(p) for p in parts]
-            if all(v is not None for v in row) and len(row) == len(columns):
-                data.append(row)
-            elif all(v is not None for v in row) and len(row) > 0:
-                # Adjust columns if mismatch on first row
-                if len(data) == 0:
-                    while len(columns) < len(row):
-                        columns.append(f'col{len(columns)}')
-                    columns = columns[:len(row)]
-                    data.append(row)
-        except (ValueError, IndexError):
-            continue
+        # Merge into primary data
+        for j, sweep_val in enumerate(sweep_values):
+            if sweep_val in section_lookup:
+                merged_data[j].extend(section_lookup[sweep_val])
+            else:
+                # Find closest match (floating point tolerance)
+                matched = False
+                for sv, vals in section_lookup.items():
+                    if abs(sv - sweep_val) < 1e-12:
+                        merged_data[j].extend(vals)
+                        matched = True
+                        break
+                if not matched:
+                    # Fill with NaN
+                    merged_data[j].extend([float('nan')] * (len(section['columns']) - 1))
     
-    return columns, data
+    # Clean up column names
+    # Replace 'sweep' with proper name if we can infer it
+    if all_columns[0] == 'sweep' and len(all_columns) > 1:
+        # First voltage column after sweep is usually the sweep variable
+        all_columns[0] = 'v(sweep)'
+    
+    return all_columns, merged_data
 
 def write_csv(columns, data, output_path):
     """Write data to CSV file (comma-separated)."""
@@ -151,7 +199,7 @@ def main():
     print(f"Parsing {input_file}...", file=sys.stderr)
     columns, data = parse_hspice_dc_output(input_file)
     print(f"Found {len(data)} data points", file=sys.stderr)
-    print(f"Columns: {columns}", file=sys.stderr)
+    print(f"Columns ({len(columns)}): {columns}", file=sys.stderr)
     
     if len(data) == 0:
         print("Warning: No data found!", file=sys.stderr)
