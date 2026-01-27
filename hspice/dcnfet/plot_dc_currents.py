@@ -218,8 +218,8 @@ def plot_dc_currents(csv_files, output_file='nfetdc_currents.png'):
     
     plt.tight_layout()
     plt.subplots_adjust(bottom=0.08 + 0.02 * len(meta_lines))  # Make room for metadata
-    plt.savefig(output_file, dpi=150)
-    print(f"\nSaved {output_file}")
+    # plt.savefig(output_file, dpi=150)
+    # print(f"\nSaved {output_file}")
     plt.show()
 
 def main():
