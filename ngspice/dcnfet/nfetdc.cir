@@ -16,7 +16,7 @@
 * Options (from .spiceinit)
 .option noinit          ; don't print operating point data
 .option klu             ; select KLU as matrix solver
-.option gmin=1e-10
+.option gmin=1e-15
 
 * Supply
 Vdd vdd 0 DC {VDD_VAL}
