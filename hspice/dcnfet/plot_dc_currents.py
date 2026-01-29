@@ -102,7 +102,7 @@ def find_column(names, patterns):
                 return name
     return None
 
-def plot_dc_currents(csv_files, output_file='nfetdc_currents.png'):
+def plot_dc_currents(csv_files):
     """Plot all terminal currents from DC simulation."""
     
     n_files = len(csv_files)
@@ -181,11 +181,14 @@ def plot_dc_currents(csv_files, output_file='nfetdc_currents.png'):
     # Build metadata text for figure
     meta_lines = []
     for hostname, meta in all_metadata.items():
-        parts = [hostname]
-        if 'ngspice' in meta:
+        parts = []
+        if 'simulator' in meta:
+            parts.append(meta['simulator'])
+        elif 'ngspice' in meta:
             # Extract just version number
             ver = meta['ngspice'].split()[0] if meta['ngspice'] else ''
             parts.append(f"ngspice {ver}")
+        parts.append(hostname)
         if 'gmin' in meta:
             parts.append(f"gmin={meta['gmin']}")
         if 'source' in meta:
@@ -218,36 +221,14 @@ def plot_dc_currents(csv_files, output_file='nfetdc_currents.png'):
     
     plt.tight_layout()
     plt.subplots_adjust(bottom=0.08 + 0.02 * len(meta_lines))  # Make room for metadata
-    # plt.savefig(output_file, dpi=150)
-    # print(f"\nSaved {output_file}")
     plt.show()
 
 def main():
     parser = argparse.ArgumentParser(description='Plot NFET DC terminal currents')
     parser.add_argument('csv_files', nargs='+', help='CSV files to plot')
-    parser.add_argument('-o', '--output', default=None,
-                       help='Output PNG file (default: auto from gmin)')
     args = parser.parse_args()
     
-    # Auto-generate output filename from first CSV file's gmin metadata
-    if args.output is None:
-        # Read metadata from first file to get gmin
-        try:
-            _, _, metadata = load_csv(args.csv_files[0])
-            gmin_val = metadata.get('gmin', None)
-            if gmin_val:
-                args.output = f'nfetdc.gmin{gmin_val}.png'
-            else:
-                # Fall back to filename extraction
-                gmin_str = extract_gmin_from_filename(args.csv_files[0])
-                if gmin_str:
-                    args.output = f'nfetdc.{gmin_str}.png'
-                else:
-                    args.output = 'nfetdc_currents.png'
-        except Exception:
-            args.output = 'nfetdc_currents.png'
-    
-    plot_dc_currents(args.csv_files, args.output)
+    plot_dc_currents(args.csv_files)
 
 if __name__ == '__main__':
     main()
