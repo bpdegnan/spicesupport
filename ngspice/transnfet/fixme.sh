@@ -1,4 +1,8 @@
 #!/usr/bin/env zsh
-# clean up my macos attributes
+# clean up macOS attributes and make scripts executable
+if [[ "$(uname)" == "Darwin" ]]; then
+    xattr -rc .
+fi
 
-xattr -rc . && chmod +x runme.sh
+chmod +x runme.sh
+
