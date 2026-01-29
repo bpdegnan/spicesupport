@@ -7,3 +7,7 @@
 *.out
 *.png
 #**/fixme.sh
+**/*.pa0
+**/*.st0
+**/*.sw0
+
