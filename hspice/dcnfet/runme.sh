@@ -132,8 +132,39 @@ plot_comparison() {
         return 1
     fi
     
-    echo_status "Found ${#CSV_FILES[@]} CSV file(s):"
-    for f in "${CSV_FILES[@]}"; do
+    echo_status "Available CSV files:"
+    for i in {1..${#CSV_FILES[@]}}; do
+        echo "    $i) ${CSV_FILES[$i]}"
+    done
+    echo "    a) All files"
+    echo ""
+    
+    echo -n "Select files to plot (e.g., 1 2 3 or 'a' for all): "
+    read selection
+    
+    # Build list of selected files
+    SELECTED_FILES=()
+    
+    if [[ "$selection" == "a" || "$selection" == "A" ]]; then
+        SELECTED_FILES=("${CSV_FILES[@]}")
+    else
+        for sel in ${=selection}; do
+            if [[ "$sel" =~ ^[0-9]+$ ]] && [[ "$sel" -ge 1 ]] && [[ "$sel" -le ${#CSV_FILES[@]} ]]; then
+                SELECTED_FILES+=("${CSV_FILES[$sel]}")
+            else
+                echo_warn "Invalid selection: $sel (skipping)"
+            fi
+        done
+    fi
+    
+    if [[ ${#SELECTED_FILES[@]} -eq 0 ]]; then
+        echo_error "No valid files selected"
+        return 1
+    fi
+    
+    echo ""
+    echo_status "Plotting ${#SELECTED_FILES[@]} file(s):"
+    for f in "${SELECTED_FILES[@]}"; do
         echo "    $f"
     done
     
@@ -142,8 +173,7 @@ plot_comparison() {
         return 1
     fi
     
-    # Let Python auto-generate output filename from gmin
-    "$PYTHON_BIN" "$PLOT_SCRIPT" "${CSV_FILES[@]}"
+    "$PYTHON_BIN" "$PLOT_SCRIPT" "${SELECTED_FILES[@]}"
 }
 
 clean_files() {
