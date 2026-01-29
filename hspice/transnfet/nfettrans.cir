@@ -1,0 +1,43 @@
+* NFET Transient gate sweep - HSPICE version
+* Gate ramps from 0V to VDD over 1ms
+* Measures all terminal currents: gate, drain, source, bulk
+* For comparing behavior across different systems/configurations
+
+* HSPICE options
+.option post accurate
+.option gmin=1e-14
+
+* Include the HSPICE-compatible PDK library
+.lib '../sky130.l' tt
+.include '../devices_hspice.cir'
+
+* Parameters
+.param VDD_VAL=1.8
+
+* Supply
+Vdd vdd 0 DC VDD_VAL
+
+* Gate voltage ramp with current sensing (0 to 1.8V over 1ms)
+Vg ng_int 0 PWL(0 0 1m VDD_VAL)
+Vg_sense ng_int ng DC 0
+
+* Drain at VDD with current sensing
+Vd vdd nd_int DC 0
+Vd_sense nd_int nd DC 0
+
+* Source at ground with current sensing
+Vs_sense ns 0 DC 0
+
+* Bulk at ground with current sensing
+Vb_sense nb 0 DC 0
+
+* NFET: drain, gate, source, bulk
+Xnmos nd ng ns nb abnmos
+
+* Transient analysis: 1ms with 1us timestep
+.tran 1u 1m
+
+* Output currents
+.print tran v(ng) i(Vg_sense) i(Vd_sense) i(Vs_sense) i(Vb_sense)
+
+.end
