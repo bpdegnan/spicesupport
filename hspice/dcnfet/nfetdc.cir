@@ -1,6 +1,6 @@
 * HSPICE options
 .option post accurate
-.option gmin=1e-14
+.option gmin=1e-15
 
 * Include the HSPICE-compatible PDK library
 .lib '../sky130.l' tt
