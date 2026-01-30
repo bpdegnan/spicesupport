@@ -78,7 +78,8 @@ run_simulation() {
     fi
     
     # Extract metadata from circuit file
-    GMIN=$(grep -i '\.option.*gmin' "$CIR_FILE" | sed -E 's/.*gmin[[:space:]]*=[[:space:]]*([^ ]+).*/\1/i' || echo "default")
+    # GMIN=$(grep -i '\.option.*gmin' "$CIR_FILE" | sed -E 's/.*gmin[[:space:]]*=[[:space:]]*([^ ]+).*/\1/i' || echo "default")
+    GMIN=$(grep -oiE '\bgmin\s*=\s*[0-9e.+-]+' "$CIR_FILE" | head -1 | sed -E 's/.*=\s*//' || echo "default")
     TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
     
     # Output filename includes gmin
