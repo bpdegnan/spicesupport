@@ -4,8 +4,33 @@
 * For comparing behavior across different systems/configurations
 
 * HSPICE options
-.option post accurate
-.option gmin=1e-14
+* post=2 should give ASCII
+* .option post=2
+* RUNLVL=6 as explicit options
+.option method=gear
+* bypass of 2 is for MOSFETS, 0 calculate everything
+.option bypass=0
+.option accurate=1
+.option reltol=1e-5
+.option abstol=1e-15
+.option vntol=1e-7
+.option absi=1e-15
+.option absmos=1e-15
+.option lvltim=3 
+.option dvdt=2
+* trtol is a bit of a mystery as it's used as an error estimator.  1 is unity
+.option trtol=1  
+
+* pivot/matrix issues for pivot too large warning
+.option gmin=1e-12
+.option gmindc=1e-12
+.option pivot=13
+.option pivrel=1e-3
+
+
+*more transient options to try to fix wave
+.option delmax=1e-6
+.option bytol=1e-6
 
 * Include the HSPICE-compatible PDK library
 .lib '../sky130.l' tt
@@ -34,7 +59,7 @@ Vb_sense nb 0 DC 0
 * NFET: drain, gate, source, bulk
 Xnmos nd ng ns nb abnmos
 
-* Transient analysis: 1ms with 1us timestep
+* Transient analysis: 1ms with some timestep.  
 .tran 1u 1m
 
 * Output currents
