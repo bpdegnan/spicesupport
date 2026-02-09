@@ -1,0 +1,107 @@
+* 20-Stage Ring Oscillator with NAND2 Enable - ngspice version
+* NAND2 + 19 inverters = 20 stages (odd inversions for oscillation)
+* Monitors: NAND2 output, NAND2 feedback input, VDD/GND currents
+*
+* Device abstraction: abnmos/abpmos are placeholders substituted by runme.sh
+* Edit NMOS_DEVICE and PMOS_DEVICE in runme script to swap device types
+
+* Include the PDK models
+.lib $SPICE_LIB/sky130.lib.spice tt
+
+* Parameters
+.param VDD_VAL=1.8
+.param W_P=1u
+.param W_N=0.5u
+.param L_MIN=0.15u
+
+* Options
+.option noinit
+.option klu
+.option gmin=1e-12
+
+**********************************************************************
+* Subcircuits - using abstract device names (substituted at runtime)
+**********************************************************************
+
+* Inverter
+.subckt inv in out vdd vss
+Xp out in vdd vdd abpmos w=W_P l=L_MIN
+Xn out in vss vss abnmos w=W_N l=L_MIN
+.ends inv
+
+* NAND2
+.subckt nand2 a b out vdd vss
+Xp1 out a vdd vdd abpmos w=W_P l=L_MIN
+Xp2 out b vdd vdd abpmos w=W_P l=L_MIN
+Xn1 out a mid vss abnmos w=W_N l=L_MIN
+Xn2 mid b vss vss abnmos w=W_N l=L_MIN
+.ends nand2
+
+**********************************************************************
+* Ring Oscillator with current sensing
+**********************************************************************
+
+* Main supply
+Vdd vdd_main 0 DC {VDD_VAL}
+
+* Current sensing for RO supply (VDD side)
+Vdd_sense vdd_main vdd_ro DC 0
+
+* Current sensing for RO ground (VSS side)
+Vss_sense vss_ro 0 DC 0
+
+* Enable signal (high to enable oscillation)
+Ven en 0 PWL(0 0 10n 0 11n {VDD_VAL})
+
+* NAND2 gate (stage 0) - feedback comes from last inverter
+Xnand en fb nand_out vdd_ro vss_ro nand2
+
+* Inverter chain (stages 1-19)
+Xinv1  nand_out n1  vdd_ro vss_ro inv
+Xinv2  n1       n2  vdd_ro vss_ro inv
+Xinv3  n2       n3  vdd_ro vss_ro inv
+Xinv4  n3       n4  vdd_ro vss_ro inv
+Xinv5  n4       n5  vdd_ro vss_ro inv
+Xinv6  n5       n6  vdd_ro vss_ro inv
+Xinv7  n6       n7  vdd_ro vss_ro inv
+Xinv8  n7       n8  vdd_ro vss_ro inv
+Xinv9  n8       n9  vdd_ro vss_ro inv
+Xinv10 n9       n10 vdd_ro vss_ro inv
+Xinv11 n10      n11 vdd_ro vss_ro inv
+Xinv12 n11      n12 vdd_ro vss_ro inv
+Xinv13 n12      n13 vdd_ro vss_ro inv
+Xinv14 n13      n14 vdd_ro vss_ro inv
+Xinv15 n14      n15 vdd_ro vss_ro inv
+Xinv16 n15      n16 vdd_ro vss_ro inv
+Xinv17 n16      n17 vdd_ro vss_ro inv
+Xinv18 n17      n18 vdd_ro vss_ro inv
+Xinv19 n18      fb  vdd_ro vss_ro inv
+
+**********************************************************************
+* Simulation
+**********************************************************************
+
+.control
+    set num_threads=8
+
+    * Transient analysis - 200ns with 10ps resolution
+    tran 10p 200n
+
+    * Write results to CSV
+    set wr_vecnames
+    set wr_singlescale
+    wrdata ro20.csv v(en) v(nand_out) v(fb) i(Vdd_sense) i(Vss_sense)
+
+    * Measure frequency (find period between rising edges)
+    meas tran t_rise1 trig v(nand_out) val=0.9 rise=5 targ v(nand_out) val=0.9 rise=6
+    meas tran freq param='1/t_rise1'
+    meas tran period param='t_rise1'
+
+    * Measure average currents (after oscillation starts)
+    meas tran i_vdd_avg avg i(Vdd_sense) from=50n to=200n
+    meas tran i_vss_avg avg i(Vss_sense) from=50n to=200n
+
+    echo "Done"
+.endc
+
+.end
