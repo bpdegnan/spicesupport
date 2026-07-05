@@ -285,6 +285,27 @@ function patch_conda_env_for_local_tools() {
   fi
 }
 
+# The repo's requirements.txt (pulled in by environment.yml's pip section)
+# asks for rst_include, a docs-only tool whose lib-log-utils dependency is
+# unresolvable with modern pip (ResolutionImpossible).  Worse, when pip dies
+# on it the whole pip section is abandoned, so the skywater_pdk package on
+# the next line never installs either.  Drop rst_include; it is only used
+# to render .. include:: directives in GitHub README previews.
+function patch_requirements_for_pip() {
+  local repo="$1"
+  local reqfile="$repo/requirements.txt"
+  [[ -f "$reqfile" ]] || return 0
+
+  grep -qE '^[[:space:]]*rst_include[[:space:]]*$' "$reqfile" || return 0
+
+  say "Removing rst_include from requirements.txt (docs-only; breaks pip resolution)"
+  [[ -f "${reqfile}.orig" ]] || cp "$reqfile" "${reqfile}.orig"
+
+  local tmp="${reqfile}.tmp.$$"
+  grep -vE '^[[:space:]]*rst_include[[:space:]]*$' "$reqfile" > "$tmp"
+  mv -f "$tmp" "$reqfile"
+}
+
 # ---------------- interactive make target selection ----------------
 typeset -a TARGETS
 TARGETS=(
@@ -364,7 +385,9 @@ function select_targets_menu() {
       done
       ;;
     3)
-      SELECTED_TARGETS=("${TARGETS[@]}")
+      # everything except 'enter', which opens an interactive subshell and
+      # would stall an unattended run
+      SELECTED_TARGETS=("${(@)TARGETS:#enter}")
       ;;
     4)
       SELECTED_TARGETS=(submodules timing)
@@ -463,6 +486,7 @@ function run_selected_targets() {
 
 if (( need_env_any == 0 )); then
   patch_conda_env_for_local_tools "$repo"
+  patch_requirements_for_pip "$repo"
   say "Ensuring environment exists: make env"
   make_env_firewall_safe "$repo"
 fi
