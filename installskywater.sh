@@ -14,11 +14,18 @@
 #     * yosys/netlistsvg/iverilog already on PATH are removed from
 #       environment.yml so conda does not try (and fail) to install them
 # - Interactive make target selection:
-#     * one / multiple / all / just submodules
-# - Optional persistence to ~/.zshrc:
-#     * export PDK_ROOT=...
-#     * export SKYWATERPDK=...  (repo path)
+#     * one / multiple / all / submodules+timing (default)
+# - Installs the repo's own python package (scripts/python-skywater-pdk)
+#   into the conda env so `make timing` works (fixes
+#   ModuleNotFoundError: No module named 'skywater_pdk')
+# - Stage 2: builds open_pdks (RTimothyEdwards/open_pdks) to produce the
+#   tool-ready sky130A tree (tech LEF, merged LEF, ngspice models) under
+#   $PDK_ROOT/share/pdk/sky130A -- google/skywater-pdk alone never makes these
+# - Optional persistence to ~/.zshrc / ~/.zprofile:
+#     * export SKYWATERPDK=...       (raw foundry checkout, source of truth)
 #     * export SKYWATER_PDK_REPO=... (alias)
+#     * export PDK_ROOT=...          (open_pdks install prefix)
+#     * export PDK_ROOT_SKY130A=$PDK_ROOT/share/pdk/sky130A
 
 set -eu
 
@@ -315,7 +322,8 @@ function select_targets_menu() {
   say "  1) One target"
   say "  2) Multiple targets"
   say "  3) All targets"
-  say "  4) Just submodules (fastest / recommended first)"
+  say "  4) submodules + timing (recommended: compiles the .lib files tools need)"
+  say "  5) Just submodules (fast, but leaves timing/ as .lib.json sources only)"
   say ""
   choice="$(ask "Choice" "4")"
 
@@ -359,12 +367,28 @@ function select_targets_menu() {
       SELECTED_TARGETS=("${TARGETS[@]}")
       ;;
     4)
+      SELECTED_TARGETS=(submodules timing)
+      ;;
+    5)
       SELECTED_TARGETS=(submodules)
       ;;
     *)
       die "Unknown choice: $choice"
       ;;
   esac
+}
+
+# After any timing-producing target, refuse to call the run a success unless
+# compiled Liberty files actually exist (fresh installs used to end with only
+# .lib.json sources and no error).
+function verify_compiled_libs() {
+  local repo="$1"
+  local -a libs
+  libs=( "$repo"/libraries/*/*/timing/*.lib(N) )
+  if (( ${#libs[@]} == 0 )); then
+    die "No compiled .lib files found under $repo/libraries/*/*/timing/ -- the timing build did not produce Liberty output. Check the make output above."
+  fi
+  say "Timing check: found ${#libs[@]} compiled .lib file(s) (e.g. ${libs[1]:t})."
 }
 
 function ensure_conda_tos_accepted() {
@@ -396,6 +420,27 @@ function make_env_firewall_safe() {
 
   say "Running: make env (second pass)"
   ( cd "$repo" && make env )
+
+  # make env alone leaves the repo's own python package uninstalled, so any
+  # timing target dies with: ModuleNotFoundError: No module named 'skywater_pdk'
+  install_skywater_python_pkg "$repo"
+}
+
+function install_skywater_python_pkg() {
+  local repo="$1"
+  local envdir="$repo/env/conda/envs/skywater-pdk-scripts"
+  local pip_bin="$envdir/bin/pip"
+
+  [[ -x "$pip_bin" ]] || die "pip not found at $pip_bin (make env did not create the skywater-pdk-scripts env?)"
+
+  if "$pip_bin" show skywater-pdk >/dev/null 2>&1; then
+    say "skywater-pdk python package already installed in conda env; skipping pip install."
+    return 0
+  fi
+
+  say "Installing repo python package into conda env:"
+  say "  $pip_bin install -e $repo/scripts/python-skywater-pdk"
+  "$pip_bin" install -e "$repo/scripts/python-skywater-pdk"
 }
 
 function run_selected_targets() {
@@ -428,6 +473,168 @@ fi
       make "$t"
     done
   )
+
+  for t in "${SELECTED_TARGETS[@]}"; do
+    case "$t" in
+      timing|sky130_fd_sc_*)
+        verify_compiled_libs "$repo"
+        break
+        ;;
+    esac
+  done
+}
+
+# ---------------- stage 2: open_pdks (tech LEF / merged LEF / sky130A) ----------------
+# google/skywater-pdk never produces a tech LEF or a merged sky130_fd_sc_hd.lef
+# under ANY make target.  Those only come from open_pdks, which stages the
+# foundry sources into the tool-ready $PDK_ROOT/share/pdk/sky130A tree that
+# yosys/OpenROAD/magic/klayout expect.
+
+OPEN_PDKS_URL="https://github.com/RTimothyEdwards/open_pdks.git"
+
+function check_magic() {
+  local magic_bin=""
+  if have magic; then
+    magic_bin="$(command -v magic)"
+  elif [[ -x /opt/local/bin/magic ]]; then
+    # MacPorts install that is not on PATH yet
+    magic_bin="/opt/local/bin/magic"
+    export PATH="/opt/local/bin:$PATH"
+    say "Found magic at $magic_bin (added /opt/local/bin to PATH for this run)."
+  else
+    err "magic is required by open_pdks but was not found on PATH."
+    err "Install it first, e.g.:  sudo port install magic   (or: brew install magic)"
+    return 1
+  fi
+
+  local ver major minor rest
+  ver="$("$magic_bin" --version 2>/dev/null | head -n1)" || ver=""
+  if [[ -z "$ver" ]]; then
+    err "Could not determine magic version from $magic_bin --version."
+    return 1
+  fi
+
+  major="${ver%%.*}"
+  rest="${ver#*.}"
+  minor="${rest%%.*}"
+  if ! [[ "$major" =~ '^[0-9]+$' && "$minor" =~ '^[0-9]+$' ]]; then
+    err "Unrecognized magic version string: '$ver'"
+    return 1
+  fi
+  if (( major < 8 || (major == 8 && minor < 3) )); then
+    err "magic $ver is too old for open_pdks; need 8.3 or newer (8.3.660 known good)."
+    return 1
+  fi
+  say "magic $ver at $magic_bin -- OK"
+  return 0
+}
+
+function cpu_count() {
+  if [[ "$OS" == "macos" ]]; then
+    sysctl -n hw.ncpu 2>/dev/null || print 4
+  else
+    nproc 2>/dev/null || print 4
+  fi
+}
+
+function build_open_pdks() {
+  local prefix="$1" skywater_src="$2"
+  local src="$prefix/open_pdks"
+  local sky130a="$prefix/share/pdk/sky130A"
+
+  say ""
+  say "== Stage 2: open_pdks -> $sky130a =="
+
+  if [[ -d "$sky130a" ]]; then
+    say "An installed sky130A tree already exists at:"
+    say "  $sky130a"
+    if ! ask_yn "Rebuild and reinstall open_pdks anyway?" "n"; then
+      say "Keeping existing sky130A install."
+      return 0
+    fi
+  fi
+
+  check_magic || die "Cannot build open_pdks without a working magic."
+
+  if [[ -d "$src/.git" ]]; then
+    say "Existing open_pdks checkout at $src"
+    if ask_yn "Update it (git pull --rebase)?" "n"; then
+      ( cd "$src" && git pull --rebase )
+    fi
+  else
+    say "Cloning open_pdks into $src ..."
+    mkdir -p "$prefix"
+    git clone "$OPEN_PDKS_URL" "$src"
+  fi
+
+  local ncpu
+  ncpu="$(cpu_count)"
+
+  (
+    cd "$src"
+    say ""
+    say "Configuring open_pdks (prefix: $prefix, sky130 sources: $skywater_src)..."
+    say "NOTE: open_pdks expects per-library repos, not the google monorepo layout,"
+    say "so it will clone its own library copies into $src/sources/ over HTTPS."
+    ./configure --prefix="$prefix" \
+                --enable-sky130-pdk="$skywater_src" \
+                --disable-gf180mcu-pdk
+    say ""
+    say "Building open_pdks (-j$ncpu)..."
+    make -j"$ncpu"
+    say ""
+    say "Installing into user-owned prefix (no sudo)..."
+    make install
+  )
+}
+
+# ---------------- post-install verification ----------------
+function verify_sky130a_install() {
+  local sky="$1" fail=0
+  local hd="$sky/libs.ref/sky130_fd_sc_hd"
+
+  say ""
+  say "== Post-install verification: $sky =="
+
+  local lib="$hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib"
+  if [[ -f "$lib" ]]; then
+    say "  OK      $lib"
+  else
+    say "  MISSING $lib"; fail=1
+  fi
+
+  local -a tlefs
+  tlefs=( "$hd"/techlef/*.tlef(N) )
+  if (( ${#tlefs[@]} > 0 )); then
+    say "  OK      $hd/techlef/ (${tlefs[1]:t})"
+  else
+    say "  MISSING $hd/techlef/ (no *.tlef found)"; fail=1
+  fi
+
+  local lef="$hd/lef/sky130_fd_sc_hd.lef"
+  if [[ -f "$lef" ]]; then
+    say "  OK      $lef"
+  else
+    say "  MISSING $lef"; fail=1
+  fi
+
+  local ng="$sky/libs.tech/ngspice"
+  local -a ngfiles
+  ngfiles=( "$ng"/*(N) )
+  if [[ -d "$ng" ]] && (( ${#ngfiles[@]} > 0 )); then
+    say "  OK      $ng/ (spice models present)"
+  else
+    say "  MISSING $ng/ (no spice models)"; fail=1
+  fi
+
+  if (( fail )); then
+    err "sky130A verification FAILED -- the PDK is NOT tool-ready."
+    err "yosys/OpenROAD/magic/klayout will not find LIB/TLEF/LEF under $sky"
+    return 1
+  fi
+  say ""
+  say "All checks passed: sky130A is tool-ready."
+  return 0
 }
 
 # ---------------- persist exports to ~/.zshrc ----------------
@@ -439,10 +646,13 @@ function upsert_block_in_file() {
   local block
   block=$(cat <<EOF
 $begin
-# Added by install_skywater_pdks_nosudo.zsh
-export PDK_ROOT="$PDK_ROOT"
+# Added by installskywater.sh
+# Raw foundry checkout (source of truth):
 export SKYWATERPDK="$SKYWATERPDK"
 export SKYWATER_PDK_REPO="$SKYWATER_PDK_REPO"
+# open_pdks install prefix and the tool-ready sky130A tree:
+export PDK_ROOT="$PDK_ROOT"
+export PDK_ROOT_SKY130A="$PDK_ROOT_SKY130A"
 $end
 EOF
 )
@@ -450,18 +660,23 @@ EOF
   # Ensure file exists
   [[ -f "$file" ]] || : > "$file"
 
+  # Remove any existing block first.  NOTE: do not pass the multiline
+  # replacement through awk -v: BSD awk (macOS) rejects newlines in -v
+  # strings, which silently left stale blocks in place on earlier runs.
   if grep -qF "$begin" "$file"; then
-    # Replace existing block
-    awk -v begin="$begin" -v end="$end" -v newblock="$block" '
+    awk -v begin="$begin" -v end="$end" '
       BEGIN { inblock=0 }
-      $0==begin { print newblock; inblock=1; next }
+      $0==begin { inblock=1; next }
       $0==end   { inblock=0; next }
       inblock==0 { print }
     ' "$file" > "${file}.tmp.$$" && mv -f "${file}.tmp.$$" "$file"
-  else
-    # Append new block
-    printf "\n%s\n" "$block" >> "$file"
   fi
+
+  # Append the fresh block, with exactly one blank separator line.
+  if [[ -s "$file" && -n "$(tail -n 1 "$file")" ]]; then
+    print "" >> "$file"
+  fi
+  printf "%s\n" "$block" >> "$file"
 }
 
 function persist_exports() {
@@ -470,9 +685,12 @@ function persist_exports() {
 
   say ""
   say "Persist these exports for future shells?"
-  say "  PDK_ROOT=$PDK_ROOT"
-  say "  SKYWATERPDK=$SKYWATERPDK"
+  say "  SKYWATERPDK=$SKYWATERPDK          (raw foundry checkout)"
   say "  SKYWATER_PDK_REPO=$SKYWATER_PDK_REPO"
+  say "  PDK_ROOT=$PDK_ROOT          (open_pdks install prefix)"
+  say "  PDK_ROOT_SKY130A=$PDK_ROOT_SKY130A"
+  say ""
+  say "(Any previous SKY130 PDK ENV block -- including stale paths -- will be replaced.)"
   say ""
   say "Where should I write them?"
   say "  1) ~/.zshrc"
@@ -503,9 +721,12 @@ function print_export_banner() {
   say ""
   say "The following variables define where the SkyWater PDK lives:"
   say ""
-  say "  export PDK_ROOT=\"$PDK_ROOT\""
+  say "  # raw foundry checkout (source of truth)"
   say "  export SKYWATERPDK=\"$SKYWATERPDK\""
   say "  export SKYWATER_PDK_REPO=\"$SKYWATER_PDK_REPO\""
+  say "  # open_pdks install prefix; sky130A tree for downstream flows"
+  say "  export PDK_ROOT=\"$PDK_ROOT\""
+  say "  export PDK_ROOT_SKY130A=\"$PDK_ROOT_SKY130A\""
   say ""
   say "NOTE:"
   say "  - These exports apply automatically in NEW shells"
@@ -543,11 +764,22 @@ if ! check_deps; then
   die "Missing dependencies. Need: git make python3 tcsh find grep sed awk"
 fi
 
+# Ignore inherited env vars that point at directories which no longer exist
+# (e.g. a stale export block from an earlier run of this script).
+if [[ -n "${PDK_ROOT:-}" && ! -d "${PDK_ROOT}" ]]; then
+  say "NOTE: inherited PDK_ROOT='$PDK_ROOT' does not exist (stale export?); ignoring it."
+  unset PDK_ROOT
+fi
+
 PDK_ROOT_DEFAULT="${PDK_ROOT:-${HOME}/pdks}"
-PDK_ROOT="$(ask "Where should PDK_ROOT be installed?" "$PDK_ROOT_DEFAULT")"
+say "PDK_ROOT is the open_pdks install prefix; the tool-ready tree will land at"
+say "  \$PDK_ROOT/share/pdk/sky130A"
+PDK_ROOT="$(ask "Where should PDK_ROOT be?" "$PDK_ROOT_DEFAULT")"
 PDK_ROOT="${PDK_ROOT/#\~/${HOME}}"
 [[ -z "$PDK_ROOT" ]] && die "PDK_ROOT cannot be empty."
+[[ "$PDK_ROOT" == /* ]] || die "PDK_ROOT must be an absolute path (got: $PDK_ROOT)"
 export PDK_ROOT
+export PDK_ROOT_SKY130A="${PDK_ROOT}/share/pdk/sky130A"
 
 if [[ ! -d "$PDK_ROOT" ]]; then
   ask_yn "Create directory $PDK_ROOT?" "y" || die "Cannot proceed."
@@ -557,9 +789,20 @@ fi
 REPO_URL_DEFAULT="https://github.com/google/skywater-pdk.git"
 REPO_URL="$(ask "SkyWater PDK git URL" "$REPO_URL_DEFAULT")"
 
-WORKDIR_DEFAULT="${SKYWATERPDK:-${SKYWATER_PDK_REPO:-${PDK_ROOT}/skywater-pdk}}"
-WORKDIR="$(ask "Where should the repo be cloned/built?" "$WORKDIR_DEFAULT")"
+WORKDIR_DEFAULT=""
+for cand in "${SKYWATERPDK:-}" "${SKYWATER_PDK_REPO:-}"; do
+  [[ -n "$cand" ]] || continue
+  if [[ -d "$cand/.git" ]]; then
+    WORKDIR_DEFAULT="$cand"
+    break
+  fi
+  say "NOTE: inherited repo path '$cand' is not a git checkout (stale export?); ignoring it."
+done
+[[ -z "$WORKDIR_DEFAULT" ]] && WORKDIR_DEFAULT="${PDK_ROOT}/skywater-pdk"
+
+WORKDIR="$(ask "Where should the foundry repo be cloned/built?" "$WORKDIR_DEFAULT")"
 WORKDIR="${WORKDIR/#\~/${HOME}}"
+[[ "$WORKDIR" == /* ]] || die "Repo path must be an absolute path (got: $WORKDIR)"
 
 export SKYWATERPDK="$WORKDIR"
 export SKYWATER_PDK_REPO="$WORKDIR"
@@ -614,11 +857,29 @@ fi
 select_targets_menu
 run_selected_targets "$WORKDIR"
 
+# ---- stage 2: open_pdks (tech LEF / merged LEF / sky130A tree) ----
+say ""
+say "Stage 2 stages the foundry sources into the tool-ready sky130A tree"
+say "(tech LEF, merged sky130_fd_sc_hd.lef, ngspice models). Without it,"
+say "yosys/OpenROAD/magic/klayout cannot consume this PDK."
+if ask_yn "Run stage 2: build and install open_pdks?" "y"; then
+  build_open_pdks "$PDK_ROOT" "$SKYWATERPDK"
+else
+  say "Skipping open_pdks stage."
+fi
 
+VERIFY_RC=0
+verify_sky130a_install "$PDK_ROOT_SKY130A" || VERIFY_RC=1
 
 say ""
 say "Done."
 say "Exports for this session:"
-say "  PDK_ROOT=$PDK_ROOT"
-say "  SKYWATERPDK=$SKYWATERPDK"
+say "  SKYWATERPDK=$SKYWATERPDK          (raw foundry checkout)"
 say "  SKYWATER_PDK_REPO=$SKYWATER_PDK_REPO"
+say "  PDK_ROOT=$PDK_ROOT          (open_pdks install prefix)"
+say "  PDK_ROOT_SKY130A=$PDK_ROOT_SKY130A"
+say ""
+say "Downstream flows should point at the sky130A tree, e.g.:"
+say "  PDK_ROOT=\$PDK_ROOT_SKY130A ./run_picorv32_flow.sh"
+
+exit $VERIFY_RC
