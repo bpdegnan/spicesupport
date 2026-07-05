@@ -385,9 +385,11 @@ function select_targets_menu() {
       done
       ;;
     3)
-      # everything except 'enter', which opens an interactive subshell and
-      # would stall an unattended run
+      # everything except 'enter' (opens an interactive subshell and would
+      # stall an unattended run) and 'check' (license-header CI lint that
+      # needs the Go addlicense tool; irrelevant to building the PDK)
       SELECTED_TARGETS=("${(@)TARGETS:#enter}")
+      SELECTED_TARGETS=("${(@)SELECTED_TARGETS:#check}")
       ;;
     4)
       SELECTED_TARGETS=(submodules timing)
