@@ -10,6 +10,9 @@
 #     * two-phase submodule update (non-recursive -> patch -> recursive)
 # - Rerun-friendly:
 #     * if repo exists, offers "make-only" mode (skip git/submodules)
+# - Uses system EDA tools when present:
+#     * yosys/netlistsvg/iverilog already on PATH are removed from
+#       environment.yml so conda does not try (and fail) to install them
 # - Interactive make target selection:
 #     * one / multiple / all / just submodules
 # - Optional persistence to ~/.zshrc:
@@ -214,6 +217,67 @@ function make_env_with_tos_retry() {
 }
 
 
+# ---------------- conda env vs locally installed tools ----------------
+# The skywater-pdk environment.yml asks conda for EDA tools (yosys,
+# netlistsvg, iverilog) from the litex-hub channel.  On macOS that channel
+# has no netlistsvg at all, and its yosys pins python <3.8 which conflicts
+# with the file's python=3.8, so "make env" cannot solve.  If a tool is
+# already on PATH, drop it from environment.yml and use the system copy.
+typeset -a CONDA_EDA_TOOLS
+CONDA_EDA_TOOLS=(yosys netlistsvg iverilog)
+
+function patch_conda_env_for_local_tools() {
+  local repo="$1"
+  local envfile="$repo/environment.yml"
+  [[ -f "$envfile" ]] || return 0
+
+  local -a drop missing
+  drop=()
+  missing=()
+  local t
+  for t in "${CONDA_EDA_TOOLS[@]}"; do
+    grep -qE "^[[:space:]]*-[[:space:]]*${t}[[:space:]]*$" "$envfile" || continue
+    if have "$t"; then
+      say "Found system $t at $(command -v "$t"); removing it from environment.yml"
+      drop+=("$t")
+    else
+      missing+=("$t")
+    fi
+  done
+
+  for t in "${missing[@]}"; do
+    say ""
+    say "WARNING: '$t' is not installed on this system, and conda may not be"
+    say "able to provide it either (it is why 'make env' failed)."
+    case "$t" in
+      netlistsvg) say "  To install it yourself: npm install -g netlistsvg" ;;
+      yosys)      say "  To install it yourself: sudo port install yosys  (or: brew install yosys)" ;;
+      iverilog)   say "  To install it yourself: sudo port install iverilog  (or: brew install icarus-verilog)" ;;
+    esac
+    if ask_yn "Remove '$t' from environment.yml anyway so make env can proceed?" "y"; then
+      drop+=("$t")
+    fi
+  done
+
+  (( ${#drop[@]} > 0 )) || return 0
+
+  # Keep one pristine copy for reference.
+  [[ -f "${envfile}.orig" ]] || cp "$envfile" "${envfile}.orig"
+
+  # Only rewrite the file when the content actually changes, otherwise the
+  # fresh mtime makes conda.mk re-run "conda env update" on every rerun.
+  local tmp="${envfile}.tmp.$$"
+  local pattern="${(j:|:)drop}"
+  grep -vE "^[[:space:]]*-[[:space:]]*(${pattern})[[:space:]]*$" "$envfile" > "$tmp"
+  if cmp -s "$tmp" "$envfile"; then
+    rm -f "$tmp"
+    say "environment.yml already patched; nothing to do."
+  else
+    mv -f "$tmp" "$envfile"
+    say "Patched $envfile (removed: ${drop[*]})"
+  fi
+}
+
 # ---------------- interactive make target selection ----------------
 typeset -a TARGETS
 TARGETS=(
@@ -236,7 +300,7 @@ TARGETS=(
 
 function needs_env() {
   case "$1" in
-    timing|check|sky130_fd_sc_*) return 0 ;;
+    env|enter|timing|check|sky130_fd_sc_*) return 0 ;;
     *) return 1 ;;
   esac
 }
@@ -353,6 +417,7 @@ function run_selected_targets() {
     cd "$repo"
 
 if (( need_env_any == 0 )); then
+  patch_conda_env_for_local_tools "$repo"
   say "Ensuring environment exists: make env"
   make_env_firewall_safe "$repo"
 fi
