@@ -859,7 +859,11 @@ if [[ "$MODE" == "full" ]]; then
   say ""
   if [[ -d "$WORKDIR/.git" ]]; then
     if ask_yn "Update repo (git pull --rebase)?" "y"; then
-      ( cd "$WORKDIR" && git pull --rebase )
+      # This script's own patches (environment.yml, requirements.txt) leave
+      # the tree dirty; autostash carries them across the rebase.
+      if ! ( cd "$WORKDIR" && git pull --rebase --autostash ); then
+        say "WARNING: git pull failed; keeping existing repo state and continuing."
+      fi
     else
       say "Keeping existing repo state."
     fi
